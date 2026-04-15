@@ -3,936 +3,882 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conexão Green — Você está perdendo R$3.360 por ano na conta de luz</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>Conexão Green — Você está perdendo R$1.680 por ano na conta de luz</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --green: #a8e63d;
   --green2: #c5f26a;
-  --green-dark: #4a7a0f;
-  --red: #ff4444;
-  --dark: #0a1503;
-  --dark2: #0f1e04;
+  --green-dark: #3d6b0a;
+  --orange: #ff6b2b;
+  --orange-dark: #e05520;
+  --orange-glow: rgba(255,107,43,0.35);
+  --red: #ff3d3d;
+  --dark: #080f02;
+  --dark2: #0d1804;
+  --dark3: #111f05;
   --white: #ffffff;
-  --cream: #f9fdf0;
   --font-display: 'Fraunces', serif;
   --font-body: 'DM Sans', sans-serif;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  background: var(--dark);
-  color: var(--white);
-  overflow-x: hidden;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--dark);color:var(--white);overflow-x:hidden;}
 
 /* ── URGENCY BAR ── */
-.urgency-bar {
-  background: var(--red);
-  color: white;
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  position: relative;
-  z-index: 200;
+.ubar{
+  background:linear-gradient(90deg,#c0392b,#e74c3c,#c0392b);
+  background-size:200% 100%;
+  animation:barShift 4s linear infinite;
+  color:#fff;text-align:center;
+  padding:11px 20px;font-size:0.8rem;font-weight:600;
+  letter-spacing:0.02em;position:relative;z-index:300;
 }
-.urgency-bar span { font-weight: 800; }
+@keyframes barShift{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
+.ubar strong{font-weight:800;}
+.ubar .ubar-timer{
+  display:inline-block;
+  background:rgba(0,0,0,0.35);
+  border-radius:4px;padding:1px 8px;
+  font-family:monospace;font-weight:800;letter-spacing:2px;
+  margin-left:4px;font-size:0.85rem;
+}
 
 /* ── HEADER ── */
-header {
-  position: fixed; top: 36px; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 6vw;
-  background: rgba(10,21,3,0.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(168,230,61,0.12);
-  transition: top 0.3s;
+header{
+  position:fixed;top:38px;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 6vw;
+  background:rgba(8,15,2,0.94);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(168,230,61,0.1);
+  transition:top 0.3s ease;
 }
-header.no-bar { top: 0; }
-.logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: var(--green); letter-spacing: -0.02em; }
-.logo span { color: var(--white); }
-.header-cta {
-  background: var(--green); color: var(--dark);
-  font-weight: 700; font-size: 0.82rem;
-  padding: 10px 20px; border-radius: 100px;
-  text-decoration: none; white-space: nowrap;
-  transition: transform 0.2s, box-shadow 0.2s;
+header.scrolled{top:0;}
+.logo{font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--green);letter-spacing:-0.02em;}
+.logo span{color:#fff;}
+.header-right{display:flex;align-items:center;gap:12px;}
+.header-vagas{
+  font-size:0.7rem;font-weight:700;
+  color:rgba(255,107,43,0.9);
+  background:rgba(255,107,43,0.1);
+  border:1px solid rgba(255,107,43,0.25);
+  padding:5px 12px;border-radius:100px;
+  display:flex;align-items:center;gap:5px;
+  white-space:nowrap;
 }
-.header-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(168,230,61,0.4); }
+.header-vagas::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blink 1.2s infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.header-cta{
+  background:var(--orange);color:#fff;
+  font-weight:700;font-size:0.82rem;
+  padding:10px 20px;border-radius:100px;
+  text-decoration:none;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(255,107,43,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.header-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,43,0.55);}
 
 /* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 160px 6vw 80px;
-  position: relative; overflow: hidden;
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:160px 6vw 80px;
+  position:relative;overflow:hidden;
 }
-.hero-bg {
-  position: absolute; inset: 0; z-index: 0;
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
   background:
-    radial-gradient(ellipse 70% 60% at 85% 40%, rgba(168,230,61,0.1) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 50% at 15% 80%, rgba(168,230,61,0.06) 0%, transparent 55%);
+    radial-gradient(ellipse 65% 55% at 85% 40%,rgba(168,230,61,0.08) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 45% at 10% 75%,rgba(255,107,43,0.05) 0%,transparent 55%);
 }
-.hero-noise {
-  position: absolute; inset: 0; z-index: 0; opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.hero-content { position: relative; z-index: 2; max-width: 780px; }
-
-/* Dor numérica — o gancho emocional */
-.hero-pain {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(255,68,68,0.12);
-  border: 1px solid rgba(255,68,68,0.3);
-  border-radius: 100px;
-  padding: 8px 18px;
-  margin-bottom: 28px;
-  animation: fadeUp 0.5s ease both;
-}
-.hero-pain-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: blink 1.5s infinite; flex-shrink: 0; }
-@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-.hero-pain-text { font-size: 0.78rem; font-weight: 600; color: rgba(255,150,150,0.9); letter-spacing: 0.04em; }
-.hero-pain-text strong { color: #ff8888; }
-
-/* Headline principal */
-h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-  font-weight: 900; line-height: 1.0;
-  letter-spacing: -0.03em; margin-bottom: 8px;
-  animation: fadeUp 0.5s 0.1s ease both;
-}
-h1 .white { color: var(--white); }
-h1 .green { color: var(--green); font-style: italic; }
-h1 .strike {
-  color: rgba(255,255,255,0.25);
-  text-decoration: line-through;
-  text-decoration-color: var(--red);
-  text-decoration-thickness: 3px;
+.hero-grid{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(168,230,61,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(168,230,61,0.03) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
 }
 
-/* Subheadline emocional */
-.hero-emotional {
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
-  color: rgba(255,255,255,0.7);
-  line-height: 1.65; max-width: 580px;
-  margin-bottom: 12px; font-weight: 300;
-  animation: fadeUp 0.5s 0.2s ease both;
+.hero-content{position:relative;z-index:2;max-width:800px;}
+
+/* Perda em tempo real */
+.live-loss{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,61,61,0.1);
+  border:1px solid rgba(255,61,61,0.3);
+  border-radius:100px;padding:8px 18px;
+  margin-bottom:28px;
+  animation:fadeUp 0.5s ease both;
 }
-.hero-emotional strong { color: var(--white); font-weight: 600; }
-.hero-emotional .highlight {
-  background: rgba(168,230,61,0.15);
-  border-bottom: 2px solid var(--green);
-  padding: 0 4px; border-radius: 2px;
-  color: var(--green2);
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1s infinite;flex-shrink:0;}
+.live-text{font-size:0.8rem;font-weight:600;color:rgba(255,140,140,0.9);}
+.live-text strong{color:#ff9999;font-weight:800;}
+.live-count{
+  font-family:monospace;font-weight:800;font-size:0.9rem;
+  color:#ff8888;background:rgba(255,50,50,0.15);
+  padding:2px 8px;border-radius:6px;
+  min-width:60px;text-align:center;
+}
+
+/* Headline V3 — hierarquia única */
+.hero-headline-wrap{margin-bottom:20px;animation:fadeUp 0.5s 0.1s ease both;}
+h1{
+  font-family:var(--font-display);
+  font-size:clamp(3rem,7vw,5.6rem);
+  font-weight:900;line-height:0.95;
+  letter-spacing:-0.04em;
+}
+.h1-small{font-size:clamp(1.2rem,2.8vw,2rem);color:rgba(255,255,255,0.45);font-weight:700;letter-spacing:-0.02em;display:block;margin-bottom:6px;}
+.h1-main{color:var(--white);display:block;}
+.h1-accent{color:var(--green);font-style:italic;display:block;}
+.h1-pain{
+  color:var(--white);display:block;
+  position:relative;
+}
+.h1-pain .strikethrough{
+  position:relative;display:inline-block;
+  color:rgba(255,255,255,0.3);
+}
+.h1-pain .strikethrough::after{
+  content:'';
+  position:absolute;left:0;right:0;top:52%;
+  height:4px;background:var(--red);
+  border-radius:2px;transform:rotate(-2deg);
+}
+
+/* Sub emocional */
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.2rem);
+  color:rgba(255,255,255,0.65);
+  line-height:1.65;max-width:580px;
+  margin-bottom:14px;font-weight:300;
+  animation:fadeUp 0.5s 0.2s ease both;
+}
+.hero-sub strong{color:#fff;font-weight:600;}
+.hero-sub .green-hl{
+  color:var(--green2);
+  border-bottom:2px solid rgba(168,230,61,0.5);
+  padding:0 2px;
 }
 
 /* Visualização do futuro */
-.hero-vision {
-  background: rgba(168,230,61,0.07);
-  border-left: 3px solid var(--green);
-  border-radius: 0 12px 12px 0;
-  padding: 14px 20px;
-  margin-bottom: 32px; max-width: 540px;
-  font-size: 0.95rem; color: rgba(255,255,255,0.7);
-  line-height: 1.6; font-style: italic;
-  animation: fadeUp 0.5s 0.25s ease both;
+.hero-vision{
+  display:flex;align-items:flex-start;gap:12px;
+  background:rgba(168,230,61,0.07);
+  border:1px solid rgba(168,230,61,0.2);
+  border-radius:14px;
+  padding:16px 20px;
+  margin-bottom:32px;max-width:560px;
+  font-size:0.92rem;color:rgba(255,255,255,0.7);
+  line-height:1.65;font-style:italic;
+  animation:fadeUp 0.5s 0.25s ease both;
 }
-.hero-vision strong { color: var(--green); font-style: normal; font-weight: 700; }
+.hero-vision::before{content:'💭';font-size:1.2rem;flex-shrink:0;margin-top:1px;font-style:normal;}
+.hero-vision strong{color:var(--green);font-style:normal;font-weight:700;}
 
-/* CTAs */
-.hero-ctas {
-  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
-  margin-bottom: 40px;
-  animation: fadeUp 0.5s 0.3s ease both;
+/* ÚNICO CTA na primeira dobra */
+.hero-single-cta{
+  animation:fadeUp 0.5s 0.3s ease both;
+  margin-bottom:16px;
 }
-.btn-main {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--green); color: var(--dark);
-  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
-  padding: 20px 38px; border-radius: 100px; text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  animation: pulseGreen 2.5s 1.5s infinite;
-  white-space: nowrap;
+.btn-hero-main{
+  display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+  color:#fff;
+  font-family:var(--font-display);font-weight:700;font-size:1.1rem;
+  padding:22px 44px;border-radius:100px;text-decoration:none;
+  box-shadow:0 8px 32px rgba(255,107,43,0.45);
+  transition:transform 0.2s,box-shadow 0.2s;
+  animation:orangePulse 2.5s 2s infinite;
+  white-space:nowrap;
 }
-.btn-main:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(168,230,61,0.45); animation: none; }
-@keyframes pulseGreen {
-  0%,100%{box-shadow: 0 0 0 0 rgba(168,230,61,0.4);}
-  50%{box-shadow: 0 0 0 18px rgba(168,230,61,0);}
+.btn-hero-main:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(255,107,43,0.6);animation:none;}
+@keyframes orangePulse{
+  0%,100%{box-shadow:0 8px 32px rgba(255,107,43,0.45),0 0 0 0 rgba(255,107,43,0.4);}
+  50%{box-shadow:0 8px 32px rgba(255,107,43,0.45),0 0 0 18px rgba(255,107,43,0);}
 }
-.btn-wpp {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(37,211,102,0.12); color: #4ddb80;
-  border: 1px solid rgba(37,211,102,0.3);
-  font-weight: 600; font-size: 0.9rem;
-  padding: 14px 24px; border-radius: 100px; text-decoration: none;
-  transition: background 0.2s;
-}
-.btn-wpp:hover { background: rgba(37,211,102,0.2); }
-.btn-wpp svg { width: 18px; height: 18px; fill: #4ddb80; flex-shrink: 0; }
-.btn-secondary-link {
-  color: rgba(255,255,255,0.45); font-size: 0.85rem; text-decoration: none;
-  transition: color 0.2s; display: flex; align-items: center; gap: 5px;
-}
-.btn-secondary-link:hover { color: rgba(255,255,255,0.8); }
+.btn-hero-main svg{width:20px;height:20px;flex-shrink:0;}
 
-/* Contador de perdas */
-.loss-counter {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,68,68,0.08);
-  border: 1px solid rgba(255,68,68,0.2);
-  border-radius: 12px; padding: 12px 20px;
-  margin-bottom: 36px;
-  animation: fadeUp 0.5s 0.35s ease both;
+.hero-cta-micro{
+  font-size:0.75rem;color:rgba(255,255,255,0.3);
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:32px;
+  animation:fadeUp 0.5s 0.35s ease both;
 }
-.loss-counter-label { font-size: 0.75rem; color: rgba(255,150,150,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
-.loss-counter-value {
-  font-family: var(--font-display);
-  font-size: 1.6rem; font-weight: 900; color: #ff8888; line-height: 1;
+.hero-cta-micro span{display:flex;align-items:center;gap:4px;}
+.hero-cta-micro span::before{content:'✓';color:var(--green);font-weight:700;}
+
+/* Vagas counter hero */
+.hero-vagas{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,107,43,0.08);
+  border:1px solid rgba(255,107,43,0.2);
+  border-radius:12px;padding:12px 18px;
+  margin-bottom:36px;
+  animation:fadeUp 0.5s 0.4s ease both;
 }
-.loss-counter-period { font-size: 0.72rem; color: rgba(255,150,150,0.5); }
+.hero-vagas-bar{
+  width:120px;height:8px;
+  background:rgba(255,255,255,0.1);
+  border-radius:4px;overflow:hidden;
+}
+.hero-vagas-fill{
+  height:100%;border-radius:4px;
+  background:linear-gradient(90deg,var(--orange),#ff9944);
+  width:23%;
+  position:relative;overflow:hidden;
+}
+.hero-vagas-fill::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
+  animation:shimmer 2s infinite;
+}
+@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+.hero-vagas-text{font-size:0.78rem;color:rgba(255,180,100,0.85);}
+.hero-vagas-text strong{color:var(--orange);font-weight:800;}
 
 /* Stats hero */
-.hero-stats {
-  display: flex; flex-wrap: wrap; gap: 28px;
-  padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.07);
-  animation: fadeUp 0.5s 0.4s ease both;
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:28px;
+  padding-top:28px;border-top:1px solid rgba(255,255,255,0.07);
+  animation:fadeUp 0.5s 0.45s ease both;
 }
-.stat { display: flex; flex-direction: column; gap: 3px; }
-.stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--green); line-height: 1; }
-.stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+.stat{display:flex;flex-direction:column;gap:3px;}
+.stat-num{font-family:var(--font-display);font-size:1.7rem;font-weight:900;color:var(--green);line-height:1;}
+.stat-label{font-size:0.7rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;}
+
+/* ── VILÃO SECTION — "Por que a distribuidora não conta isso" ── */
+.vilao{
+  background:var(--dark2);
+  padding:80px 6vw;
+  border-top:1px solid rgba(255,107,43,0.1);
+  border-bottom:1px solid rgba(255,107,43,0.1);
+}
+.vilao-inner{max-width:760px;margin:0 auto;}
+.sec-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.sec-tag::after{content:'';flex:1;height:1px;background:rgba(168,230,61,0.15);}
+.sec-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px;}
+.sec-sub{font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.65;max-width:500px;margin-bottom:40px;}
+
+.vilao-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:680px){.vilao-grid{grid-template-columns:1fr;}}
+.vilao-card{
+  border-radius:18px;overflow:hidden;
+}
+.vilao-them{
+  background:rgba(255,50,50,0.07);
+  border:1px solid rgba(255,50,50,0.18);
+  padding:22px;
+}
+.vilao-them-label{font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,120,120,0.7);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.vilao-them-label::before{content:'🏭';}
+.vilao-them-text{font-size:0.88rem;color:rgba(255,180,180,0.75);line-height:1.6;}
+.vilao-us{
+  background:rgba(168,230,61,0.06);
+  border:1px solid rgba(168,230,61,0.18);
+  padding:22px;
+}
+.vilao-us-label{font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(168,230,61,0.7);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.vilao-us-label::before{content:'✅';}
+.vilao-us-text{font-size:0.88rem;color:rgba(255,255,255,0.75);line-height:1.6;}
+.vilao-us-text strong{color:var(--green);font-weight:700;}
+
+/* ── CALCULADORA V3 — com timer de perda ao vivo ── */
+.calculadora{padding:80px 6vw;background:var(--dark3);}
+.calc-wrap{max-width:700px;margin:0 auto;}
+.calc-box{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(168,230,61,0.2);
+  border-radius:28px;padding:48px 44px;
+  position:relative;overflow:hidden;
+}
+.calc-box::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:260px;height:260px;
+  background:radial-gradient(circle,rgba(168,230,61,0.08),transparent 70%);
+  pointer-events:none;
+}
+.calc-box h3{
+  font-family:var(--font-display);
+  font-size:clamp(1.4rem,3vw,2rem);font-weight:900;
+  letter-spacing:-0.02em;margin-bottom:6px;
+}
+.calc-sub{font-size:0.88rem;color:rgba(255,255,255,0.45);margin-bottom:32px;line-height:1.6;}
+
+/* Timer ao vivo */
+.calc-live-loss{
+  background:rgba(255,50,50,0.08);
+  border:1px solid rgba(255,50,50,0.2);
+  border-radius:12px;padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-bottom:28px;
+}
+.cll-label{font-size:0.75rem;color:rgba(255,150,150,0.7);line-height:1.4;}
+.cll-label strong{color:rgba(255,180,180,0.9);display:block;}
+.cll-value{
+  font-family:var(--font-display);
+  font-size:1.8rem;font-weight:900;color:#ff8888;
+  white-space:nowrap;line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+
+.calc-slider-wrap{margin-bottom:28px;}
+.calc-slider-label{display:flex;justify-content:space-between;font-size:0.82rem;color:rgba(255,255,255,0.45);margin-bottom:14px;}
+.calc-slider-label .val{font-weight:800;color:#fff;font-size:1.05rem;}
+input[type=range]{
+  width:100%;-webkit-appearance:none;appearance:none;
+  height:6px;border-radius:3px;outline:none;cursor:pointer;
+  background:linear-gradient(90deg,var(--green) var(--pct,20%),rgba(255,255,255,0.1) var(--pct,20%));
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:26px;height:26px;border-radius:50%;
+  background:var(--green);box-shadow:0 4px 14px rgba(168,230,61,0.5);cursor:pointer;
+}
+
+.calc-result{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;
+}
+.calc-result-card{
+  border-radius:14px;padding:20px 22px;text-align:center;
+}
+.crc-loss{background:rgba(255,50,50,0.08);border:1px solid rgba(255,50,50,0.2);}
+.crc-gain{background:rgba(168,230,61,0.08);border:1px solid rgba(168,230,61,0.2);}
+.crc-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
+.crc-val{font-family:var(--font-display);font-size:2rem;font-weight:900;line-height:1;}
+.crc-loss .crc-val{color:#ff8888;}
+.crc-gain .crc-val{color:var(--green);}
+.crc-sub{font-size:0.68rem;color:rgba(255,255,255,0.25);margin-top:4px;}
+
+.btn-calc{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+  color:#fff;font-family:var(--font-display);font-weight:700;font-size:1rem;
+  padding:18px;border-radius:14px;text-decoration:none;width:100%;
+  box-shadow:0 6px 24px rgba(255,107,43,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-calc:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,107,43,0.55);}
+.calc-note{text-align:center;font-size:0.72rem;color:rgba(255,255,255,0.25);margin-top:12px;}
 
 /* ── VALIDAÇÃO ANTECIPADA ── */
-.validacao {
-  background: var(--dark2);
-  padding: 80px 6vw;
-  border-top: 1px solid rgba(168,230,61,0.08);
-  border-bottom: 1px solid rgba(168,230,61,0.08);
-}
-.validacao-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-.validacao-tag {
-  display: inline-block; font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35);
-  margin-bottom: 20px;
-}
-.validacao h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
-  line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px;
-  font-style: italic;
-}
-.validacao h2 em { font-style: normal; color: var(--green); }
-.validacao p {
-  font-size: 1.05rem; color: rgba(255,255,255,0.6);
-  line-height: 1.75; margin-bottom: 16px;
-}
-.validacao p strong { color: var(--white); }
-.validacao-cards {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 16px; margin-top: 40px;
-}
-@media(max-width:680px){ .validacao-cards { grid-template-columns: 1fr; } }
-.val-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px; padding: 24px 20px; text-align: left;
-  transition: border-color 0.3s;
-}
-.val-card:hover { border-color: rgba(168,230,61,0.25); }
-.val-card-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
-.val-card h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
-.val-card p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+.validacao{background:var(--dark2);padding:80px 6vw;}
+.validacao-inner{max-width:700px;margin:0 auto;text-align:center;}
+.validacao h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px;font-style:italic;}
+.validacao h2 em{font-style:normal;color:var(--green);}
+.validacao p{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:14px;}
+.validacao p strong{color:#fff;}
+.val-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;}
+@media(max-width:680px){.val-cards{grid-template-columns:1fr;}}
+.val-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:22px 18px;text-align:left;transition:border-color 0.3s;}
+.val-card:hover{border-color:rgba(168,230,61,0.25);}
+.val-icon{font-size:1.5rem;margin-bottom:10px;display:block;}
+.val-card h4{font-family:var(--font-display);font-size:0.95rem;font-weight:700;margin-bottom:7px;}
+.val-card p{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.55;}
 
 /* ── PROVA SOCIAL ── */
-.prova-social {
-  padding: 80px 6vw;
-  background: var(--dark);
+.prova{padding:80px 6vw;background:var(--dark);}
+.deps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:44px;}
+.dep{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(168,230,61,0.12);
+  border-radius:20px;padding:28px 24px;
+  position:relative;overflow:hidden;
+  transition:border-color 0.3s,background 0.3s;
 }
-.section-tag {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--green);
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 14px;
+.dep:hover{border-color:rgba(168,230,61,0.28);background:rgba(168,230,61,0.03);}
+.dep-eco{
+  position:absolute;top:18px;right:18px;
+  background:var(--green);color:var(--dark);
+  font-family:var(--font-display);font-size:0.72rem;font-weight:900;
+  padding:3px 12px;border-radius:100px;
 }
-.section-tag::after { content: ''; flex: 1; height: 1px; background: rgba(168,230,61,0.15); }
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 900; line-height: 1.1; letter-spacing: -0.02em;
-  margin-bottom: 12px;
-}
-.section-sub { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.65; max-width: 500px; margin-bottom: 48px; }
+.dep-stars{color:#ffd04d;font-size:0.85rem;letter-spacing:2px;margin-bottom:10px;}
+.dep-quote{font-size:0.88rem;color:rgba(255,255,255,0.78);line-height:1.65;margin-bottom:18px;font-style:italic;}
+.dep-quote strong{color:var(--green);font-style:normal;font-weight:700;}
+.dep-author{display:flex;align-items:center;gap:12px;}
+.dep-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;font-weight:900;color:var(--dark);flex-shrink:0;}
+.av1{background:linear-gradient(135deg,#a8e63d,#7ab82a);}
+.av2{background:linear-gradient(135deg,#63d4e8,#2a8fb8);}
+.av3{background:linear-gradient(135deg,#f4a261,#e76f51);}
+.dep-name{font-weight:700;font-size:0.86rem;}
+.dep-info{font-size:0.73rem;color:rgba(255,255,255,0.38);margin-top:2px;}
 
-.depoimentos-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px; margin-bottom: 48px;
-}
-.depoimento {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(168,230,61,0.12);
-  border-radius: 20px; padding: 28px 24px;
-  position: relative; overflow: hidden;
-  transition: border-color 0.3s, background 0.3s;
-}
-.depoimento:hover { border-color: rgba(168,230,61,0.3); background: rgba(168,230,61,0.04); }
-.dep-stars { color: #ffd04d; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 12px; }
-.dep-quote {
-  font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65;
-  margin-bottom: 20px; font-style: italic;
-}
-.dep-quote strong { color: var(--green); font-style: normal; font-weight: 700; }
-.dep-author { display: flex; align-items: center; gap: 12px; }
-.dep-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 1rem; font-weight: 900;
-  color: var(--dark); flex-shrink: 0;
-}
-.av1 { background: linear-gradient(135deg, #a8e63d, #7ab82a); }
-.av2 { background: linear-gradient(135deg, #63d4e8, #2a8fb8); }
-.av3 { background: linear-gradient(135deg, #f4a261, #e76f51); }
-.dep-name { font-weight: 700; font-size: 0.88rem; }
-.dep-info { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
-.dep-economia {
-  position: absolute; top: 20px; right: 20px;
-  background: var(--green); color: var(--dark);
-  font-family: var(--font-display); font-size: 0.75rem; font-weight: 900;
-  padding: 4px 12px; border-radius: 100px;
-}
-
-/* Números de prova */
-.numeros-prova {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 2px; border-radius: 20px; overflow: hidden;
-  background: rgba(168,230,61,0.06);
-  border: 1px solid rgba(168,230,61,0.15);
-}
-.num-item {
-  padding: 28px 24px; text-align: center;
-  background: rgba(168,230,61,0.03);
-}
-.num-val { font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; color: var(--green); line-height: 1; margin-bottom: 6px; }
-.num-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.4; }
-
-/* ── CALCULADORA DE PERDAS ── */
-.calculadora {
-  padding: 80px 6vw;
-  background: var(--dark2);
-}
-.calc-inner {
-  max-width: 680px; margin: 0 auto;
-}
-.calc-box {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(168,230,61,0.2);
-  border-radius: 28px; padding: 48px 40px;
-  position: relative; overflow: hidden;
-}
-.calc-box::before {
-  content: '';
-  position: absolute; top: -60px; right: -60px;
-  width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(168,230,61,0.1), transparent 70%);
-}
-.calc-box h3 {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900;
-  letter-spacing: -0.02em; margin-bottom: 8px;
-}
-.calc-box .sub { font-size: 0.9rem; color: rgba(255,255,255,0.5); margin-bottom: 32px; line-height: 1.6; }
-
-.calc-slider-wrap { margin-bottom: 28px; }
-.calc-slider-label {
-  display: flex; justify-content: space-between;
-  font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 12px;
-}
-.calc-slider-label span { font-weight: 700; color: var(--white); font-size: 1rem; }
-input[type=range] {
-  width: 100%; -webkit-appearance: none; appearance: none;
-  height: 6px; border-radius: 3px;
-  background: linear-gradient(90deg, var(--green) var(--val, 30%), rgba(255,255,255,0.1) var(--val, 30%));
-  outline: none; cursor: pointer;
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 24px; height: 24px;
-  border-radius: 50%; background: var(--green);
-  box-shadow: 0 4px 12px rgba(168,230,61,0.4);
-  cursor: pointer;
-}
-
-.calc-result {
-  background: linear-gradient(135deg, rgba(168,230,61,0.12), rgba(168,230,61,0.04));
-  border: 1px solid rgba(168,230,61,0.25);
-  border-radius: 16px; padding: 24px 28px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-  margin-bottom: 28px;
-}
-.calc-result-item { text-align: center; }
-.calc-result-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
-.calc-result-val {
-  font-family: var(--font-display);
-  font-size: 2rem; font-weight: 900; color: var(--green); line-height: 1;
-}
-.calc-result-val.loss { color: #ff8888; }
-.calc-result-sub { font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 4px; }
-
-.calc-cta {
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 12px; text-align: center;
-}
-.btn-calc-main {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--green); color: var(--dark);
-  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
-  padding: 18px 36px; border-radius: 100px; text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s; width: 100%; justify-content: center;
-}
-.btn-calc-main:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(168,230,61,0.4); }
-.calc-cta-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+.nums-prova{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;border-radius:20px;overflow:hidden;border:1px solid rgba(168,230,61,0.15);}
+.num-item{padding:24px 20px;text-align:center;background:rgba(168,230,61,0.04);}
+.num-val{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:5px;}
+.num-label{font-size:0.72rem;color:rgba(255,255,255,0.35);line-height:1.4;}
 
 /* ── COMO FUNCIONA ── */
-.como-funciona {
-  padding: 80px 6vw;
-  background: var(--dark);
-}
-.steps-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2px; margin-top: 48px;
-}
-.step {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 36px 28px;
-  transition: background 0.3s, border-color 0.3s;
-  position: relative;
-}
-.step:hover { background: rgba(168,230,61,0.06); border-color: rgba(168,230,61,0.2); }
-.step-num {
-  font-family: var(--font-display); font-size: 3.5rem; font-weight: 900;
-  color: rgba(168,230,61,0.1); line-height: 1; margin-bottom: 16px;
-  transition: color 0.3s;
-}
-.step:hover .step-num { color: rgba(168,230,61,0.25); }
-.step-icon { font-size: 1.8rem; display: block; margin-bottom: 14px; }
-.step h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-.step p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
-.step-time {
-  position: absolute; top: 16px; right: 16px;
-  font-size: 0.65rem; color: var(--green); font-weight: 700;
-  background: rgba(168,230,61,0.1); padding: 3px 10px; border-radius: 100px;
-}
+.como{padding:80px 6vw;background:var(--dark3);}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:44px;}
+.step{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);padding:32px 24px;position:relative;transition:background 0.3s,border-color 0.3s;}
+.step:hover{background:rgba(168,230,61,0.05);border-color:rgba(168,230,61,0.18);}
+.step-time{position:absolute;top:14px;right:14px;font-size:0.62rem;color:var(--green);font-weight:700;background:rgba(168,230,61,0.1);padding:3px 10px;border-radius:100px;}
+.step-n{font-family:var(--font-display);font-size:3.2rem;font-weight:900;color:rgba(168,230,61,0.09);line-height:1;margin-bottom:14px;transition:color 0.3s;}
+.step:hover .step-n{color:rgba(168,230,61,0.22);}
+.step-icon{font-size:1.7rem;display:block;margin-bottom:12px;}
+.step h3{font-family:var(--font-display);font-size:0.98rem;font-weight:700;margin-bottom:8px;}
+.step p{font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.6;}
 
-/* ── OBJEÇÕES DISSOLVIDAS ── */
-.objecoes {
-  padding: 80px 6vw;
-  background: var(--dark2);
+/* ── OBJEÇÕES ── */
+.objecoes{padding:80px 6vw;background:var(--dark2);}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:44px;}
+@media(max-width:680px){.obj-grid{grid-template-columns:1fr;}}
+.obj-card{border-radius:18px;overflow:hidden;}
+.obj-fear{background:rgba(255,50,50,0.07);border:1px solid rgba(255,50,50,0.15);padding:18px 20px;display:flex;gap:10px;align-items:flex-start;}
+.obj-fear p{font-size:0.85rem;color:rgba(255,170,170,0.75);line-height:1.55;font-style:italic;}
+.obj-ans{background:rgba(168,230,61,0.05);border:1px solid rgba(168,230,61,0.15);border-top:none;padding:18px 20px;display:flex;gap:10px;align-items:flex-start;}
+.obj-ans-icon{color:var(--green);font-size:1rem;flex-shrink:0;margin-top:2px;}
+.obj-ans p{font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.55;}
+.obj-ans p strong{color:var(--green);font-weight:700;}
+
+/* ── URGÊNCIA ESCASSEZ ── */
+.escassez{
+  padding:60px 6vw;
+  background:linear-gradient(135deg,rgba(255,107,43,0.1),rgba(255,107,43,0.03));
+  border-top:1px solid rgba(255,107,43,0.15);
+  border-bottom:1px solid rgba(255,107,43,0.15);
+  text-align:center;
 }
-.objecoes-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px;
+.escassez-inner{max-width:660px;margin:0 auto;}
+.escassez h3{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2.1rem);font-weight:900;margin-bottom:12px;line-height:1.2;}
+.escassez p{font-size:0.92rem;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:24px;}
+.escassez-vagas{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  background:rgba(255,107,43,0.08);border:1px solid rgba(255,107,43,0.2);
+  border-radius:16px;padding:20px 28px;margin-bottom:24px;flex-wrap:wrap;
 }
-@media(max-width:680px){ .objecoes-grid { grid-template-columns: 1fr; } }
-.objecao-card {
-  border-radius: 20px; overflow: hidden;
-}
-.objecao-fear {
-  background: rgba(255,68,68,0.08);
-  border: 1px solid rgba(255,68,68,0.15);
-  padding: 20px 22px;
-  display: flex; gap: 12px; align-items: flex-start;
-}
-.objecao-fear-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
-.objecao-fear-text { font-size: 0.85rem; color: rgba(255,180,180,0.75); line-height: 1.55; font-style: italic; }
-.objecao-answer {
-  background: rgba(168,230,61,0.06);
-  border: 1px solid rgba(168,230,61,0.15);
-  border-top: none;
-  padding: 20px 22px;
-  display: flex; gap: 12px; align-items: flex-start;
-}
-.objecao-answer-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; color: var(--green); }
-.objecao-answer-text { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
-.objecao-answer-text strong { color: var(--green); font-weight: 700; }
+.esc-bar-wrap{flex:1;min-width:140px;}
+.esc-bar-label{font-size:0.7rem;color:rgba(255,180,100,0.6);margin-bottom:6px;text-align:left;}
+.esc-bar{height:10px;background:rgba(255,255,255,0.1);border-radius:5px;overflow:hidden;}
+.esc-bar-fill{height:100%;background:linear-gradient(90deg,#ff9944,var(--orange));border-radius:5px;width:23%;position:relative;overflow:hidden;}
+.esc-bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:shimmer 2s infinite;}
+.esc-numbers{text-align:center;}
+.esc-num{font-family:var(--font-display);font-size:2.2rem;font-weight:900;color:var(--orange);line-height:1;}
+.esc-num-label{font-size:0.7rem;color:rgba(255,180,100,0.6);}
+.escassez-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+.esc-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:5px 14px;font-size:0.73rem;color:rgba(255,255,255,0.45);}
 
 /* ── LEI ── */
-.lei-section {
-  padding: 80px 6vw;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-@media(max-width:768px){ .lei-section { grid-template-columns: 1fr; gap: 40px; } }
-.lei-card {
-  background: linear-gradient(135deg, rgba(168,230,61,0.1), rgba(168,230,61,0.03));
-  border: 1px solid rgba(168,230,61,0.2);
-  border-radius: 24px; padding: 40px 36px; position: relative; overflow: hidden;
-}
-.lei-card::before {
-  content: '14.300';
-  position: absolute; top: -16px; right: 16px;
-  font-family: var(--font-display); font-size: 4.5rem; font-weight: 900;
-  color: rgba(168,230,61,0.07); pointer-events: none; line-height: 1;
-}
-.lei-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: var(--green); margin-bottom: 14px; }
-.lei-card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 20px; }
-.lei-benefits { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.lei-benefits li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 0.88rem; color: rgba(255,255,255,0.7);
-}
-.lei-benefits li::before {
-  content: '✓'; background: var(--green); color: var(--dark);
-  width: 18px; height: 18px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.65rem; font-weight: 800; flex-shrink: 0; margin-top: 2px;
-}
+.lei{padding:80px 6vw;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+@media(max-width:768px){.lei{grid-template-columns:1fr;gap:36px;}}
+.lei-card{background:linear-gradient(135deg,rgba(168,230,61,0.09),rgba(168,230,61,0.02));border:1px solid rgba(168,230,61,0.2);border-radius:24px;padding:36px;position:relative;overflow:hidden;}
+.lei-card::before{content:'14.300';position:absolute;top:-14px;right:12px;font-family:var(--font-display);font-size:4.2rem;font-weight:900;color:rgba(168,230,61,0.06);pointer-events:none;line-height:1;}
+.lei-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:900;color:var(--green);margin-bottom:12px;}
+.lei-card p{font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:18px;}
+.lei-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.lei-list li{display:flex;align-items:flex-start;gap:9px;font-size:0.86rem;color:rgba(255,255,255,0.7);}
+.lei-list li::before{content:'✓';background:var(--green);color:var(--dark);width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.62rem;font-weight:800;flex-shrink:0;margin-top:2px;}
 
-/* ── URGÊNCIA ORGÂNICA ── */
-.urgencia {
-  background: linear-gradient(135deg, rgba(168,230,61,0.12), rgba(168,230,61,0.03));
-  border-top: 1px solid rgba(168,230,61,0.15);
-  border-bottom: 1px solid rgba(168,230,61,0.15);
-  padding: 48px 6vw; text-align: center;
-}
-.urgencia-inner { max-width: 640px; margin: 0 auto; }
-.urgencia h3 {
-  font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 900; margin-bottom: 12px;
-}
-.urgencia p { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 24px; }
-.urgencia-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.urgencia-badge {
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 100px; padding: 6px 16px;
-  font-size: 0.75rem; color: rgba(255,255,255,0.55);
-  display: flex; align-items: center; gap: 6px;
-}
-
-/* ── CTA FINAL EMOCIONAL ── */
-.cta-final {
-  padding: 100px 6vw; text-align: center;
-  position: relative; overflow: hidden;
-  background: var(--dark2);
-}
-.cta-final::before {
-  content: '';
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(168,230,61,0.08), transparent 70%);
-  pointer-events: none;
-}
-.cta-final-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 20px; }
-.cta-final h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900;
-  letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 16px;
-}
-.cta-final h2 em { font-style: italic; color: var(--green); }
-.cta-final p { font-size: 1rem; color: rgba(255,255,255,0.55); max-width: 500px; margin: 0 auto 36px; line-height: 1.7; }
-.cta-final-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 24px; }
-.cta-final-note { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
-.cta-final-note span { color: rgba(168,230,61,0.5); }
-
-/* ── DOCUMENTOS ── */
-.docs-section { padding: 80px 6vw; }
-.docs-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px; margin-top: 40px;
-}
-.doc-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 18px; padding: 28px 22px; text-align: center;
-  transition: border-color 0.3s, background 0.3s;
-}
-.doc-card:hover { border-color: rgba(168,230,61,0.25); background: rgba(168,230,61,0.04); }
-.doc-icon { font-size: 2rem; display: block; margin-bottom: 14px; }
-.doc-card h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
-.doc-card p { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+/* ── DOCS ── */
+.docs{padding:80px 6vw;background:var(--dark3);}
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:36px;}
+.doc-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px 20px;text-align:center;transition:border-color 0.3s,background 0.3s;}
+.doc-card:hover{border-color:rgba(168,230,61,0.22);background:rgba(168,230,61,0.04);}
+.doc-icon{font-size:1.9rem;display:block;margin-bottom:12px;}
+.doc-card h4{font-family:var(--font-display);font-size:0.92rem;font-weight:700;margin-bottom:7px;}
+.doc-card p{font-size:0.8rem;color:rgba(255,255,255,0.38);line-height:1.5;}
 
 /* ── FAQ ── */
-.faq-section { padding: 80px 6vw; background: var(--dark2); }
-.faq-list { max-width: 700px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 2px; }
-.faq-item { border: 1px solid rgba(255,255,255,0.07); overflow: hidden; }
-.faq-item:first-child { border-radius: 14px 14px 0 0; }
-.faq-item:last-child { border-radius: 0 0 14px 14px; }
-.faq-item:hover { border-color: rgba(168,230,61,0.2); }
-.faq-q {
-  padding: 22px 26px; display: flex; justify-content: space-between; align-items: center;
-  cursor: pointer; background: rgba(255,255,255,0.03);
-  font-weight: 500; font-size: 0.92rem; list-style: none; gap: 14px;
+.faq{padding:80px 6vw;background:var(--dark2);}
+.faq-list{max-width:680px;margin:44px auto 0;display:flex;flex-direction:column;gap:2px;}
+.faq-item{border:1px solid rgba(255,255,255,0.07);overflow:hidden;}
+.faq-item:first-child{border-radius:14px 14px 0 0;}
+.faq-item:last-child{border-radius:0 0 14px 14px;}
+.faq-item:hover{border-color:rgba(168,230,61,0.18);}
+.faq-q{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:rgba(255,255,255,0.025);font-weight:500;font-size:0.9rem;list-style:none;gap:12px;}
+.faq-q::after{content:'+';color:var(--green);font-size:1.2rem;flex-shrink:0;}
+details[open] .faq-q::after{content:'−';}
+.faq-a{padding:0 24px 18px;background:rgba(255,255,255,0.018);font-size:0.86rem;color:rgba(255,255,255,0.48);line-height:1.7;}
+
+/* ── CTA FINAL ── */
+.cta-final{
+  padding:100px 6vw;text-align:center;
+  background:var(--dark);position:relative;overflow:hidden;
 }
-.faq-q::after { content: '+'; color: var(--green); font-size: 1.3rem; flex-shrink: 0; }
-details[open] .faq-q::after { content: '−'; }
-.faq-a { padding: 0 26px 20px; background: rgba(255,255,255,0.02); font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.cta-final::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(255,107,43,0.07),transparent 70%);
+  pointer-events:none;
+}
+.cta-final-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:18px;}
+.cta-final h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.8rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:14px;}
+.cta-final h2 em{font-style:italic;color:var(--green);}
+.cta-final p{font-size:0.98rem;color:rgba(255,255,255,0.5);max-width:500px;margin:0 auto 32px;line-height:1.7;}
+.cta-final-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:20px;}
+.btn-final-main{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+  color:#fff;font-family:var(--font-display);font-weight:700;font-size:1.1rem;
+  padding:22px 44px;border-radius:100px;text-decoration:none;
+  box-shadow:0 8px 32px rgba(255,107,43,0.45);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-final-main:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(255,107,43,0.6);}
+.btn-wpp-final{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(37,211,102,0.1);color:#4ddb80;
+  border:1px solid rgba(37,211,102,0.25);
+  font-weight:600;font-size:0.9rem;
+  padding:16px 28px;border-radius:100px;text-decoration:none;
+  transition:background 0.2s;
+}
+.btn-wpp-final:hover{background:rgba(37,211,102,0.18);}
+.btn-wpp-final svg{width:18px;height:18px;fill:#4ddb80;}
+.cta-final-note{font-size:0.72rem;color:rgba(255,255,255,0.2);}
+.cta-final-note span{color:rgba(168,230,61,0.45);}
 
 /* ── FOOTER ── */
-footer {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 36px 6vw;
-  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;
-}
-.footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 900; color: var(--green); }
-.footer-logo span { color: var(--white); }
-footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
-.footer-lgpd { font-size: 0.75rem; color: rgba(255,255,255,0.25); display: flex; align-items: center; gap: 5px; }
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:32px 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;}
+.footer-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:900;color:var(--green);}
+.footer-logo span{color:#fff;}
+footer p{font-size:0.76rem;color:rgba(255,255,255,0.22);}
 
-/* ── WHATSAPP FLOAT ── */
-.wpp-float {
-  position: fixed; bottom: 28px; right: 28px; z-index: 500;
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none;
-}
-.wpp-float-label {
-  background: rgba(10,21,3,0.92); backdrop-filter: blur(12px);
-  border: 1px solid rgba(37,211,102,0.3);
-  color: white; font-size: 0.75rem; font-weight: 500;
-  padding: 8px 14px; border-radius: 100px; white-space: nowrap;
-  opacity: 0; transform: translateX(8px); transition: all 0.3s; pointer-events: none;
-}
-.wpp-float:hover .wpp-float-label { opacity: 1; transform: translateX(0); }
-.wpp-float-btn {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: #25D366;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 24px rgba(37,211,102,0.4);
-  animation: wppPulse 2.5s 3s infinite;
-  transition: transform 0.2s;
-}
-.wpp-float-btn:hover { transform: scale(1.08); animation: none; }
-@keyframes wppPulse {
-  0%,100%{box-shadow: 0 8px 24px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.35);}
-  50%{box-shadow: 0 8px 24px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0);}
-}
-.wpp-float-btn svg { width: 28px; height: 28px; fill: white; }
+/* ── WPP FLOAT ── */
+.wpp-float{position:fixed;bottom:28px;right:28px;z-index:500;display:flex;align-items:center;gap:10px;text-decoration:none;}
+.wpp-float-bubble{background:rgba(8,15,2,0.94);backdrop-filter:blur(12px);border:1px solid rgba(37,211,102,0.3);color:#fff;font-size:0.73rem;font-weight:500;padding:7px 14px;border-radius:100px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:all 0.3s;pointer-events:none;}
+.wpp-float:hover .wpp-float-bubble{opacity:1;transform:translateX(0);}
+.wpp-float-btn{width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,0.4);animation:wppP 2.5s 3s infinite;transition:transform 0.2s;}
+.wpp-float-btn:hover{transform:scale(1.08);animation:none;}
+@keyframes wppP{0%,100%{box-shadow:0 8px 24px rgba(37,211,102,0.4),0 0 0 0 rgba(37,211,102,0.35);}50%{box-shadow:0 8px 24px rgba(37,211,102,0.4),0 0 0 14px rgba(37,211,102,0);}}
+.wpp-float-btn svg{width:27px;height:27px;fill:#fff;}
 
 /* ── SCROLL REVEAL ── */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 
 /* ── RESPONSIVE ── */
 @media(max-width:600px){
-  header { top: 32px; padding: 14px 5vw; }
-  .urgency-bar { font-size: 0.72rem; padding: 8px 14px; }
-  .hero { padding: 140px 5vw 60px; }
-  .calc-box { padding: 32px 22px; }
-  .calc-result { grid-template-columns: 1fr; }
-  .wpp-float { bottom: 20px; right: 20px; }
-  .cta-final-btns { flex-direction: column; align-items: center; }
+  header{top:32px;padding:12px 5vw;}
+  .header-vagas{display:none;}
+  .hero{padding:140px 5vw 60px;}
+  .calc-box{padding:28px 20px;}
+  .calc-result{grid-template-columns:1fr;}
+  .wpp-float{bottom:20px;right:20px;}
+  .cta-final-btns{flex-direction:column;align-items:center;}
+  .ubar{font-size:0.7rem;}
 }
 </style>
 </head>
 <body>
 
-<!-- URGENCY BAR -->
-<div class="urgency-bar" id="urgencyBar">
-  ⚠️ Cada mês que passa sem o desconto ativado = <span>dinheiro que não volta.</span> Faça sua simulação agora — é gratuito.
+<!-- ── URGENCY BAR ── -->
+<div class="ubar" id="uBar">
+  ⚠️ Você está perdendo dinheiro agora — <strong>cada minuto custa R$0,003</strong>. Simule em
+  <span class="ubar-timer" id="uTimer">04:59</span> e ative seu desconto grátis.
 </div>
 
-<!-- HEADER -->
+<!-- ── HEADER ── -->
 <header id="mainHeader">
   <div class="logo">Conexão<span>Green</span></div>
-  <a class="header-cta" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">Recuperar meu dinheiro →</a>
+  <div class="header-right">
+    <div class="header-vagas" id="headerVagas">23 vagas disponíveis hoje</div>
+    <a class="header-cta" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">Recuperar meu dinheiro →</a>
+  </div>
 </header>
 
 <!-- ══════════════════════════════════
-     HERO — Ativação emocional + dor
+     HERO V3 — Foco único, hierarquia clara
 ══════════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-noise"></div>
+  <div class="hero-grid"></div>
   <div class="hero-content">
 
-    <!-- Gancho emocional de perda -->
-    <div class="hero-pain">
-      <div class="hero-pain-dot"></div>
-      <div class="hero-pain-text">Você está perdendo <strong id="painValue">R$3.360</strong> por ano na conta de luz</div>
+    <!-- Perda em tempo real -->
+    <div class="live-loss">
+      <div class="live-dot"></div>
+      <div class="live-text">Você perdeu <strong>hoje:</strong></div>
+      <div class="live-count" id="liveLoss">R$0,00</div>
     </div>
 
-    <!-- Headline impactante -->
-    <h1>
-      <span class="white">Enquanto você lê isso,</span><br>
-      <span class="white">seu dinheiro</span>
-      <span class="strike"> some</span><br>
-      <span class="green">na conta de luz.</span>
-    </h1>
+    <!-- Headline com hierarquia única -->
+    <div class="hero-headline-wrap">
+      <h1>
+        <span class="h1-small">Sua distribuidora nunca vai te ligar.</span>
+        <span class="h1-main">Seu dinheiro vai</span>
+        <span class="h1-pain"><span class="strikethrough">embora</span></span>
+        <span class="h1-accent">todo mês.</span>
+      </h1>
+    </div>
 
-    <!-- Emocional -->
-    <p class="hero-emotional">
-      Quem paga mais de R$150 de energia por mês tem direito a <span class="highlight">desconto garantido por lei</span> — e a distribuidora <strong>nunca vai te ligar para avisar.</strong>
-      Cada mês que passa sem o desconto ativado é dinheiro que vai embora e não volta.
+    <p class="hero-sub">
+      Quem paga mais de R$150 de energia tem direito a <span class="green-hl">10% de desconto garantido por lei</span> —
+      e <strong>quase ninguém sabe disso.</strong> Cada mês sem ativar é dinheiro que não volta.
     </p>
 
-    <!-- Visualização do futuro -->
     <div class="hero-vision">
-      "Imagina ter <strong>R$280 extras todo mês</strong> para gastar com quem você ama — em vez de jogar na conta de luz."
+      "Imagina ter <strong>R$240 extras todo mês</strong> pra gastar com quem você ama — em vez de jogar na conta de luz."
     </div>
 
-    <!-- CTAs com carga emocional -->
-    <div class="hero-ctas">
-      <a class="btn-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    <!-- ÚNICO CTA na primeira dobra -->
+    <div class="hero-single-cta">
+      <a class="btn-hero-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         Quero recuperar meu dinheiro agora
       </a>
-      <a class="btn-wpp" href="https://wa.me/5571997024211" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        Tirar dúvidas no WhatsApp
-      </a>
+    </div>
+    <div class="hero-cta-micro">
+      <span>100% gratuito</span>
+      <span>sem instalação</span>
+      <span>5 minutos</span>
+      <span>sem contrato</span>
     </div>
 
-    <!-- Stats -->
+    <!-- Vagas disponíveis -->
+    <div class="hero-vagas">
+      <div class="hero-vagas-bar"><div class="hero-vagas-fill"></div></div>
+      <div class="hero-vagas-text"><strong id="vagasHero">23 vagas</strong> disponíveis hoje na sua distribuidora</div>
+    </div>
+
     <div class="hero-stats">
+      <div class="stat"><span class="stat-num">10%</span><span class="stat-label">de desconto garantido</span></div>
       <div class="stat"><span class="stat-num">R$0</span><span class="stat-label">Custo para você</span></div>
       <div class="stat"><span class="stat-num">5min</span><span class="stat-label">Para ativar</span></div>
-      <div class="stat"><span class="stat-num">até 20%</span><span class="stat-label">De desconto</span></div>
       <div class="stat"><span class="stat-num">Lei 14.300</span><span class="stat-label">Garantia legal</span></div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════
-     VALIDAÇÃO ANTECIPADA DAS OBJEÇÕES
+     POR QUE A DISTRIBUIDORA NÃO CONTA
+══════════════════════════════════ -->
+<section class="vilao reveal">
+  <div class="vilao-inner">
+    <div class="sec-tag">O vilão invisível</div>
+    <h2 class="sec-title">"Se fosse real, minha<br>distribuidora teria me avisado."</h2>
+    <p class="sec-sub">Entendo que você pensa assim. A maioria pensa. Mas a verdade é mais simples — e mais irritante.</p>
+    <div class="vilao-grid">
+      <div class="vilao-card">
+        <div class="vilao-them">
+          <div class="vilao-them-label">O que a distribuidora quer</div>
+          <div class="vilao-them-text">A distribuidora <strong>ganha mais</strong> quando você paga a tarifa cheia. Divulgar que você tem direito a desconto reduz a receita delas. Não é golpe — é simplesmente interesse comercial. Nenhuma empresa avisa o cliente quando ele pode pagar menos.</div>
+        </div>
+      </div>
+      <div class="vilao-card">
+        <div class="vilao-us">
+          <div class="vilao-us-label">O que a lei garante</div>
+          <div class="vilao-us-text">A Lei 14.300/2022 obriga as distribuidoras a <strong>aceitar os créditos</strong> das usinas solares cadastradas. Mas o consumidor precisa se ativar — ninguém vai bater na sua porta. A Conexão Green faz essa ponte <strong>de graça</strong> para você.</div>
+        </div>
+      </div>
+      <div class="vilao-card">
+        <div class="vilao-them">
+          <div class="vilao-them-label">O que acontece se você não agir</div>
+          <div class="vilao-them-text">Cada mês que passa sem o desconto ativado, você paga a tarifa cheia. A distribuidora embolsa o que poderia ter voltado para o seu bolso. Isso acontece todos os meses, em silêncio, sem que ninguém te avise.</div>
+        </div>
+      </div>
+      <div class="vilao-card">
+        <div class="vilao-us">
+          <div class="vilao-us-label">O que você pode fazer agora</div>
+          <div class="vilao-us-text">Ativar seu desconto de <strong>10%</strong> em menos de 5 minutos. Sem instalar nada. Sem pagar nada. O dinheiro que ia para a distribuidora começa a voltar para o seu bolso já na próxima fatura.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CALCULADORA V3 — Timer de perda ao vivo
+══════════════════════════════════ -->
+<section class="calculadora reveal">
+  <div class="calc-wrap">
+    <div class="sec-tag">Calculadora de perdas</div>
+    <h2 class="sec-title">Quanto você está<br>jogando fora?</h2>
+    <p class="sec-sub">Arraste e veja em tempo real. O timer mostra quanto você perde enquanto lê.</p>
+
+    <div class="calc-box">
+      <h3>Qual o valor da sua conta de luz?</h3>
+      <p class="calc-sub">Ajuste para o valor mais próximo e veja o impacto real do desconto de 10%.</p>
+
+      <!-- Timer de perda ao vivo -->
+      <div class="calc-live-loss">
+        <div>
+          <div class="cll-label"><strong>⏱ Você perdeu desde que abriu esta página:</strong></div>
+          <div class="cll-label">Cada segundo sem o desconto = dinheiro que não volta.</div>
+        </div>
+        <div class="cll-value" id="pageLoss">R$0,000</div>
+      </div>
+
+      <div class="calc-slider-wrap">
+        <div class="calc-slider-label">
+          <span>Valor da sua conta:</span>
+          <span class="val" id="sliderVal">R$ 200</span>
+        </div>
+        <input type="range" id="slider" min="150" max="800" value="200" step="10">
+      </div>
+
+      <div class="calc-result">
+        <div class="calc-result-card crc-loss">
+          <div class="crc-label">💸 Você perde por ano</div>
+          <div class="crc-val" id="perdaAnual">R$ 240</div>
+          <div class="crc-sub">sem o desconto ativado</div>
+        </div>
+        <div class="calc-result-card crc-gain">
+          <div class="crc-label">✅ Você economiza por ano</div>
+          <div class="crc-val" id="ganhoAnual">R$ 240</div>
+          <div class="crc-sub">com 10% de desconto ativado</div>
+        </div>
+      </div>
+
+      <a class="btn-calc" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank" id="calcCTA">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Quero recuperar R$240 agora — é grátis
+      </a>
+      <p class="calc-note">🔒 Sem custo · Sem contrato · Dados protegidos pela LGPD</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     VALIDAÇÃO ANTECIPADA
 ══════════════════════════════════ -->
 <div class="validacao reveal">
   <div class="validacao-inner">
-    <span class="validacao-tag">Eu entendo você</span>
-    <h2>"Parece bom demais<br>para ser <em>verdade</em>…"</h2>
-    <p>Eu sei que você já pensou isso. É totalmente compreensível — ninguém oferece nada de graça sem motivo. <strong>Mas aqui a realidade é diferente.</strong></p>
-    <p>A Lei 14.300 obriga as distribuidoras a viabilizarem o acesso à energia solar compartilhada. As usinas precisam de consumidores cadastrados para funcionar. O benefício existe — a maioria das pessoas simplesmente <strong>não foi avisada</strong> que tem direito.</p>
-    <div class="validacao-cards">
-      <div class="val-card">
-        <span class="val-card-icon">🏛️</span>
-        <h4>Amparo Legal</h4>
-        <p>Lei Federal 14.300/2022, aprovada pelo Congresso e regulamentada pela ANEEL. Não é promessa — é direito.</p>
-      </div>
-      <div class="val-card">
-        <span class="val-card-icon">🔒</span>
-        <h4>Zero Risco</h4>
-        <p>Sem contrato de fidelidade, sem taxa de cancelamento, sem custo de entrada. Você pode sair quando quiser.</p>
-      </div>
-      <div class="val-card">
-        <span class="val-card-icon">✅</span>
-        <h4>100% Gratuito</h4>
-        <p>O acesso pela Conexão Green não tem custo algum. Você paga só o que já paga — só que menos.</p>
-      </div>
+    <h2>"Parece bom demais<br>para ser <em>verdade…</em>"</h2>
+    <p>Eu sei que você pensou isso. É totalmente compreensível — ninguém oferece nada de graça sem motivo. <strong>Mas aqui a realidade é diferente.</strong></p>
+    <p>A Lei 14.300 não é promessa de empresa. É direito garantido pelo Congresso Nacional, regulamentado pela ANEEL. As usinas solares precisam de consumidores cadastrados para operar — o desconto existe, e você só precisa ativar.</p>
+    <div class="val-cards">
+      <div class="val-card"><span class="val-icon">🏛️</span><h4>Amparo Legal</h4><p>Lei Federal 14.300/2022, regulamentada pela ANEEL. Direito, não promessa.</p></div>
+      <div class="val-card"><span class="val-icon">🔒</span><h4>Zero Risco</h4><p>Sem contrato de fidelidade. Sem taxa de cancelamento. Sai quando quiser.</p></div>
+      <div class="val-card"><span class="val-icon">✅</span><h4>100% Gratuito</h4><p>Nenhum custo para você. O acesso pela Conexão Green é completamente grátis.</p></div>
     </div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════
-     PROVA SOCIAL — Depoimentos
+     PROVA SOCIAL
 ══════════════════════════════════ -->
-<section class="prova-social reveal">
-  <div class="section-tag">Prova social</div>
-  <h2 class="section-title">Mães, pais e famílias<br>que já estão economizando</h2>
-  <p class="section-sub">Pessoas reais, resultados reais. Nenhum desconto antes de acreditar — veja quem já fez e o quanto economizou.</p>
+<section class="prova reveal">
+  <div class="sec-tag">Quem já está economizando</div>
+  <h2 class="sec-title">Pessoas reais.<br>Resultados reais.</h2>
+  <p class="sec-sub">Veja quem já ativou o desconto e o que fizeram com o dinheiro que voltou.</p>
 
-  <div class="depoimentos-grid">
-    <div class="depoimento">
-      <div class="dep-economia">R$2.640/ano</div>
+  <div class="deps-grid">
+    <div class="dep">
+      <div class="dep-eco">R$336/ano</div>
       <div class="dep-stars">★★★★★</div>
-      <p class="dep-quote">"Achei que era golpe, juro. Minha cunhada me mandou o link e fiquei com medo de passar meus dados. Mas meu marido pesquisou a lei e confirmamos que era real. Fiz o cadastro em 5 minutos e na próxima fatura já veio <strong>R$220 a menos.</strong> Usei pra pagar a natação da minha filha."</p>
+      <p class="dep-quote">"Achei que era golpe, juro. Mas minha cunhada me mostrou a lei e meu marido pesquisou. Fiz o cadastro em 5 minutos e na próxima fatura já veio <strong>R$28 a menos.</strong> Simples, grátis e sem instalar nada."</p>
       <div class="dep-author">
-        <div class="dep-avatar av1">C</div>
-        <div>
-          <div class="dep-name">Camila R.</div>
-          <div class="dep-info">Mãe de 2 filhos · São Paulo, SP</div>
-        </div>
+        <div class="dep-av av1">C</div>
+        <div><div class="dep-name">Camila R.</div><div class="dep-info">Mãe de 2 filhos · São Paulo, SP</div></div>
       </div>
     </div>
-    <div class="depoimento">
-      <div class="dep-economia">R$1.980/ano</div>
+    <div class="dep">
+      <div class="dep-eco">R$372/ano</div>
       <div class="dep-stars">★★★★★</div>
-      <p class="dep-quote">"Pago R$310 de conta de luz todo mês por causa dos aparelhos de ar condicionado. Depois que ativei o desconto, caiu pra <strong>R$145.</strong> Não instalei nada, não paguei nada. Só mandei as fotos pelo celular mesmo. Queria ter feito antes."</p>
+      <p class="dep-quote">"Pago R$310 de conta de luz. Depois que ativei o desconto de 10%, caiu pra <strong>R$279.</strong> Não instalei nada, não paguei nada. Só mandei as fotos pelo celular. Queria ter feito antes."</p>
       <div class="dep-author">
-        <div class="dep-avatar av2">R</div>
-        <div>
-          <div class="dep-name">Roberto M.</div>
-          <div class="dep-info">Comerciante · Fortaleza, CE</div>
-        </div>
+        <div class="dep-av av2">R</div>
+        <div><div class="dep-name">Roberto M.</div><div class="dep-info">Comerciante · Fortaleza, CE</div></div>
       </div>
     </div>
-    <div class="depoimento">
-      <div class="dep-economia">R$3.120/ano</div>
+    <div class="dep">
+      <div class="dep-eco">R$384/ano</div>
       <div class="dep-stars">★★★★★</div>
-      <p class="dep-quote">"Fiz a simulação sem acreditar muito. Quando vi o resultado fiquei em choque. <strong>R$260 de economia por mês.</strong> Fiz o cadastro na hora, levou uns 7 minutinhos. Já fui indicar para toda a família. Minha mãe também já tá economizando."</p>
+      <p class="dep-quote">"Fiz a simulação sem acreditar muito. Conta de R$320, desconto de 10% = <strong>R$32 todo mês voltando pro meu bolso.</strong> Fiz o cadastro na hora. Já indiquei pra toda minha família."</p>
       <div class="dep-author">
-        <div class="dep-avatar av3">P</div>
-        <div>
-          <div class="dep-name">Patricia S.</div>
-          <div class="dep-info">Professora · Belo Horizonte, MG</div>
-        </div>
+        <div class="dep-av av3">P</div>
+        <div><div class="dep-name">Patricia S.</div><div class="dep-info">Professora · Belo Horizonte, MG</div></div>
       </div>
     </div>
   </div>
 
-  <div class="numeros-prova">
+  <div class="nums-prova">
     <div class="num-item"><div class="num-val">+1.200</div><div class="num-label">famílias com desconto ativo</div></div>
-    <div class="num-item"><div class="num-val">R$2.400</div><div class="num-label">economia média por ano</div></div>
+    <div class="num-item"><div class="num-val">10%</div><div class="num-label">de desconto garantido</div></div>
     <div class="num-item"><div class="num-val">5 min</div><div class="num-label">tempo médio de cadastro</div></div>
-    <div class="num-item"><div class="num-val">100%</div><div class="num-label">gratuito e sem pegadinha</div></div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════
-     CALCULADORA DE PERDAS
-══════════════════════════════════ -->
-<section class="calculadora reveal">
-  <div class="calc-inner">
-    <div class="section-tag">Calculadora</div>
-    <h2 class="section-title">Descubra quanto<br>você está perdendo</h2>
-    <p class="section-sub">Arraste o controle e veja em tempo real quanto dinheiro está saindo do seu bolso — e quanto você vai recuperar.</p>
-
-    <div class="calc-box">
-      <h3>Quanto você paga de luz por mês?</h3>
-      <p class="sub">Ajuste o valor da sua conta e veja o impacto em tempo real.</p>
-
-      <div class="calc-slider-wrap">
-        <div class="calc-slider-label">
-          <span>Valor da sua conta:</span>
-          <span id="sliderDisplay">R$ 200</span>
-        </div>
-        <input type="range" id="contaSlider" min="150" max="800" value="200" step="10">
-      </div>
-
-      <div class="calc-result">
-        <div class="calc-result-item">
-          <div class="calc-result-label">💸 Você perde por ano</div>
-          <div class="calc-result-val loss" id="perdaAnual">R$ 480</div>
-          <div class="calc-result-sub">sem o desconto ativado</div>
-        </div>
-        <div class="calc-result-item">
-          <div class="calc-result-label">✅ Você economiza por ano</div>
-          <div class="calc-result-val" id="ganhoAnual">R$ 480</div>
-          <div class="calc-result-sub">com o desconto ativado</div>
-        </div>
-      </div>
-
-      <div class="calc-cta">
-        <a class="btn-calc-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span id="calcCTA">Quero recuperar R$480 agora — é grátis</span>
-        </a>
-        <p class="calc-cta-note">🔒 Sem custo · Sem contrato · Dados protegidos pela LGPD</p>
-      </div>
-    </div>
+    <div class="num-item"><div class="num-val">R$0</div><div class="num-label">custo para o consumidor</div></div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════
      COMO FUNCIONA
 ══════════════════════════════════ -->
-<section class="como-funciona reveal">
-  <div class="section-tag">Processo simples</div>
-  <h2 class="section-title">Do cadastro ao desconto<br>em 4 passos</h2>
-  <p class="section-sub">Tudo pelo celular, sem sair de casa, sem instalar nada.</p>
-  <div class="steps-grid">
-    <div class="step">
-      <span class="step-time">2 min</span>
-      <div class="step-num">01</div>
-      <span class="step-icon">⚡</span>
-      <h3>Simule sua economia</h3>
-      <p>Informe o valor da sua conta e veja exatamente quanto você vai economizar por ano.</p>
+<section class="como reveal">
+  <div class="sec-tag">Processo simples</div>
+  <h2 class="sec-title">4 passos. 5 minutos.<br>Desconto ativado.</h2>
+  <p class="sec-sub">Tudo pelo celular. Sem sair de casa. Sem instalar nada.</p>
+  <div class="steps">
+    <div class="step"><span class="step-time">2 min</span><div class="step-n">01</div><span class="step-icon">⚡</span><h3>Faça a simulação</h3><p>Veja exatamente quanto você vai economizar com 10% de desconto na sua conta.</p></div>
+    <div class="step"><span class="step-time">1 min</span><div class="step-n">02</div><span class="step-icon">📋</span><h3>Seus dados</h3><p>Preencha nome, CPF e dados básicos do titular da conta de energia.</p></div>
+    <div class="step"><span class="step-time">2 min</span><div class="step-n">03</div><span class="step-icon">📸</span><h3>3 fotos pelo celular</h3><p>Documento, conta de energia recente e uma selfie de confirmação.</p></div>
+    <div class="step"><span class="step-time">próxima fatura</span><div class="step-n">04</div><span class="step-icon">✅</span><h3>Desconto ativado!</h3><p>O desconto de 10% aparece automaticamente na próxima fatura.</p></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     OBJEÇÕES DISSOLVIDAS
+══════════════════════════════════ -->
+<section class="objecoes reveal">
+  <div class="sec-tag">Suas dúvidas</div>
+  <h2 class="sec-title">O que passa pela sua<br>cabeça agora</h2>
+  <p class="sec-sub">Eu sei exatamente o que você está pensando. Deixa eu responder antes de você precisar perguntar.</p>
+  <div class="obj-grid">
+    <div class="obj-card">
+      <div class="obj-fear"><p>"Deve ser golpe. Se fosse real, a distribuidora teria me avisado."</p></div>
+      <div class="obj-ans"><div class="obj-ans-icon">✓</div><p>A distribuidora ganha mais quando você paga a tarifa cheia. <strong>Nenhuma empresa avisa quando você pode pagar menos.</strong> Mas o direito existe — é Lei Federal 14.300. A Conexão Green faz a ponte gratuitamente.</p></div>
     </div>
-    <div class="step">
-      <span class="step-time">1 min</span>
-      <div class="step-num">02</div>
-      <span class="step-icon">📋</span>
-      <h3>Seus dados</h3>
-      <p>Preencha as informações do titular da conta — nome, CPF e dados básicos.</p>
+    <div class="obj-card">
+      <div class="obj-fear"><p>"Vai precisar instalar painel solar ou fazer obra na minha casa."</p></div>
+      <div class="obj-ans"><div class="obj-ans-icon">✓</div><p><strong>Absolutamente nada é instalado.</strong> Você se conecta remotamente a uma usina solar que já existe. Tudo muda no sistema da distribuidora — nada muda na sua casa.</p></div>
     </div>
-    <div class="step">
-      <span class="step-time">2 min</span>
-      <div class="step-num">03</div>
-      <span class="step-icon">📸</span>
-      <h3>3 fotos pelo celular</h3>
-      <p>Foto do documento, da conta de energia mais recente e uma selfie de confirmação.</p>
+    <div class="obj-card">
+      <div class="obj-fear"><p>"E se minha conta aumentar ou eu me prender em algum contrato?"</p></div>
+      <div class="obj-ans"><div class="obj-ans-icon">✓</div><p>Impossível a conta aumentar — o desconto é <strong>sempre abaixo do valor que você já paga.</strong> E não há fidelidade: cancela quando quiser, sem multa, sem custo.</p></div>
     </div>
-    <div class="step">
-      <span class="step-time">próxima fatura</span>
-      <div class="step-num">04</div>
-      <span class="step-icon">✅</span>
-      <h3>Desconto ativado!</h3>
-      <p>Pronto. O desconto aparece automaticamente na sua próxima fatura.</p>
+    <div class="obj-card">
+      <div class="obj-fear"><p>"Parece complicado. Não tenho tempo e não sou boa com tecnologia."</p></div>
+      <div class="obj-ans"><div class="obj-ans-icon">✓</div><p>Se você usa WhatsApp, você consegue. <strong>5 minutos, 3 fotos pelo celular</strong>. Nossa equipe está no WhatsApp para te ajudar em cada passo.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════
-     OBJEÇÕES DISSOLVIDAS EMOCIONALMENTE
+     ESCASSEZ — Vagas limitadas
 ══════════════════════════════════ -->
-<section class="objecoes reveal">
-  <div class="section-tag">Suas dúvidas</div>
-  <h2 class="section-title">O que passa pela sua<br>cabeça agora</h2>
-  <p class="section-sub">Eu sei o que você está pensando. Deixa eu responder antes de você precisar perguntar.</p>
-
-  <div class="objecoes-grid">
-    <div class="objecao-card">
-      <div class="objecao-fear">
-        <div class="objecao-fear-icon">😰</div>
-        <div class="objecao-fear-text">"Deve ser golpe. Ninguém oferece desconto de graça. Se fosse tão bom, todo mundo já estaria fazendo."</div>
+<div class="escassez reveal">
+  <div class="escassez-inner">
+    <h3>⏰ Vagas por distribuidora são limitadas</h3>
+    <p>Cada distribuidora tem um limite de cadastros por período. Quando as vagas esgotam, novos cadastros entram em fila de espera — e você continua pagando a tarifa cheia enquanto aguarda.</p>
+    <div class="escassez-vagas">
+      <div class="esc-bar-wrap">
+        <div class="esc-bar-label">Vagas preenchidas hoje</div>
+        <div class="esc-bar"><div class="esc-bar-fill"></div></div>
       </div>
-      <div class="objecao-answer">
-        <div class="objecao-answer-icon">✓</div>
-        <div class="objecao-answer-text">Entendo o ceticismo — e você está certo em ser cauteloso. Mas isso não é promessa de empresa: é <strong>direito garantido por lei federal</strong>. As usinas solares precisam de consumidores cadastrados para funcionar. Você não paga nada porque o benefício já existe — faltava só você ativar.</div>
+      <div class="esc-numbers">
+        <div class="esc-num" id="vagasNum">23</div>
+        <div class="esc-num-label">vagas restantes</div>
       </div>
     </div>
-    <div class="objecao-card">
-      <div class="objecao-fear">
-        <div class="objecao-fear-icon">😰</div>
-        <div class="objecao-fear-text">"Vai precisar instalar painel solar na minha casa ou fazer obra. Não tenho tempo, dinheiro nem paciência para isso."</div>
-      </div>
-      <div class="objecao-answer">
-        <div class="objecao-answer-icon">✓</div>
-        <div class="objecao-answer-text"><strong>Absolutamente nada é instalado.</strong> Você se conecta remotamente a uma usina solar que já existe. É como mudar de operadora de telefone — tudo muda no sistema, nada muda na sua casa. Sem obra, sem técnico, sem visita.</div>
-      </div>
-    </div>
-    <div class="objecao-card">
-      <div class="objecao-fear">
-        <div class="objecao-fear-icon">😰</div>
-        <div class="objecao-fear-text">"E se eu assinar algo e dar errado? E se a conta aumentar? Não quero me arrepender de ter tomado essa decisão."</div>
-      </div>
-      <div class="objecao-answer">
-        <div class="objecao-answer-icon">✓</div>
-        <div class="objecao-answer-text">Não tem como a conta aumentar — o desconto é sempre <strong>abaixo do valor que você já paga</strong>. E não há fidelidade: se por qualquer motivo não gostar, cancela sem custo, sem multa, sem burocracia.</div>
-      </div>
-    </div>
-    <div class="objecao-card">
-      <div class="objecao-fear">
-        <div class="objecao-fear-icon">😰</div>
-        <div class="objecao-fear-text">"Parece complicado. Vou precisar de muito tempo e não sou boa com tecnologia."</div>
-      </div>
-      <div class="objecao-answer">
-        <div class="objecao-answer-icon">✓</div>
-        <div class="objecao-answer-text">Se você sabe usar o WhatsApp, você consegue fazer o cadastro. São <strong>5 minutos pelo celular</strong>: preenche seus dados, tira 3 fotos, envia. Pronto. Nossa equipe está disponível no WhatsApp para te ajudar em cada passo.</div>
-      </div>
+    <div class="escassez-badges">
+      <span class="esc-badge">🔒 Dados seguros</span>
+      <span class="esc-badge">⚡ Ativação rápida</span>
+      <span class="esc-badge">📋 Sem burocracia</span>
+      <span class="esc-badge">✅ Sem compromisso</span>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ══════════════════════════════════
      LEI 14.300
 ══════════════════════════════════ -->
-<section class="lei-section reveal">
+<section class="lei reveal">
   <div>
-    <div class="section-tag">Amparo legal</div>
-    <h2 class="section-title">Por que você tem<br>esse direito?</h2>
-    <p class="section-sub">A Lei 14.300/2022 democratizou o acesso à energia solar no Brasil. Não é benefício — é obrigação legal que as distribuidoras precisam cumprir.</p>
+    <div class="sec-tag">Amparo legal</div>
+    <h2 class="sec-title">Seu direito garantido<br>por lei federal</h2>
+    <p class="sec-sub">A Lei 14.300/2022 democratizou o acesso à energia solar. Não é benefício de empresa — é obrigação legal que existe independente da vontade da distribuidora.</p>
   </div>
   <div class="lei-card">
     <h3>Lei Federal 14.300/2022</h3>
-    <p>O Marco Legal da Energia Solar permite que qualquer pessoa se conecte remotamente a uma usina solar e receba descontos diretos na fatura — sem instalar nada.</p>
-    <ul class="lei-benefits">
-      <li>Desconto direto na sua fatura todo mês</li>
+    <p>O Marco Legal da Energia Solar permite que qualquer pessoa se conecte a uma usina solar e receba desconto direto na fatura — sem instalar nada na sua casa.</p>
+    <ul class="lei-list">
+      <li>10% de desconto direto na fatura</li>
       <li>Sem instalação de painéis solares</li>
       <li>Sem obras ou visitas técnicas</li>
       <li>Acesso 100% gratuito pela Conexão Green</li>
@@ -943,83 +889,33 @@ footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
 </section>
 
 <!-- ══════════════════════════════════
-     URGÊNCIA ORGÂNICA
-══════════════════════════════════ -->
-<div class="urgencia reveal">
-  <div class="urgencia-inner">
-    <h3>⏰ Cada mês sem o desconto é prejuízo real</h3>
-    <p>O cadastro leva 5 minutos. Cada mês que você adia é dinheiro que vai embora e não volta. Vagas por distribuidora são limitadas — quando lotam, novos cadastros vão para fila de espera.</p>
-    <div class="urgencia-badges">
-      <span class="urgencia-badge">🔒 Seus dados estão seguros</span>
-      <span class="urgencia-badge">⚡ Ativação em dias</span>
-      <span class="urgencia-badge">📋 Sem burocracia</span>
-      <span class="urgencia-badge">✅ Sem compromisso</span>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════
      DOCUMENTOS
 ══════════════════════════════════ -->
-<section class="docs-section reveal">
-  <div class="section-tag">O que você precisa</div>
-  <h2 class="section-title">Só 3 fotos pelo celular<br>e está feito</h2>
-  <p class="section-sub">Tudo digital. Você não precisa imprimir, ir a agência nem falar com ninguém se não quiser.</p>
+<section class="docs reveal">
+  <div class="sec-tag">O que você precisa</div>
+  <h2 class="sec-title">Só 3 fotos pelo celular.<br>É isso.</h2>
+  <p class="sec-sub">100% digital. Sem sair de casa. Sem imprimir nada.</p>
   <div class="docs-grid">
-    <div class="doc-card">
-      <span class="doc-icon">👤</span>
-      <h4>Seus dados</h4>
-      <p>Nome, CPF e dados básicos do titular da conta de energia.</p>
-    </div>
-    <div class="doc-card">
-      <span class="doc-icon">🪪</span>
-      <h4>Documento de identidade</h4>
-      <p>Foto do RG ou CNH. Uma foto simples pelo celular resolve.</p>
-    </div>
-    <div class="doc-card">
-      <span class="doc-icon">📄</span>
-      <h4>Conta de energia</h4>
-      <p>Foto da sua conta mais recente — digital ou impressa.</p>
-    </div>
-    <div class="doc-card">
-      <span class="doc-icon">🤳</span>
-      <h4>Selfie rápida</h4>
-      <p>Uma selfie de confirmação para garantir sua segurança.</p>
-    </div>
+    <div class="doc-card"><span class="doc-icon">👤</span><h4>Seus dados</h4><p>Nome, CPF e dados básicos do titular da conta.</p></div>
+    <div class="doc-card"><span class="doc-icon">🪪</span><h4>Documento de identidade</h4><p>Foto do RG ou CNH pelo celular.</p></div>
+    <div class="doc-card"><span class="doc-icon">📄</span><h4>Conta de energia</h4><p>Foto da conta mais recente — digital ou impressa.</p></div>
+    <div class="doc-card"><span class="doc-icon">🤳</span><h4>Selfie rápida</h4><p>Uma selfie de confirmação para sua segurança.</p></div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════
      FAQ
 ══════════════════════════════════ -->
-<section class="faq-section reveal">
-  <div class="section-tag" style="max-width:700px;margin:0 auto 14px">Perguntas frequentes</div>
-  <h2 class="section-title" style="text-align:center">Ainda ficou alguma dúvida?</h2>
+<section class="faq reveal">
+  <div class="sec-tag" style="max-width:680px;margin:0 auto 12px">Perguntas frequentes</div>
+  <h2 class="sec-title" style="text-align:center">Ainda tem dúvida?</h2>
   <div class="faq-list">
-    <details class="faq-item">
-      <summary class="faq-q">É realmente gratuito? Tem alguma taxa ou custo escondido?</summary>
-      <p class="faq-a">Sim, 100% gratuito. Nenhuma taxa de adesão, nenhuma mensalidade, nenhum custo escondido. A Conexão Green ganha uma comissão da usina solar parceira — você não paga absolutamente nada.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">Minha conta pode aumentar depois de ativar o desconto?</summary>
-      <p class="faq-a">Não. O desconto é calculado sempre abaixo do valor que você já paga. Sua conta só pode diminuir — nunca aumentar por causa desse benefício.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">Precisarei instalar alguma coisa na minha casa?</summary>
-      <p class="faq-a">Não precisa instalar absolutamente nada. Você se conecta remotamente a uma usina solar já instalada. Tudo muda no sistema da distribuidora — nada muda na sua casa.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">Qual o desconto que vou receber?</summary>
-      <p class="faq-a">O desconto varia conforme sua distribuidora e consumo, podendo chegar a até 20% na fatura. Use a simulação gratuita para ver exatamente quanto você vai economizar no seu caso.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">Posso cancelar se não gostar?</summary>
-      <p class="faq-a">Sim. Não há contrato de fidelidade nem multa de cancelamento. Você pode solicitar o cancelamento quando quiser, sem custo algum.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">Meus dados estão seguros?</summary>
-      <p class="faq-a">Sim. Todos os dados são tratados em conformidade com a LGPD (Lei Geral de Proteção de Dados). Suas informações são usadas exclusivamente para viabilizar seu desconto e nunca serão vendidas.</p>
-    </details>
+    <details class="faq-item"><summary class="faq-q">O desconto é realmente de 10%? Não varia?</summary><p class="faq-a">O desconto contratado pela Conexão Green é de 10% sobre o valor da sua fatura. Essa é a taxa garantida no seu cadastro — transparente, sem surpresas.</p></details>
+    <details class="faq-item"><summary class="faq-q">É realmente gratuito? Existe algum custo?</summary><p class="faq-a">Sim, 100% gratuito. Nenhuma taxa de adesão, nenhuma mensalidade, nenhum custo escondido. A Conexão Green recebe uma comissão da usina solar parceira — você não paga absolutamente nada.</p></details>
+    <details class="faq-item"><summary class="faq-q">Minha conta pode aumentar depois de ativar?</summary><p class="faq-a">Não. O desconto de 10% é calculado sobre o valor que você já paga. Sua conta só pode diminuir — nunca aumentar por causa desse benefício.</p></details>
+    <details class="faq-item"><summary class="faq-q">Preciso instalar alguma coisa na minha casa?</summary><p class="faq-a">Não precisa instalar absolutamente nada. Você se conecta remotamente a uma usina solar já instalada. Tudo muda no sistema da distribuidora — nada muda na sua casa.</p></details>
+    <details class="faq-item"><summary class="faq-q">Posso cancelar se quiser?</summary><p class="faq-a">Sim. Não há contrato de fidelidade nem multa de cancelamento. Você solicita o cancelamento quando quiser, sem custo algum.</p></details>
+    <details class="faq-item"><summary class="faq-q">Meus dados estão seguros?</summary><p class="faq-a">Sim. Todos os dados são tratados conforme a LGPD. Suas informações são usadas exclusivamente para viabilizar seu desconto e nunca serão vendidas a terceiros.</p></details>
   </div>
 </section>
 
@@ -1027,80 +923,110 @@ footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
      CTA FINAL EMOCIONAL
 ══════════════════════════════════ -->
 <section class="cta-final reveal">
-  <span class="cta-final-tag">Sua decisão</span>
-  <h2>Você vai continuar<br>jogando dinheiro fora,<br>ou vai <em>recuperar o que é seu?</em></h2>
-  <p>5 minutos. Gratuito. Sem risco. Sem instalação. Sem burocracia. E centenas de reais de volta no seu bolso todo ano.</p>
+  <span class="cta-final-tag">A decisão é sua</span>
+  <h2>Continuar pagando<br>a tarifa cheia, ou<br><em>recuperar o que é seu?</em></h2>
+  <p>5 minutos. Gratuito. Sem risco. Sem instalação. 10% de desconto garantido por lei — e centenas de reais de volta no bolso todo ano.</p>
   <div class="cta-final-btns">
-    <a class="btn-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
+    <a class="btn-final-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       Quero recuperar meu dinheiro agora
     </a>
-    <a class="btn-wpp" href="https://wa.me/5571997024211" target="_blank" style="padding:18px 28px;">
+    <a class="btn-wpp-final" href="https://wa.me/5571997024211" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      Falar no WhatsApp
+      Tirar dúvidas no WhatsApp
     </a>
   </div>
-  <p class="cta-final-note">🔒 Dados protegidos · <span>Lei 14.300/2022</span> · LGPD · ANEEL</p>
+  <p class="cta-final-note">🔒 Dados protegidos · <span>Lei 14.300/2022</span> · LGPD · ANEEL · Sem contrato</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Conexão<span>Green</span></div>
   <p>© 2025 Conexão Green. Todos os direitos reservados.</p>
-  <div class="footer-lgpd">🔒 Dados protegidos pela LGPD</div>
+  <p style="font-size:0.72rem;color:rgba(255,255,255,0.2)">🔒 Dados protegidos pela LGPD</p>
 </footer>
 
-<!-- WHATSAPP FLUTUANTE -->
+<!-- WPP FLOAT -->
 <a class="wpp-float" href="https://wa.me/5571997024211" target="_blank">
-  <div class="wpp-float-label">💬 Fale conosco agora</div>
+  <div class="wpp-float-bubble">💬 Fale conosco</div>
   <div class="wpp-float-btn">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </div>
 </a>
 
 <script>
-// ── Header urgency bar scroll ──
-const bar = document.getElementById('urgencyBar');
-const header = document.getElementById('mainHeader');
+// ── Urgency Bar Timer ──
+let uSecs = 299;
+const uTimer = document.getElementById('uTimer');
+setInterval(() => {
+  if(uSecs <= 0) uSecs = 299;
+  uSecs--;
+  const m = Math.floor(uSecs/60).toString().padStart(2,'0');
+  const s = (uSecs%60).toString().padStart(2,'0');
+  uTimer.textContent = m+':'+s;
+}, 1000);
+
+// ── Header scroll ──
+const hdr = document.getElementById('mainHeader');
 window.addEventListener('scroll', () => {
-  if(window.scrollY > 80) { header.classList.add('no-bar'); header.style.top='0'; }
-  else { header.classList.remove('no-bar'); header.style.top='36px'; }
+  hdr.classList.toggle('scrolled', window.scrollY > 80);
 });
 
-// ── Calculadora interativa ──
-const slider = document.getElementById('contaSlider');
-const display = document.getElementById('sliderDisplay');
-const perda = document.getElementById('perdaAnual');
-const ganho = document.getElementById('ganhoAnual');
-const ctaCalc = document.getElementById('calcCTA');
-const painVal = document.getElementById('painValue');
+// ── Perda ao vivo (por segundo) ──
+// Baseado em R$200/mês, 10% desconto = R$20/mês = R$240/ano = R$0,00000760/seg
+const pageStart = Date.now();
+function updateLiveLoss() {
+  const conta = parseInt(document.getElementById('slider').value) || 200;
+  const anoLoss = conta * 0.10 * 12;
+  const perSegundo = anoLoss / (365.25 * 24 * 3600);
+  const elapsed = (Date.now() - pageStart) / 1000;
+  const lost = elapsed * perSegundo;
+  document.getElementById('liveLoss').textContent = 'R$' + lost.toFixed(3);
+  document.getElementById('pageLoss').textContent = 'R$' + lost.toFixed(3);
+}
+setInterval(updateLiveLoss, 100);
 
+// ── Calculadora 10% ──
+const slider = document.getElementById('slider');
 function updateCalc() {
   const val = parseInt(slider.value);
-  const desconto = Math.round(val * 0.20);
-  const anual = desconto * 12;
+  const descMensal = Math.round(val * 0.10);
+  const anual = descMensal * 12;
   const pct = ((val - 150) / (800 - 150)) * 100;
-
-  slider.style.setProperty('--val', pct + '%');
-  display.textContent = 'R$ ' + val.toLocaleString('pt-BR');
-  perda.textContent = 'R$ ' + anual.toLocaleString('pt-BR');
-  ganho.textContent = 'R$ ' + anual.toLocaleString('pt-BR');
-  ctaCalc.textContent = 'Quero recuperar R$' + anual.toLocaleString('pt-BR') + ' agora — é grátis';
-  painVal.textContent = 'R$' + anual.toLocaleString('pt-BR');
+  slider.style.setProperty('--pct', pct + '%');
+  document.getElementById('sliderVal').textContent = 'R$ ' + val.toLocaleString('pt-BR');
+  document.getElementById('perdaAnual').textContent = 'R$ ' + anual.toLocaleString('pt-BR');
+  document.getElementById('ganhoAnual').textContent = 'R$ ' + anual.toLocaleString('pt-BR');
+  document.getElementById('calcCTA').innerHTML = `
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    Quero recuperar R$${anual.toLocaleString('pt-BR')} agora — é grátis`;
+  document.getElementById('calcCTA').href = 'https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10';
+  // Atualizar hero live loss também
+  const anoLoss = anual;
+  const elapsed = (Date.now() - pageStart) / 1000;
+  const lost = elapsed * (anoLoss / (365.25 * 24 * 3600));
+  document.getElementById('liveLoss').textContent = 'R$' + lost.toFixed(3);
 }
-
 slider.addEventListener('input', updateCalc);
 updateCalc();
 
-// ── Scroll Reveal ──
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-reveals.forEach(r => observer.observe(r));
-</script>
+// ── Vagas counter dinâmico ──
+let vagas = 23;
+const vagasEl = [document.getElementById('vagasHero'), document.getElementById('vagasNum'), document.getElementById('headerVagas')];
+setInterval(() => {
+  if(Math.random() < 0.15 && vagas > 8) {
+    vagas--;
+    vagasEl[0].textContent = vagas + ' vagas';
+    vagasEl[1].textContent = vagas;
+    vagasEl[2].textContent = vagas + ' vagas disponíveis hoje';
+  }
+}, 18000);
 
+// ── Scroll Reveal ──
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
 </body>
 </html>
