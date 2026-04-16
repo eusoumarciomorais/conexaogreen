@@ -3,949 +3,690 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Conexão Green — Sua distribuidora está te usurpando. A lei diz que você pode reagir.</title>
+<title>Conexão Green — Pare com esse roubo agora. A lei está do seu lado.</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════════════
-   DESIGN TOKENS
-══════════════════════════════════════════════ */
-:root {
-  --g: #a8e63d;          /* verde marca */
-  --g2: #c8f060;         /* verde claro */
-  --gd: #3d6b0a;         /* verde escuro */
-  --o: #ff6b2b;          /* laranja CTA */
-  --od: #e05220;         /* laranja escuro */
-  --r: #ff3333;          /* vermelho urgência */
-  --dark: #070e02;
-  --dark2: #0b1503;
-  --dark3: #0f1c04;
-  --white: #fff;
-  --f1: 'Fraunces', Georgia, serif;
-  --f2: 'DM Sans', system-ui, sans-serif;
-  --rad: 14px;
-  --rad-lg: 24px;
-  --shadow-o: 0 8px 32px rgba(255,107,43,.45);
-  --shadow-o-lg: 0 16px 48px rgba(255,107,43,.6);
+:root{
+  --g:#a8e63d; --g2:#c8f060; --gd:#3a6408;
+  --o:#ff6b2b; --od:#e05220;
+  --r:#ff2d2d; --r2:#ff6b6b;
+  --dark:#060c02; --d2:#0a1303; --d3:#0e1904;
+  --white:#fff;
+  --f1:'Fraunces',Georgia,serif;
+  --f2:'DM Sans',system-ui,sans-serif;
+  --sh-o:0 8px 32px rgba(255,107,43,.45);
+  --sh-o2:0 16px 48px rgba(255,107,43,.62);
+  --sh-r:0 8px 28px rgba(255,45,45,.4);
 }
-
-/* ══ RESET ══ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{font-family:var(--f2);background:var(--dark);color:var(--white);overflow-x:hidden;line-height:1.6;}
-img{max-width:100%;display:block;}
-a{color:inherit;}
-
-/* ══ UTILITY ══ */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+a{color:inherit;text-decoration:none;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
-.green{color:var(--g);}
-.orange{color:var(--o);}
-.red{color:var(--r);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.15;}}
 @keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
-@keyframes pulse-o{0%,100%{box-shadow:var(--shadow-o),0 0 0 0 rgba(255,107,43,.4);}50%{box-shadow:var(--shadow-o),0 0 0 20px rgba(255,107,43,0);}}
-@keyframes pulse-g{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.35);}50%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 14px rgba(37,211,102,0);}}
-@keyframes bar-move{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
-@keyframes tick{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+@keyframes pulseO{0%,100%{box-shadow:var(--sh-o),0 0 0 0 rgba(255,107,43,.45);}50%{box-shadow:var(--sh-o),0 0 0 22px rgba(255,107,43,0);}}
+@keyframes pulseR{0%,100%{box-shadow:var(--sh-r),0 0 0 0 rgba(255,45,45,.4);}50%{box-shadow:var(--sh-r),0 0 0 20px rgba(255,45,45,0);}}
+@keyframes pulseG{0%,100%{box-shadow:0 6px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.35);}50%{box-shadow:0 6px 20px rgba(37,211,102,.4),0 0 0 14px rgba(37,211,102,0);}}
+@keyframes barFlow{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes tick{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
-/* ══════════════════════════════════════════════
-   URGENCY BAR
-══════════════════════════════════════════════ */
+/* ─── URGENCY BAR ─── */
 .ubar{
-  background:linear-gradient(90deg,#b71c1c,#e53935,#b71c1c);
-  background-size:200% 100%;
-  animation:bar-move 5s linear infinite;
-  color:#fff;text-align:center;
-  padding:10px 16px;font-size:.78rem;font-weight:600;
-  letter-spacing:.02em;position:relative;z-index:400;
-  line-height:1.4;
+  background:linear-gradient(90deg,#b71c1c,#ef5350,#b71c1c);
+  background-size:200% 100%;animation:barFlow 5s linear infinite;
+  color:#fff;text-align:center;padding:10px 14px;
+  font-size:.78rem;font-weight:600;letter-spacing:.02em;
+  position:relative;z-index:400;line-height:1.45;
 }
 .ubar strong{font-weight:800;}
-.ubar-t{
-  display:inline-block;font-family:monospace;
-  font-weight:800;font-size:.88rem;letter-spacing:2px;
-  background:rgba(0,0,0,.35);border-radius:4px;
-  padding:1px 8px;margin-left:4px;
-  animation:tick 1s infinite;
-}
+.ubar-t{display:inline-block;font-family:monospace;font-weight:800;font-size:.9rem;
+  letter-spacing:2px;background:rgba(0,0,0,.3);border-radius:4px;padding:1px 8px;
+  margin-left:3px;animation:tick 1s infinite;}
 
-/* ══════════════════════════════════════════════
-   HEADER
-══════════════════════════════════════════════ */
+/* ─── HEADER ─── */
 header{
   position:fixed;top:36px;left:0;right:0;z-index:300;
   display:flex;align-items:center;justify-content:space-between;
-  padding:13px 5vw;
-  background:rgba(7,14,2,.95);
-  backdrop-filter:blur(20px);
+  padding:12px 5vw;
+  background:rgba(6,12,2,.96);backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(168,230,61,.1);
   transition:top .3s;
 }
 header.up{top:0;}
-.logo{font-family:var(--f1);font-size:1.25rem;font-weight:900;color:var(--g);letter-spacing:-.02em;text-decoration:none;}
+.logo{font-family:var(--f1);font-size:1.2rem;font-weight:900;color:var(--g);letter-spacing:-.02em;}
 .logo em{font-style:normal;color:#fff;}
-.h-right{display:flex;align-items:center;gap:10px;}
-.h-vagas{
-  font-size:.68rem;font-weight:700;
-  color:rgba(255,150,80,.9);
-  background:rgba(255,107,43,.1);
-  border:1px solid rgba(255,107,43,.25);
-  padding:5px 12px;border-radius:100px;
-  display:flex;align-items:center;gap:5px;
-  white-space:nowrap;
-}
+.h-r{display:flex;align-items:center;gap:10px;}
+.h-vagas{font-size:.67rem;font-weight:700;color:rgba(255,150,80,.9);background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.25);padding:5px 11px;border-radius:100px;display:flex;align-items:center;gap:5px;white-space:nowrap;}
 .h-vagas::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--o);animation:blink 1.2s infinite;flex-shrink:0;}
-.btn-hd{
-  background:var(--o);color:#fff;
-  font-weight:700;font-size:.8rem;
-  padding:10px 18px;border-radius:100px;
-  text-decoration:none;white-space:nowrap;
-  box-shadow:var(--shadow-o);
-  transition:transform .2s,box-shadow .2s;
-  display:inline-flex;align-items:center;
-}
-.btn-hd:hover{transform:translateY(-2px);box-shadow:var(--shadow-o-lg);}
+.btn-hdr{background:var(--o);color:#fff;font-weight:700;font-size:.78rem;padding:9px 17px;border-radius:100px;box-shadow:var(--sh-o);transition:transform .2s,box-shadow .2s;white-space:nowrap;display:inline-flex;align-items:center;}
+.btn-hdr:hover{transform:translateY(-2px);box-shadow:var(--sh-o2);}
 
-/* ══════════════════════════════════════════════
-   HERO
-══════════════════════════════════════════════ */
-.hero{
-  min-height:100svh;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(120px,18vh,180px) 5vw clamp(60px,8vh,100px);
-  position:relative;overflow:hidden;
-}
-.hero-bg1{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 85% 40%,rgba(168,230,61,.07) 0%,transparent 65%),radial-gradient(ellipse 50% 45% at 10% 80%,rgba(255,107,43,.05) 0%,transparent 55%);}
-.hero-dots{
-  position:absolute;inset:0;
-  background-image:radial-gradient(rgba(168,230,61,.06) 1px,transparent 1px);
-  background-size:28px 28px;
-  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 100%);
-}
+/* ─── HERO ─── */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(120px,18vh,175px) 5vw clamp(60px,8vh,90px);
+  position:relative;overflow:hidden;}
+.hbg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 65% 55% at 88% 38%,rgba(168,230,61,.07) 0%,transparent 65%),
+             radial-gradient(ellipse 50% 45% at 8% 78%,rgba(255,45,45,.05) 0%,transparent 55%);}
+.hdots{position:absolute;inset:0;
+  background-image:radial-gradient(rgba(168,230,61,.055) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 100%);}
 
-.hero-inner{position:relative;z-index:2;max-width:820px;}
+.h-inner{position:relative;z-index:2;max-width:820px;}
 
-/* Live loss pill */
-.pill-loss{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,51,51,.1);border:1px solid rgba(255,51,51,.3);
-  border-radius:100px;padding:8px 16px;
-  margin-bottom:clamp(20px,3vh,32px);
-  animation:fadeUp .5s ease both;
-}
-.pill-dot{width:8px;height:8px;border-radius:50%;background:var(--r);animation:blink 1s infinite;flex-shrink:0;}
-.pill-text{font-size:.78rem;font-weight:600;color:rgba(255,160,160,.9);}
-.pill-text strong{color:#ffaaaa;font-weight:800;}
-.pill-count{
-  font-family:monospace;font-weight:800;font-size:.9rem;
-  color:#ff8888;background:rgba(255,50,50,.15);
-  padding:2px 10px;border-radius:6px;min-width:68px;text-align:center;
-  display:inline-block;
-}
+/* Live loss */
+.pill-r{display:inline-flex;align-items:center;gap:10px;background:rgba(255,45,45,.1);border:1px solid rgba(255,45,45,.3);border-radius:100px;padding:8px 16px;margin-bottom:clamp(18px,3vh,28px);animation:fadeUp .5s ease both;}
+.pr-dot{width:8px;height:8px;border-radius:50%;background:var(--r);animation:blink 1s infinite;flex-shrink:0;}
+.pr-txt{font-size:.78rem;font-weight:600;color:rgba(255,150,150,.9);}
+.pr-txt strong{color:#ffaaaa;font-weight:800;}
+.pr-cnt{font-family:monospace;font-weight:800;font-size:.9rem;color:#ff8888;background:rgba(255,45,45,.15);padding:2px 10px;border-radius:6px;min-width:68px;text-align:center;display:inline-block;}
 
-/* Hero headline — hierarquia única e dominante */
-.hero-hl{margin-bottom:clamp(14px,2.5vh,22px);animation:fadeUp .5s .08s ease both;}
-h1{
-  font-family:var(--f1);
-  font-size:clamp(2.4rem,7.5vw,5.8rem);
-  font-weight:900;line-height:.93;
-  letter-spacing:-.04em;
-}
-.hl-muted{font-size:clamp(1.1rem,2.5vw,1.9rem);color:rgba(255,255,255,.38);font-weight:700;letter-spacing:-.02em;display:block;margin-bottom:5px;}
-.hl-white{color:#fff;display:block;}
-.hl-cross{
-  color:rgba(255,255,255,.25);display:inline;
-  position:relative;
-}
-.hl-cross::after{
-  content:'';position:absolute;left:0;right:0;top:50%;
-  height:clamp(3px,0.6vw,6px);background:var(--r);
-  border-radius:3px;transform:rotate(-1.5deg) translateY(-50%);
-}
-.hl-green{color:var(--g);font-style:italic;display:block;}
+/* Headline */
+.h-hl{margin-bottom:clamp(14px,2.5vh,20px);animation:fadeUp .5s .08s ease both;}
+h1{font-family:var(--f1);font-size:clamp(2.2rem,7.5vw,5.6rem);font-weight:900;line-height:.93;letter-spacing:-.04em;}
+.hl-m{font-size:clamp(1rem,2.3vw,1.7rem);color:rgba(255,255,255,.35);font-weight:700;letter-spacing:-.02em;display:block;margin-bottom:5px;}
+.hl-w{color:#fff;display:block;}
+.hl-x{color:rgba(255,255,255,.22);display:inline;position:relative;}
+.hl-x::after{content:'';position:absolute;left:0;right:0;top:52%;height:clamp(3px,0.55vw,5px);background:var(--r);border-radius:3px;transform:rotate(-1.5deg) translateY(-50%);}
+.hl-g{color:var(--g);font-style:italic;display:block;}
 
-/* Sub emocional */
-.hero-sub{
-  font-size:clamp(.95rem,1.8vw,1.15rem);
-  color:rgba(255,255,255,.62);
-  line-height:1.68;max-width:580px;
-  margin-bottom:clamp(12px,2vh,18px);font-weight:300;
-  animation:fadeUp .5s .16s ease both;
-}
-.hero-sub strong{color:#fff;font-weight:600;}
-.hero-sub .hl{
-  color:var(--g2);
-  border-bottom:2px solid rgba(168,230,61,.45);padding:0 2px;
-}
+/* Sub */
+.h-sub{font-size:clamp(.93rem,1.7vw,1.12rem);color:rgba(255,255,255,.6);line-height:1.68;max-width:580px;margin-bottom:clamp(12px,2vh,18px);font-weight:300;animation:fadeUp .5s .16s ease both;}
+.h-sub strong{color:#fff;font-weight:600;}
+.h-sub .hl{color:var(--g2);border-bottom:2px solid rgba(168,230,61,.4);padding:0 2px;}
 
-/* Visão cinematográfica */
-.hero-vision{
-  display:flex;align-items:flex-start;gap:12px;
-  background:rgba(168,230,61,.07);
-  border:1px solid rgba(168,230,61,.18);
-  border-radius:var(--rad);
-  padding:clamp(14px,2vw,18px) clamp(16px,2.5vw,22px);
-  margin-bottom:clamp(22px,3.5vh,32px);max-width:570px;
-  font-size:clamp(.88rem,1.6vw,1rem);
-  color:rgba(255,255,255,.68);line-height:1.65;font-style:italic;
-  animation:fadeUp .5s .22s ease both;
-}
-.hero-vision-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;font-style:normal;}
-.hero-vision strong{color:var(--g);font-style:normal;font-weight:700;}
+/* Vision */
+.h-vis{display:flex;align-items:flex-start;gap:12px;background:rgba(168,230,61,.07);border:1px solid rgba(168,230,61,.18);border-radius:14px;padding:clamp(13px,2vw,17px) clamp(15px,2.5vw,21px);margin-bottom:clamp(20px,3.5vh,30px);max-width:570px;font-size:clamp(.86rem,1.55vw,.98rem);color:rgba(255,255,255,.67);line-height:1.65;font-style:italic;animation:fadeUp .5s .22s ease both;}
+.h-vis-i{font-size:1.2rem;flex-shrink:0;margin-top:2px;font-style:normal;}
+.h-vis strong{color:var(--g);font-style:normal;font-weight:700;}
 
-/* ÚNICO CTA hero — mobile-first */
-.hero-cta-block{animation:fadeUp .5s .28s ease both;}
-.btn-main{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  background:linear-gradient(135deg,var(--o),var(--od));
-  color:#fff;font-family:var(--f1);font-weight:700;
-  font-size:clamp(1rem,2.2vw,1.15rem);
-  padding:clamp(18px,2.5vw,22px) clamp(28px,4vw,44px);
-  border-radius:100px;text-decoration:none;
-  box-shadow:var(--shadow-o);
-  animation:pulse-o 2.5s 2s infinite;
-  transition:transform .2s,box-shadow .2s;
-  width:100%;max-width:480px;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn-main:hover{transform:translateY(-3px);box-shadow:var(--shadow-o-lg);animation:none;}
+/* Hero CTA único — carregado de raiva */
+.h-cta-b{animation:fadeUp .5s .28s ease both;margin-bottom:12px;}
+.btn-main{display:flex;align-items:center;justify-content:center;gap:11px;background:linear-gradient(135deg,var(--o),var(--od));color:#fff;font-family:var(--f1);font-weight:700;font-size:clamp(.98rem,2.1vw,1.12rem);padding:clamp(18px,2.5vw,22px) clamp(26px,4vw,42px);border-radius:100px;box-shadow:var(--sh-o);animation:pulseO 2.5s 2s infinite;transition:transform .2s,box-shadow .2s;width:100%;max-width:500px;-webkit-tap-highlight-color:transparent;}
+.btn-main:hover{transform:translateY(-3px);box-shadow:var(--sh-o2);animation:none;}
 .btn-main:active{transform:scale(.98);}
-.btn-main svg{width:20px;height:20px;flex-shrink:0;}
+.btn-main svg{width:19px;height:19px;flex-shrink:0;}
 
-/* Micro-copy de segurança */
-.hero-micro{
-  display:flex;flex-wrap:wrap;gap:10px 20px;
-  margin-top:12px;margin-bottom:clamp(20px,3vh,28px);
-  animation:fadeUp .5s .32s ease both;
-}
-.hero-micro span{
-  display:flex;align-items:center;gap:5px;
-  font-size:.72rem;color:rgba(255,255,255,.32);
-}
-.hero-micro span::before{content:'✓';color:var(--g);font-weight:800;}
+/* Micro */
+.h-micro{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:clamp(18px,3vh,26px);animation:fadeUp .5s .32s ease both;}
+.h-micro span{display:flex;align-items:center;gap:5px;font-size:.7rem;color:rgba(255,255,255,.28);}
+.h-micro span::before{content:'✓';color:var(--g);font-weight:800;}
 
-/* Vagas hero */
-.hero-vagas{
-  display:inline-flex;align-items:center;gap:12px;
-  background:rgba(255,107,43,.07);border:1px solid rgba(255,107,43,.18);
-  border-radius:12px;padding:12px 16px;
-  margin-bottom:clamp(24px,4vh,36px);
-  animation:fadeUp .5s .36s ease both;
-  flex-wrap:wrap;gap:10px;
-}
-.vagas-bar-wrap{display:flex;flex-direction:column;gap:5px;min-width:100px;}
-.vagas-bar-lbl{font-size:.62rem;color:rgba(255,180,100,.6);}
-.vagas-bar{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;width:100%;}
-.vagas-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#ff9944,var(--o));width:23%;position:relative;overflow:hidden;}
-.vagas-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 2s infinite;}
-.vagas-text{font-size:.78rem;color:rgba(255,180,100,.85);}
-.vagas-text strong{color:var(--o);font-weight:800;}
+/* Vagas */
+.h-vagas-b{display:inline-flex;align-items:center;gap:11px;background:rgba(255,107,43,.07);border:1px solid rgba(255,107,43,.17);border-radius:12px;padding:11px 15px;margin-bottom:clamp(22px,4vh,34px);animation:fadeUp .5s .36s ease both;flex-wrap:wrap;gap:10px;}
+.vbw{display:flex;flex-direction:column;gap:5px;min-width:90px;}
+.vbl{font-size:.6rem;color:rgba(255,180,100,.55);}
+.vbb{height:7px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;width:100%;}
+.vbf{height:100%;border-radius:4px;background:linear-gradient(90deg,#ff9944,var(--o));width:23%;position:relative;overflow:hidden;}
+.vbf::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 2s infinite;}
+.vtxt{font-size:.77rem;color:rgba(255,180,100,.82);}
+.vtxt strong{color:var(--o);font-weight:800;}
 
 /* Stats */
-.hero-stats{
-  display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,28px);
-  padding-top:clamp(20px,3vh,28px);
-  border-top:1px solid rgba(255,255,255,.07);
-  animation:fadeUp .5s .4s ease both;
-}
+.h-stats{display:flex;flex-wrap:wrap;gap:clamp(14px,3vw,26px);padding-top:clamp(18px,3vh,26px);border-top:1px solid rgba(255,255,255,.07);animation:fadeUp .5s .4s ease both;}
 .stat{display:flex;flex-direction:column;gap:3px;}
-.sn{font-family:var(--f1);font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:900;color:var(--g);line-height:1;}
-.sl{font-size:.67rem;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:.08em;}
+.sn{font-family:var(--f1);font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:900;color:var(--g);line-height:1;}
+.sl{font-size:.65rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;}
 
-/* ══════════════════════════════════════════════
-   SEÇÃO "VINGANÇA" — posicionamento emocional
-══════════════════════════════════════════════ */
-.vinganca{
-  padding:clamp(60px,8vw,90px) 5vw;
-  background:var(--dark2);
-  border-top:1px solid rgba(255,107,43,.1);
-  border-bottom:1px solid rgba(255,107,43,.1);
-}
-.stag{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:10px;margin-bottom:12px;}
-.stag::after{content:'';flex:1;height:1px;background:rgba(168,230,61,.15);}
-.sttl{font-family:var(--f1);font-size:clamp(1.7rem,3.8vw,2.7rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;}
-.ssub{font-size:clamp(.88rem,1.6vw,.98rem);color:rgba(255,255,255,.48);line-height:1.68;max-width:500px;margin-bottom:clamp(28px,4vw,42px);}
+/* ─── SHARED SECTION ATOMS ─── */
+.stag{font-size:.67rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.stag::after{content:'';flex:1;height:1px;background:rgba(168,230,61,.14);}
+.sttl{font-family:var(--f1);font-size:clamp(1.65rem,3.8vw,2.65rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;}
+.ssub{font-size:clamp(.86rem,1.55vw,.96rem);color:rgba(255,255,255,.46);line-height:1.68;max-width:500px;margin-bottom:clamp(26px,4vw,40px);}
 
+/* ─── VILÃO ─── */
+.vilao{padding:clamp(56px,8vw,88px) 5vw;background:var(--d2);border-top:1px solid rgba(255,107,43,.1);border-bottom:1px solid rgba(255,107,43,.1);}
 .vg-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
-@media(max-width:620px){.vg-grid{grid-template-columns:1fr;}}
-.vg-card{border-radius:0;overflow:hidden;}
-.vg-card:first-child{border-radius:var(--rad) 0 0 0;}
-.vg-card:nth-child(2){border-radius:0 var(--rad) 0 0;}
-.vg-card:nth-child(3){border-radius:0 0 0 var(--rad);}
-.vg-card:last-child{border-radius:0 0 var(--rad) 0;}
-@media(max-width:620px){.vg-card:first-child{border-radius:var(--rad) var(--rad) 0 0;}.vg-card:last-child{border-radius:0 0 var(--rad) var(--rad);}.vg-card:nth-child(2),.vg-card:nth-child(3){border-radius:0;}}
-.vg-bad{background:rgba(255,50,50,.07);border:1px solid rgba(255,50,50,.16);padding:clamp(18px,2.5vw,24px);}
-.vg-bad-lbl{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,120,120,.65);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
-.vg-bad-lbl::before{content:'⚡';}
-.vg-bad p{font-size:clamp(.82rem,1.5vw,.9rem);color:rgba(255,180,180,.72);line-height:1.6;}
-.vg-good{background:rgba(168,230,61,.06);border:1px solid rgba(168,230,61,.16);padding:clamp(18px,2.5vw,24px);}
-.vg-good-lbl{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(168,230,61,.65);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
-.vg-good-lbl::before{content:'✊';}
-.vg-good p{font-size:clamp(.82rem,1.5vw,.9rem);color:rgba(255,255,255,.75);line-height:1.6;}
+@media(max-width:600px){.vg-grid{grid-template-columns:1fr;}}
+.vgc{overflow:hidden;}
+.vgc:nth-child(1){border-radius:14px 0 0 0;}
+.vgc:nth-child(2){border-radius:0 14px 0 0;}
+.vgc:nth-child(3){border-radius:0 0 0 14px;}
+.vgc:nth-child(4){border-radius:0 0 14px 0;}
+@media(max-width:600px){.vgc:nth-child(1){border-radius:14px 14px 0 0;}.vgc:nth-child(2),.vgc:nth-child(3){border-radius:0;}.vgc:nth-child(4){border-radius:0 0 14px 14px;}}
+.vg-bad{background:rgba(255,45,45,.07);border:1px solid rgba(255,45,45,.15);padding:clamp(16px,2.5vw,24px);}
+.vg-bad-l{font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,120,120,.62);margin-bottom:9px;display:flex;align-items:center;gap:5px;}
+.vg-bad-l::before{content:'⚡';}
+.vg-bad p{font-size:clamp(.8rem,1.5vw,.88rem);color:rgba(255,175,175,.7);line-height:1.62;}
+.vg-good{background:rgba(168,230,61,.06);border:1px solid rgba(168,230,61,.15);padding:clamp(16px,2.5vw,24px);}
+.vg-good-l{font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(168,230,61,.62);margin-bottom:9px;display:flex;align-items:center;gap:5px;}
+.vg-good-l::before{content:'✊';}
+.vg-good p{font-size:clamp(.8rem,1.5vw,.88rem);color:rgba(255,255,255,.74);line-height:1.62;}
 .vg-good p strong{color:var(--g);font-weight:700;}
 
-/* ══════════════════════════════════════════════
-   CALCULADORA V4
-══════════════════════════════════════════════ */
-.calc-sec{padding:clamp(60px,8vw,90px) 5vw;background:var(--dark3);}
-.calc-box{
-  max-width:680px;margin:0 auto;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(168,230,61,.2);
-  border-radius:var(--rad-lg);
-  padding:clamp(28px,5vw,48px) clamp(22px,4vw,44px);
-  position:relative;overflow:hidden;
-}
-.calc-box::before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(168,230,61,.07),transparent 70%);pointer-events:none;}
+/* ─── CALCULADORA ─── */
+.calc-sec{padding:clamp(56px,8vw,88px) 5vw;background:var(--d3);}
+.calc-box{max-width:680px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid rgba(168,230,61,.2);border-radius:24px;padding:clamp(26px,5vw,46px) clamp(20px,4vw,42px);position:relative;overflow:hidden;}
+.calc-box::before{content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;background:radial-gradient(circle,rgba(168,230,61,.07),transparent 70%);pointer-events:none;}
+.calc-box h3{font-family:var(--f1);font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:900;letter-spacing:-.025em;margin-bottom:6px;}
+.calc-cs{font-size:clamp(.8rem,1.5vw,.88rem);color:rgba(255,255,255,.4);margin-bottom:clamp(16px,3vw,26px);line-height:1.6;}
 
-.calc-box h3{font-family:var(--f1);font-size:clamp(1.35rem,2.8vw,2rem);font-weight:900;letter-spacing:-.025em;margin-bottom:6px;}
-.calc-box .cs{font-size:clamp(.82rem,1.5vw,.9rem);color:rgba(255,255,255,.42);margin-bottom:clamp(18px,3vw,28px);line-height:1.6;}
-
-/* Timer ao vivo */
-.calc-live{
-  background:rgba(255,50,50,.08);border:1px solid rgba(255,50,50,.2);
-  border-radius:var(--rad);padding:clamp(12px,2vw,16px) clamp(14px,2.5vw,20px);
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin-bottom:clamp(18px,3vw,26px);flex-wrap:wrap;
-}
-.cl-txt{font-size:clamp(.72rem,1.3vw,.78rem);color:rgba(255,150,150,.68);line-height:1.5;}
-.cl-txt strong{color:rgba(255,190,190,.9);display:block;font-size:clamp(.78rem,1.4vw,.84rem);}
-.cl-val{font-family:monospace;font-weight:800;font-size:clamp(1.5rem,3vw,2rem);color:#ff8888;white-space:nowrap;line-height:1;flex-shrink:0;}
+/* Timer ao vivo — contraste máximo */
+.c-live{background:rgba(255,45,45,.09);border:1px solid rgba(255,45,45,.22);border-radius:12px;padding:clamp(12px,2vw,15px) clamp(14px,2.5vw,19px);display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:clamp(16px,3vw,24px);flex-wrap:wrap;}
+.cl-t{font-size:clamp(.7rem,1.3vw,.76rem);color:rgba(255,150,150,.66);line-height:1.5;}
+.cl-t strong{color:rgba(255,190,190,.9);display:block;font-size:clamp(.76rem,1.4vw,.82rem);}
+.cl-v{font-family:monospace;font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);color:#ff8888;white-space:nowrap;line-height:1;flex-shrink:0;}
 
 /* Slider */
-.sl-wrap{margin-bottom:clamp(18px,3vw,26px);}
-.sl-lbl{display:flex;justify-content:space-between;font-size:clamp(.78rem,1.4vw,.84rem);color:rgba(255,255,255,.42);margin-bottom:12px;}
-.sl-lbl .sv{font-weight:800;color:#fff;font-size:clamp(.98rem,1.8vw,1.1rem);}
-input[type=range]{
-  width:100%;-webkit-appearance:none;appearance:none;
-  height:7px;border-radius:4px;outline:none;cursor:pointer;
-  background:linear-gradient(90deg,var(--g) var(--p,20%),rgba(255,255,255,.1) var(--p,20%));
-  margin:0;
-}
+.sl-w{margin-bottom:clamp(16px,3vw,24px);}
+.sl-l{display:flex;justify-content:space-between;font-size:clamp(.76rem,1.4vw,.82rem);color:rgba(255,255,255,.4);margin-bottom:11px;}
+.sl-l .sv{font-weight:800;color:#fff;font-size:clamp(.96rem,1.8vw,1.08rem);}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:7px;border-radius:4px;outline:none;cursor:pointer;background:linear-gradient(90deg,var(--g) var(--p,20%),rgba(255,255,255,.1) var(--p,20%));margin:0;}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--g);box-shadow:0 4px 16px rgba(168,230,61,.5);cursor:pointer;}
-input[type=range]::-moz-range-thumb{width:28px;height:28px;border:none;border-radius:50%;background:var(--g);box-shadow:0 4px 16px rgba(168,230,61,.5);cursor:pointer;}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border:none;border-radius:50%;background:var(--g);box-shadow:0 4px 16px rgba(168,230,61,.5);}
 
-/* Resultado */
-.calc-res{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,16px);margin-bottom:clamp(18px,3vw,26px);}
-@media(max-width:400px){.calc-res{grid-template-columns:1fr;}}
-.cr-card{border-radius:var(--rad);padding:clamp(16px,2.5vw,20px) clamp(18px,3vw,24px);text-align:center;}
-.cr-loss{background:rgba(255,50,50,.08);border:1px solid rgba(255,50,50,.2);}
-.cr-gain{background:rgba(168,230,61,.08);border:1px solid rgba(168,230,61,.2);}
-.cr-lbl{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.32);margin-bottom:8px;}
-.cr-val{font-family:var(--f1);font-size:clamp(1.7rem,3.5vw,2.2rem);font-weight:900;line-height:1;}
-.cr-loss .cr-val{color:#ff8888;}
-.cr-gain .cr-val{color:var(--g);}
-.cr-sub{font-size:.66rem;color:rgba(255,255,255,.22);margin-top:4px;}
+/* Resultado — contraste vermelho vs verde */
+.c-res{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,14px);margin-bottom:clamp(16px,3vw,24px);}
+@media(max-width:380px){.c-res{grid-template-columns:1fr;}}
+.cr{border-radius:12px;padding:clamp(15px,2.5vw,20px) clamp(16px,2.5vw,22px);text-align:center;}
+.cr-l{background:rgba(255,45,45,.09);border:1px solid rgba(255,45,45,.22);}
+.cr-g{background:rgba(168,230,61,.09);border:1px solid rgba(168,230,61,.22);}
+.cr-lbl{font-size:.64rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:8px;}
+.cr-val{font-family:var(--f1);font-size:clamp(1.6rem,3.5vw,2.1rem);font-weight:900;line-height:1;}
+.cr-l .cr-val{color:#ff7777;}
+.cr-g .cr-val{color:var(--g);}
+.cr-sub{font-size:.64rem;color:rgba(255,255,255,.2);margin-top:4px;}
 
-.btn-calc{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  background:linear-gradient(135deg,var(--o),var(--od));
-  color:#fff;font-family:var(--f1);font-weight:700;
-  font-size:clamp(.95rem,1.8vw,1.05rem);
-  padding:clamp(16px,2.5vw,20px);
-  border-radius:var(--rad);text-decoration:none;width:100%;
-  box-shadow:var(--shadow-o);
-  transition:transform .2s,box-shadow .2s;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn-calc:hover{transform:translateY(-2px);box-shadow:var(--shadow-o-lg);}
+.btn-calc{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--o),var(--od));color:#fff;font-family:var(--f1);font-weight:700;font-size:clamp(.92rem,1.8vw,1.02rem);padding:clamp(15px,2.5vw,19px);border-radius:12px;width:100%;box-shadow:var(--sh-o);transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;}
+.btn-calc:hover{transform:translateY(-2px);box-shadow:var(--sh-o2);}
 .btn-calc:active{transform:scale(.98);}
-.calc-note{text-align:center;font-size:.7rem;color:rgba(255,255,255,.22);margin-top:10px;}
+.c-note{text-align:center;font-size:.68rem;color:rgba(255,255,255,.2);margin-top:9px;}
 
-/* ══════════════════════════════════════════════
-   CAPTURA DE PERMISSÃO (Lead magnet WhatsApp)
-══════════════════════════════════════════════ */
-.permissao{
-  padding:clamp(50px,7vw,80px) 5vw;
-  background:linear-gradient(135deg,rgba(168,230,61,.08),rgba(168,230,61,.02));
-  border-top:1px solid rgba(168,230,61,.12);
-  border-bottom:1px solid rgba(168,230,61,.12);
-}
-.perm-inner{max-width:580px;margin:0 auto;text-align:center;}
-.perm-icon{font-size:2.8rem;display:block;margin-bottom:14px;}
-.perm-inner h3{font-family:var(--f1);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;line-height:1.15;margin-bottom:12px;letter-spacing:-.02em;}
-.perm-inner p{font-size:clamp(.85rem,1.6vw,.95rem);color:rgba(255,255,255,.55);line-height:1.68;margin-bottom:24px;}
-.perm-form{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto;}
-.perm-input{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:var(--rad);
-  padding:clamp(14px,2vw,16px) clamp(16px,2.5vw,20px);
-  color:#fff;font-family:var(--f2);font-size:1rem;
-  outline:none;transition:border-color .2s;
-  -webkit-appearance:none;
-  width:100%;
-}
-.perm-input::placeholder{color:rgba(255,255,255,.3);}
-.perm-input:focus{border-color:rgba(168,230,61,.5);}
-.btn-perm{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  background:#25D366;color:#fff;
-  font-family:var(--f1);font-weight:700;
-  font-size:clamp(.95rem,1.8vw,1.05rem);
-  padding:clamp(16px,2.5vw,18px);
-  border-radius:var(--rad);text-decoration:none;
-  border:none;cursor:pointer;width:100%;
-  box-shadow:0 6px 24px rgba(37,211,102,.4);
-  transition:transform .2s,box-shadow .2s;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn-perm:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.55);}
-.btn-perm:active{transform:scale(.98);}
-.btn-perm svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
-.perm-note{font-size:.68rem;color:rgba(255,255,255,.25);margin-top:8px;}
-
-/* ══════════════════════════════════════════════
-   VALIDAÇÃO — objeção emocional inversa
-══════════════════════════════════════════════ */
-.validacao{padding:clamp(60px,8vw,90px) 5vw;background:var(--dark2);}
-.val-inner{max-width:700px;margin:0 auto;text-align:center;}
-.val-inner h2{font-family:var(--f1);font-size:clamp(1.7rem,3.8vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:18px;font-style:italic;}
-.val-inner h2 em{font-style:normal;color:var(--g);}
-.val-inner p{font-size:clamp(.88rem,1.6vw,.98rem);color:rgba(255,255,255,.58);line-height:1.75;margin-bottom:14px;}
-.val-inner p strong{color:#fff;}
-/* Objeção invertida — estilo emocional agressivo */
-.obj-inv{
-  background:rgba(168,230,61,.07);border:1px solid rgba(168,230,61,.2);
-  border-radius:var(--rad-lg);padding:clamp(24px,4vw,36px);
-  margin-top:clamp(28px,4vw,40px);text-align:left;
-}
-.obj-inv h4{font-family:var(--f1);font-size:clamp(1.1rem,2vw,1.4rem);font-weight:900;color:var(--g);margin-bottom:14px;line-height:1.2;}
-.obj-inv p{font-size:clamp(.85rem,1.6vw,.92rem);color:rgba(255,255,255,.7);line-height:1.72;margin-bottom:12px;}
-.obj-inv p:last-child{margin-bottom:0;}
-.obj-inv .punch{font-family:var(--f1);font-size:clamp(1rem,1.8vw,1.2rem);font-weight:900;color:#fff;font-style:italic;border-left:3px solid var(--o);padding-left:14px;margin:16px 0;}
-.val-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,14px);margin-top:clamp(24px,4vw,36px);}
-@media(max-width:600px){.val-cards{grid-template-columns:1fr;}}
-.vc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--rad);padding:clamp(18px,2.5vw,22px) clamp(16px,2vw,20px);transition:border-color .3s;}
-.vc:hover{border-color:rgba(168,230,61,.25);}
-.vc-icon{font-size:1.5rem;margin-bottom:10px;display:block;}
-.vc h4{font-family:var(--f1);font-size:.95rem;font-weight:700;margin-bottom:7px;}
-.vc p{font-size:.78rem;color:rgba(255,255,255,.38);line-height:1.55;}
-
-/* ══════════════════════════════════════════════
-   PROVA SOCIAL — depoimentos sensoriais
-══════════════════════════════════════════════ */
-.prova{padding:clamp(60px,8vw,90px) 5vw;background:var(--dark);}
-.deps{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(14px,2.5vw,20px);margin-bottom:clamp(28px,4vw,44px);}
-.dep{
-  background:rgba(255,255,255,.03);border:1px solid rgba(168,230,61,.12);
-  border-radius:var(--rad-lg);padding:clamp(22px,3.5vw,28px) clamp(18px,3vw,24px);
+/* ─── SEÇÃO "O QUE MUDA NA SUA VIDA" ─── */
+.muda{padding:clamp(56px,8vw,88px) 5vw;background:var(--d2);}
+.muda-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(12px,2.5vw,20px);margin-top:clamp(24px,4vw,40px);}
+.muda-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(168,230,61,.12);
+  border-radius:20px;padding:clamp(24px,3.5vw,32px) clamp(20px,3vw,28px);
   position:relative;overflow:hidden;
   transition:border-color .3s,background .3s;
 }
+.muda-card:hover{border-color:rgba(168,230,61,.28);background:rgba(168,230,61,.04);}
+.muda-card::before{content:'';position:absolute;top:-40px;right:-40px;width:130px;height:130px;background:radial-gradient(circle,rgba(168,230,61,.08),transparent 70%);pointer-events:none;}
+.muda-emoji{font-size:clamp(2rem,3.5vw,2.6rem);display:block;margin-bottom:clamp(14px,2vw,18px);animation:float 3s ease-in-out infinite;}
+.muda-card:nth-child(2) .muda-emoji{animation-delay:.8s;}
+.muda-card:nth-child(3) .muda-emoji{animation-delay:1.6s;}
+.muda-economia{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--g);color:var(--dark);
+  font-family:var(--f1);font-size:.72rem;font-weight:900;
+  padding:3px 12px;border-radius:100px;
+  margin-bottom:12px;
+}
+.muda-card h4{font-family:var(--f1);font-size:clamp(1rem,1.9vw,1.2rem);font-weight:900;margin-bottom:10px;line-height:1.2;}
+.muda-card p{font-size:clamp(.82rem,1.5vw,.9rem);color:rgba(255,255,255,.55);line-height:1.65;}
+.muda-card p em{font-style:italic;color:rgba(255,255,255,.75);}
+.muda-card p strong{color:var(--g);font-style:normal;font-weight:700;}
+.muda-cta-wrap{margin-top:clamp(28px,4vw,44px);text-align:center;}
+.btn-muda{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--o),var(--od));color:#fff;font-family:var(--f1);font-weight:700;font-size:clamp(.95rem,1.8vw,1.05rem);padding:clamp(16px,2.5vw,20px) clamp(28px,4vw,44px);border-radius:100px;box-shadow:var(--sh-o);transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;}
+.btn-muda:hover{transform:translateY(-2px);box-shadow:var(--sh-o2);}
+.btn-muda:active{transform:scale(.98);}
+
+/* ─── PERMISSÃO CAPTIVA ─── */
+.perm{padding:clamp(50px,7vw,76px) 5vw;background:linear-gradient(135deg,rgba(168,230,61,.08),rgba(168,230,61,.02));border-top:1px solid rgba(168,230,61,.12);border-bottom:1px solid rgba(168,230,61,.12);}
+.perm-in{max-width:560px;margin:0 auto;text-align:center;}
+.perm-ico{font-size:2.6rem;display:block;margin-bottom:13px;}
+.perm-in h3{font-family:var(--f1);font-size:clamp(1.45rem,3vw,2.1rem);font-weight:900;line-height:1.15;margin-bottom:11px;letter-spacing:-.02em;}
+.perm-in p{font-size:clamp(.83rem,1.55vw,.93rem);color:rgba(255,255,255,.52);line-height:1.68;margin-bottom:22px;}
+.perm-in p strong{color:#fff;}
+.perm-form{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto;}
+.perm-inp{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:clamp(13px,2vw,15px) clamp(15px,2.5vw,18px);color:#fff;font-family:var(--f2);font-size:1rem;outline:none;transition:border-color .2s;width:100%;-webkit-appearance:none;}
+.perm-inp::placeholder{color:rgba(255,255,255,.28);}
+.perm-inp:focus{border-color:rgba(168,230,61,.5);}
+.btn-perm{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-family:var(--f1);font-weight:700;font-size:clamp(.93rem,1.8vw,1.02rem);padding:clamp(15px,2.5vw,17px);border-radius:12px;border:none;cursor:pointer;width:100%;box-shadow:0 6px 24px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;}
+.btn-perm:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,.55);}
+.btn-perm:active{transform:scale(.98);}
+.btn-perm svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
+.perm-note{font-size:.66rem;color:rgba(255,255,255,.22);margin-top:8px;}
+
+/* ─── VALIDAÇÃO — objeção emocional invertida ─── */
+.valid{padding:clamp(56px,8vw,88px) 5vw;background:var(--dark);}
+.val-in{max-width:700px;margin:0 auto;text-align:center;}
+.val-in h2{font-family:var(--f1);font-size:clamp(1.65rem,3.8vw,2.7rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:16px;font-style:italic;}
+.val-in h2 em{font-style:normal;color:var(--g);}
+.val-in p{font-size:clamp(.86rem,1.55vw,.96rem);color:rgba(255,255,255,.56);line-height:1.75;margin-bottom:13px;}
+.val-in p strong{color:#fff;}
+.obj-inv{background:rgba(168,230,61,.07);border:1px solid rgba(168,230,61,.2);border-radius:20px;padding:clamp(22px,4vw,34px);margin-top:clamp(24px,4vw,38px);text-align:left;}
+.obj-inv h4{font-family:var(--f1);font-size:clamp(1.05rem,1.9vw,1.35rem);font-weight:900;color:var(--g);margin-bottom:13px;line-height:1.2;}
+.obj-inv p{font-size:clamp(.83rem,1.5vw,.9rem);color:rgba(255,255,255,.68);line-height:1.72;margin-bottom:11px;}
+.obj-inv p:last-child{margin:0;}
+.obj-punch{font-family:var(--f1);font-size:clamp(.98rem,1.8vw,1.18rem);font-weight:900;color:#fff;font-style:italic;border-left:3px solid var(--o);padding-left:14px;margin:16px 0;line-height:1.4;}
+.val-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,13px);margin-top:clamp(22px,4vw,34px);}
+@media(max-width:580px){.val-cards{grid-template-columns:1fr;}}
+.vc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:clamp(17px,2.5vw,22px) clamp(15px,2vw,18px);transition:border-color .3s;}
+.vc:hover{border-color:rgba(168,230,61,.25);}
+.vc-ico{font-size:1.4rem;margin-bottom:9px;display:block;}
+.vc h4{font-family:var(--f1);font-size:.92rem;font-weight:700;margin-bottom:6px;}
+.vc p{font-size:.76rem;color:rgba(255,255,255,.36);line-height:1.55;}
+
+/* ─── PROVA SOCIAL — sensoriais com avatares vívidos ─── */
+.prova{padding:clamp(56px,8vw,88px) 5vw;background:var(--d3);}
+.deps{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:clamp(13px,2.5vw,18px);margin-bottom:clamp(26px,4vw,42px);}
+.dep{background:rgba(255,255,255,.03);border:1px solid rgba(168,230,61,.12);border-radius:20px;padding:clamp(20px,3.5vw,28px) clamp(16px,3vw,22px);position:relative;overflow:hidden;transition:border-color .3s,background .3s;}
 .dep:hover{border-color:rgba(168,230,61,.28);background:rgba(168,230,61,.03);}
-.dep-eco{position:absolute;top:16px;right:16px;background:var(--g);color:var(--dark);font-family:var(--f1);font-size:.7rem;font-weight:900;padding:3px 11px;border-radius:100px;}
-.dep-stars{color:#ffd04d;font-size:.82rem;letter-spacing:2px;margin-bottom:10px;}
-.dep-q{font-size:clamp(.83rem,1.5vw,.9rem);color:rgba(255,255,255,.8);line-height:1.68;margin-bottom:18px;font-style:italic;}
+.dep-eco{position:absolute;top:15px;right:15px;background:var(--g);color:var(--dark);font-family:var(--f1);font-size:.68rem;font-weight:900;padding:3px 10px;border-radius:100px;}
+.dep-stars{color:#ffd04d;font-size:.8rem;letter-spacing:2px;margin-bottom:10px;}
+.dep-q{font-size:clamp(.81rem,1.5vw,.88rem);color:rgba(255,255,255,.78);line-height:1.68;margin-bottom:17px;font-style:italic;}
 .dep-q strong{color:var(--g);font-style:normal;font-weight:700;}
 .dep-auth{display:flex;align-items:center;gap:11px;}
-.dep-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--f1);font-size:.88rem;font-weight:900;color:var(--dark);flex-shrink:0;}
+.dep-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--f1);font-size:.88rem;font-weight:900;color:var(--dark);flex-shrink:0;position:relative;}
 .av1{background:linear-gradient(135deg,#a8e63d,#7ab82a);}
 .av2{background:linear-gradient(135deg,#63d4e8,#2a8fb8);}
 .av3{background:linear-gradient(135deg,#f4a261,#e76f51);}
-.dep-nm{font-weight:700;font-size:.85rem;}
-.dep-inf{font-size:.71rem;color:rgba(255,255,255,.35);margin-top:2px;}
+.av4{background:linear-gradient(135deg,#e879f9,#a855f7);}
+.dep-nm{font-weight:700;font-size:.84rem;}
+.dep-inf{font-size:.69rem;color:rgba(255,255,255,.33);margin-top:2px;}
 
-.nums-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;border-radius:var(--rad-lg);overflow:hidden;border:1px solid rgba(168,230,61,.14);}
-.num-c{padding:clamp(18px,3vw,24px) clamp(14px,2.5vw,20px);text-align:center;background:rgba(168,230,61,.04);}
-.num-v{font-family:var(--f1);font-size:clamp(1.6rem,3vw,2rem);font-weight:900;color:var(--g);line-height:1;margin-bottom:5px;}
-.num-l{font-size:.7rem;color:rgba(255,255,255,.32);line-height:1.4;}
+/* Números de prova — mais específicos */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;border-radius:20px;overflow:hidden;border:1px solid rgba(168,230,61,.14);}
+.nc{padding:clamp(16px,3vw,22px) clamp(13px,2.5vw,18px);text-align:center;background:rgba(168,230,61,.04);}
+.nv{font-family:var(--f1);font-size:clamp(1.5rem,2.8vw,1.95rem);font-weight:900;color:var(--g);line-height:1;margin-bottom:5px;}
+.nl{font-size:.68rem;color:rgba(255,255,255,.3);line-height:1.4;}
 
-/* ══════════════════════════════════════════════
-   COMO FUNCIONA
-══════════════════════════════════════════════ */
-.como{padding:clamp(60px,8vw,90px) 5vw;background:var(--dark3);}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px;margin-top:clamp(28px,4vw,44px);}
-.step{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);padding:clamp(24px,3.5vw,32px) clamp(20px,2.5vw,26px);position:relative;transition:background .3s,border-color .3s;}
-.step:hover{background:rgba(168,230,61,.05);border-color:rgba(168,230,61,.18);}
-.st-time{position:absolute;top:14px;right:14px;font-size:.6rem;color:var(--g);font-weight:700;background:rgba(168,230,61,.1);padding:3px 9px;border-radius:100px;}
-.st-n{font-family:var(--f1);font-size:clamp(2.8rem,4vw,3.5rem);font-weight:900;color:rgba(168,230,61,.09);line-height:1;margin-bottom:12px;transition:color .3s;}
-.step:hover .st-n{color:rgba(168,230,61,.22);}
-.st-ico{font-size:1.65rem;display:block;margin-bottom:10px;}
-.step h3{font-family:var(--f1);font-size:.96rem;font-weight:700;margin-bottom:7px;}
-.step p{font-size:.82rem;color:rgba(255,255,255,.42);line-height:1.58;}
+/* ─── COMO FUNCIONA ─── */
+.como{padding:clamp(56px,8vw,88px) 5vw;background:var(--d2);}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(188px,1fr));gap:2px;margin-top:clamp(26px,4vw,42px);}
+.step{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);padding:clamp(22px,3.5vw,30px) clamp(18px,2.5vw,24px);position:relative;transition:background .3s,border-color .3s;}
+.step:hover{background:rgba(168,230,61,.05);border-color:rgba(168,230,61,.17);}
+.st-t{position:absolute;top:13px;right:13px;font-size:.58rem;color:var(--g);font-weight:700;background:rgba(168,230,61,.1);padding:3px 8px;border-radius:100px;}
+.st-n{font-family:var(--f1);font-size:clamp(2.6rem,3.8vw,3.3rem);font-weight:900;color:rgba(168,230,61,.08);line-height:1;margin-bottom:11px;transition:color .3s;}
+.step:hover .st-n{color:rgba(168,230,61,.2);}
+.st-i{font-size:1.6rem;display:block;margin-bottom:10px;}
+.step h3{font-family:var(--f1);font-size:.94rem;font-weight:700;margin-bottom:7px;}
+.step p{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.58;}
 
-/* ══════════════════════════════════════════════
-   OBJEÇÕES DISSOLVIDAS — emocionalmente
-══════════════════════════════════════════════ */
-.objecoes{padding:clamp(60px,8vw,90px) 5vw;background:var(--dark2);}
-.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,14px);margin-top:clamp(28px,4vw,44px);}
-@media(max-width:640px){.obj-grid{grid-template-columns:1fr;}}
-.obj-c{border-radius:var(--rad-lg);overflow:hidden;}
-.obj-fear{background:rgba(255,50,50,.06);border:1px solid rgba(255,50,50,.14);padding:clamp(16px,2.5vw,20px);display:flex;gap:10px;align-items:flex-start;}
-.obj-fear p{font-size:clamp(.8rem,1.5vw,.86rem);color:rgba(255,170,170,.72);line-height:1.55;font-style:italic;}
-.obj-ans{background:rgba(168,230,61,.05);border:1px solid rgba(168,230,61,.14);border-top:none;padding:clamp(16px,2.5vw,20px);display:flex;gap:10px;align-items:flex-start;}
-.oa-ico{color:var(--g);font-size:1rem;flex-shrink:0;margin-top:2px;}
-.obj-ans p{font-size:clamp(.8rem,1.5vw,.86rem);color:rgba(255,255,255,.72);line-height:1.55;}
-.obj-ans p strong{color:var(--g);font-weight:700;}
+/* ─── OBJEÇÕES ─── */
+.objs{padding:clamp(56px,8vw,88px) 5vw;background:var(--d3);}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,13px);margin-top:clamp(26px,4vw,42px);}
+@media(max-width:620px){.obj-grid{grid-template-columns:1fr;}}
+.oc{border-radius:16px;overflow:hidden;}
+.of{background:rgba(255,45,45,.06);border:1px solid rgba(255,45,45,.14);padding:clamp(15px,2.5vw,19px);display:flex;gap:10px;align-items:flex-start;}
+.of p{font-size:clamp(.78rem,1.45vw,.84rem);color:rgba(255,170,170,.7);line-height:1.55;font-style:italic;}
+.oa{background:rgba(168,230,61,.05);border:1px solid rgba(168,230,61,.14);border-top:none;padding:clamp(15px,2.5vw,19px);display:flex;gap:10px;align-items:flex-start;}
+.oa-i{color:var(--g);font-size:.95rem;flex-shrink:0;margin-top:2px;}
+.oa p{font-size:clamp(.78rem,1.45vw,.84rem);color:rgba(255,255,255,.7);line-height:1.55;}
+.oa p strong{color:var(--g);font-weight:700;}
 
-/* ══════════════════════════════════════════════
-   ESCASSEZ — deadline real
-══════════════════════════════════════════════ */
-.escassez{
-  padding:clamp(50px,7vw,70px) 5vw;
-  background:linear-gradient(135deg,rgba(255,107,43,.1),rgba(255,107,43,.02));
-  border-top:1px solid rgba(255,107,43,.15);
-  border-bottom:1px solid rgba(255,107,43,.15);
-  text-align:center;
+/* ─── GARANTIA EXPLÍCITA ─── */
+.garantia{
+  padding:clamp(40px,6vw,64px) 5vw;
+  background:linear-gradient(135deg,rgba(168,230,61,.09),rgba(168,230,61,.02));
+  border-top:1px solid rgba(168,230,61,.15);
+  border-bottom:1px solid rgba(168,230,61,.15);
 }
-.esc-inner{max-width:640px;margin:0 auto;}
-.esc-inner h3{font-family:var(--f1);font-size:clamp(1.4rem,3vw,2.1rem);font-weight:900;margin-bottom:12px;line-height:1.2;}
-.esc-inner p{font-size:clamp(.84rem,1.6vw,.94rem);color:rgba(255,255,255,.52);line-height:1.65;margin-bottom:clamp(18px,3vw,24px);}
-.esc-deadline{
-  background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.25);
-  border-radius:var(--rad-lg);padding:clamp(18px,3vw,24px) clamp(20px,3.5vw,32px);
-  margin-bottom:clamp(18px,3vw,24px);
-  display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,32px);
-  flex-wrap:wrap;
-}
-.esc-d-label{font-size:.72rem;color:rgba(255,180,100,.65);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
-.esc-d-timer{font-family:monospace;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--o);letter-spacing:4px;line-height:1;}
-.esc-d-sub{font-size:.65rem;color:rgba(255,180,100,.45);margin-top:3px;}
-.esc-sep{width:1px;height:50px;background:rgba(255,107,43,.2);}
-@media(max-width:400px){.esc-sep{display:none;}}
-.esc-vagas-n{font-family:var(--f1);font-size:clamp(2rem,4vw,2.8rem);font-weight:900;color:var(--o);line-height:1;}
-.esc-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
-.esc-b{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:100px;padding:5px 14px;font-size:.71rem;color:rgba(255,255,255,.42);}
+.gar-in{max-width:640px;margin:0 auto;text-align:center;}
+.gar-in .gar-ico{font-size:2.8rem;display:block;margin-bottom:12px;}
+.gar-in h3{font-family:var(--f1);font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:900;margin-bottom:12px;line-height:1.2;}
+.gar-in h3 em{font-style:italic;color:var(--g);}
+.gar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:clamp(10px,2vw,14px);margin-top:clamp(20px,3vw,28px);}
+.gar-item{background:rgba(255,255,255,.03);border:1px solid rgba(168,230,61,.14);border-radius:12px;padding:clamp(16px,2.5vw,20px) clamp(14px,2vw,18px);text-align:center;}
+.gar-item .gi-ico{font-size:1.5rem;display:block;margin-bottom:8px;}
+.gar-item p{font-size:clamp(.76rem,1.4vw,.82rem);color:rgba(255,255,255,.55);line-height:1.5;}
+.gar-item p strong{color:var(--g);font-weight:700;}
 
-/* ══════════════════════════════════════════════
-   LEI
-══════════════════════════════════════════════ */
-.lei{padding:clamp(60px,8vw,90px) 5vw;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,70px);align-items:center;}
-@media(max-width:720px){.lei{grid-template-columns:1fr;}}
-.lei-card{background:linear-gradient(135deg,rgba(168,230,61,.09),rgba(168,230,61,.02));border:1px solid rgba(168,230,61,.18);border-radius:var(--rad-lg);padding:clamp(28px,4vw,40px);position:relative;overflow:hidden;}
-.lei-card::before{content:'14.300';position:absolute;top:-12px;right:14px;font-family:var(--f1);font-size:clamp(3rem,5vw,4.5rem);font-weight:900;color:rgba(168,230,61,.06);pointer-events:none;line-height:1;}
-.lei-card h3{font-family:var(--f1);font-size:clamp(1.1rem,2vw,1.25rem);font-weight:900;color:var(--g);margin-bottom:12px;}
-.lei-card p{font-size:clamp(.82rem,1.5vw,.88rem);color:rgba(255,255,255,.52);line-height:1.7;margin-bottom:18px;}
-.lei-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
-.lei-list li{display:flex;align-items:flex-start;gap:9px;font-size:clamp(.82rem,1.5vw,.88rem);color:rgba(255,255,255,.7);}
-.lei-list li::before{content:'✓';background:var(--g);color:var(--dark);width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;flex-shrink:0;margin-top:2px;}
+/* ─── ESCASSEZ 48h ─── */
+.escassez{padding:clamp(48px,7vw,68px) 5vw;background:linear-gradient(135deg,rgba(255,107,43,.1),rgba(255,107,43,.02));border-top:1px solid rgba(255,107,43,.15);border-bottom:1px solid rgba(255,107,43,.15);text-align:center;}
+.esc-in{max-width:620px;margin:0 auto;}
+.esc-in h3{font-family:var(--f1);font-size:clamp(1.35rem,2.8vw,2rem);font-weight:900;margin-bottom:11px;line-height:1.2;}
+.esc-in p{font-size:clamp(.82rem,1.55vw,.92rem);color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:clamp(16px,3vw,22px);}
+.esc-dl{background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.25);border-radius:18px;padding:clamp(16px,3vw,22px) clamp(18px,3.5vw,30px);margin-bottom:clamp(16px,3vw,22px);display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,28px);flex-wrap:wrap;}
+.esc-dl-lbl{font-size:.68rem;color:rgba(255,180,100,.62);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+.esc-dl-t{font-family:monospace;font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:800;color:var(--o);letter-spacing:4px;line-height:1;}
+.esc-dl-s{font-size:.62rem;color:rgba(255,180,100,.42);margin-top:3px;}
+.esc-sep{width:1px;height:46px;background:rgba(255,107,43,.2);}
+@media(max-width:380px){.esc-sep{display:none;}}
+.esc-vn{font-family:var(--f1);font-size:clamp(1.9rem,4vw,2.7rem);font-weight:900;color:var(--o);line-height:1;}
+.esc-bs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+.esc-b{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:100px;padding:5px 13px;font-size:.69rem;color:rgba(255,255,255,.4);}
 
-/* ══════════════════════════════════════════════
-   DOCS
-══════════════════════════════════════════════ */
-.docs{padding:clamp(60px,8vw,90px) 5vw;background:var(--dark3);}
-.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:clamp(10px,2vw,14px);margin-top:clamp(24px,4vw,36px);}
-.doc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--rad);padding:clamp(20px,3vw,26px) clamp(16px,2.5vw,22px);text-align:center;transition:border-color .3s,background .3s;}
+/* ─── LEI ─── */
+.lei{padding:clamp(56px,8vw,88px) 5vw;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,68px);align-items:center;}
+@media(max-width:700px){.lei{grid-template-columns:1fr;}}
+.lei-card{background:linear-gradient(135deg,rgba(168,230,61,.09),rgba(168,230,61,.02));border:1px solid rgba(168,230,61,.18);border-radius:22px;padding:clamp(26px,4vw,38px);position:relative;overflow:hidden;}
+.lei-card::before{content:'14.300';position:absolute;top:-11px;right:13px;font-family:var(--f1);font-size:clamp(2.8rem,5vw,4.3rem);font-weight:900;color:rgba(168,230,61,.055);pointer-events:none;line-height:1;}
+.lei-card h3{font-family:var(--f1);font-size:clamp(1.08rem,1.9vw,1.22rem);font-weight:900;color:var(--g);margin-bottom:11px;}
+.lei-card p{font-size:clamp(.8rem,1.5vw,.86rem);color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:17px;}
+.lei-li{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.lei-li li{display:flex;align-items:flex-start;gap:9px;font-size:clamp(.8rem,1.5vw,.86rem);color:rgba(255,255,255,.68);}
+.lei-li li::before{content:'✓';background:var(--g);color:var(--dark);width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;flex-shrink:0;margin-top:2px;}
+
+/* ─── DOCS ─── */
+.docs{padding:clamp(56px,8vw,88px) 5vw;background:var(--d3);}
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:clamp(10px,2vw,13px);margin-top:clamp(22px,4vw,34px);}
+.doc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:clamp(18px,3vw,24px) clamp(15px,2.5vw,20px);text-align:center;transition:border-color .3s,background .3s;}
 .doc:hover{border-color:rgba(168,230,61,.22);background:rgba(168,230,61,.04);}
-.doc-ico{font-size:1.8rem;display:block;margin-bottom:12px;}
-.doc h4{font-family:var(--f1);font-size:.9rem;font-weight:700;margin-bottom:6px;}
-.doc p{font-size:.77rem;color:rgba(255,255,255,.35);line-height:1.5;}
+.doc-i{font-size:1.7rem;display:block;margin-bottom:11px;}
+.doc h4{font-family:var(--f1);font-size:.88rem;font-weight:700;margin-bottom:5px;}
+.doc p{font-size:.75rem;color:rgba(255,255,255,.33);line-height:1.5;}
 
-/* ══════════════════════════════════════════════
-   FAQ
-══════════════════════════════════════════════ */
-.faq{padding:clamp(60px,8vw,90px) 5vw;background:var(--dark2);}
-.faq-list{max-width:680px;margin:clamp(28px,4vw,44px) auto 0;display:flex;flex-direction:column;gap:2px;}
-.faq-item{border:1px solid rgba(255,255,255,.07);overflow:hidden;}
-.faq-item:first-child{border-radius:var(--rad) var(--rad) 0 0;}
-.faq-item:last-child{border-radius:0 0 var(--rad) var(--rad);}
-.faq-item:hover{border-color:rgba(168,230,61,.18);}
-.faq-q{padding:clamp(16px,2.5vw,20px) clamp(18px,3vw,24px);display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:rgba(255,255,255,.025);font-weight:500;font-size:clamp(.85rem,1.6vw,.92rem);list-style:none;gap:12px;-webkit-tap-highlight-color:transparent;}
-.faq-q::after{content:'+';color:var(--g);font-size:1.2rem;flex-shrink:0;}
+/* ─── FAQ ─── */
+.faq{padding:clamp(56px,8vw,88px) 5vw;background:var(--d2);}
+.faq-l{max-width:660px;margin:clamp(26px,4vw,42px) auto 0;display:flex;flex-direction:column;gap:2px;}
+.faq-it{border:1px solid rgba(255,255,255,.07);overflow:hidden;}
+.faq-it:first-child{border-radius:13px 13px 0 0;}
+.faq-it:last-child{border-radius:0 0 13px 13px;}
+.faq-it:hover{border-color:rgba(168,230,61,.18);}
+.faq-q{padding:clamp(15px,2.5vw,19px) clamp(17px,3vw,23px);display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:rgba(255,255,255,.025);font-weight:500;font-size:clamp(.82rem,1.55vw,.9rem);list-style:none;gap:12px;-webkit-tap-highlight-color:transparent;}
+.faq-q::after{content:'+';color:var(--g);font-size:1.15rem;flex-shrink:0;}
 details[open] .faq-q::after{content:'−';}
-.faq-a{padding:0 clamp(18px,3vw,24px) clamp(14px,2.5vw,18px);background:rgba(255,255,255,.018);font-size:clamp(.82rem,1.5vw,.86rem);color:rgba(255,255,255,.46);line-height:1.7;}
+.faq-a{padding:0 clamp(17px,3vw,23px) clamp(13px,2.5vw,17px);background:rgba(255,255,255,.018);font-size:clamp(.8rem,1.5vw,.84rem);color:rgba(255,255,255,.44);line-height:1.7;}
 
-/* ══════════════════════════════════════════════
-   CTA FINAL — ativação dos pecados capitais
-══════════════════════════════════════════════ */
-.cta-final{
-  padding:clamp(80px,10vw,110px) 5vw;
-  text-align:center;position:relative;overflow:hidden;
-  background:var(--dark);
-}
-.cta-final::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,43,.06),transparent 70%);pointer-events:none;}
-.cta-tag{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);display:block;margin-bottom:16px;}
-.cta-final h2{font-family:var(--f1);font-size:clamp(1.9rem,5vw,3.8rem);font-weight:900;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px;}
-.cta-final h2 em{font-style:italic;color:var(--g);}
-.cta-final p{font-size:clamp(.88rem,1.6vw,.98rem);color:rgba(255,255,255,.48);max-width:500px;margin:0 auto clamp(24px,4vw,34px);line-height:1.7;}
-.cta-final-btns{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:480px;margin:0 auto clamp(16px,2.5vw,22px);}
-.btn-final{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  background:linear-gradient(135deg,var(--o),var(--od));
-  color:#fff;font-family:var(--f1);font-weight:700;
-  font-size:clamp(1rem,2vw,1.12rem);
-  padding:clamp(18px,2.5vw,22px) clamp(28px,4vw,40px);
-  border-radius:100px;text-decoration:none;width:100%;
-  box-shadow:var(--shadow-o);
-  transition:transform .2s,box-shadow .2s;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn-final:hover{transform:translateY(-3px);box-shadow:var(--shadow-o-lg);}
-.btn-final:active{transform:scale(.98);}
-.btn-wpp{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  background:rgba(37,211,102,.1);color:#4ddb80;
-  border:1px solid rgba(37,211,102,.25);
-  font-weight:600;font-size:clamp(.88rem,1.6vw,.95rem);
-  padding:clamp(15px,2.2vw,18px) clamp(22px,3.5vw,30px);
-  border-radius:100px;text-decoration:none;width:100%;
-  justify-content:center;
-  transition:background .2s;
-  -webkit-tap-highlight-color:transparent;
-}
+/* ─── CTA FINAL — identidade + pecados capitais ─── */
+.cta-f{padding:clamp(80px,10vw,110px) 5vw;text-align:center;position:relative;overflow:hidden;background:var(--dark);}
+.cta-f::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,43,.055),transparent 70%);pointer-events:none;}
+.cta-f-tag{font-size:.67rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--o);display:block;margin-bottom:15px;}
+.cta-f h2{font-family:var(--f1);font-size:clamp(1.8rem,5vw,3.7rem);font-weight:900;letter-spacing:-.03em;line-height:1.05;margin-bottom:13px;}
+.cta-f h2 em{font-style:italic;color:var(--g);}
+.cta-f p{font-size:clamp(.86rem,1.6vw,.96rem);color:rgba(255,255,255,.46);max-width:490px;margin:0 auto clamp(22px,4vw,32px);line-height:1.7;}
+.cta-f-btns{display:flex;flex-direction:column;align-items:center;gap:11px;max-width:480px;margin:0 auto clamp(14px,2.5vw,20px);}
+.btn-f{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--o),var(--od));color:#fff;font-family:var(--f1);font-weight:700;font-size:clamp(.98rem,1.9vw,1.1rem);padding:clamp(17px,2.5vw,21px) clamp(26px,4vw,38px);border-radius:100px;width:100%;box-shadow:var(--sh-o);transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;}
+.btn-f:hover{transform:translateY(-3px);box-shadow:var(--sh-o2);}
+.btn-f:active{transform:scale(.98);}
+.btn-wpp{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(37,211,102,.1);color:#4ddb80;border:1px solid rgba(37,211,102,.25);font-weight:600;font-size:clamp(.86rem,1.6vw,.93rem);padding:clamp(14px,2.2vw,17px) clamp(20px,3.5vw,28px);border-radius:100px;text-decoration:none;width:100%;transition:background .2s;-webkit-tap-highlight-color:transparent;}
 .btn-wpp:hover{background:rgba(37,211,102,.18);}
 .btn-wpp svg{width:18px;height:18px;fill:#4ddb80;flex-shrink:0;}
-.cta-note{font-size:.68rem;color:rgba(255,255,255,.18);}
-.cta-note span{color:rgba(168,230,61,.4);}
+.cta-note{font-size:.66rem;color:rgba(255,255,255,.17);}
+.cta-note span{color:rgba(168,230,61,.38);}
 
-/* ══════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════ */
-footer{border-top:1px solid rgba(255,255,255,.06);padding:clamp(24px,4vw,32px) 5vw;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;}
-.f-logo{font-family:var(--f1);font-size:1.1rem;font-weight:900;color:var(--g);}
+/* ─── FOOTER ─── */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:clamp(22px,4vw,30px) 5vw;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;}
+.f-logo{font-family:var(--f1);font-size:1.05rem;font-weight:900;color:var(--g);}
 .f-logo em{font-style:normal;color:#fff;}
-footer p{font-size:.72rem;color:rgba(255,255,255,.2);}
+footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
 
-/* ══════════════════════════════════════════════
-   WPP FLOAT — mobile optimised
-══════════════════════════════════════════════ */
-.wpp-float{
-  position:fixed;bottom:clamp(20px,3vw,28px);right:clamp(16px,3vw,28px);
-  z-index:500;display:flex;align-items:center;gap:10px;text-decoration:none;
-}
-.wpp-lbl{background:rgba(7,14,2,.95);backdrop-filter:blur(12px);border:1px solid rgba(37,211,102,.3);color:#fff;font-size:.72rem;font-weight:500;padding:7px 13px;border-radius:100px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .3s;pointer-events:none;}
-.wpp-float:hover .wpp-lbl{opacity:1;transform:none;}
-.wpp-btn{
-  width:clamp(50px,7vw,56px);height:clamp(50px,7vw,56px);
-  border-radius:50%;background:#25D366;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 24px rgba(37,211,102,.4);
-  animation:pulse-g 2.5s 3s infinite;
-  transition:transform .2s;
-}
-.wpp-btn:hover{transform:scale(1.08);animation:none;}
-.wpp-btn:active{transform:scale(.95);}
-.wpp-btn svg{width:clamp(24px,4vw,27px);height:clamp(24px,4vw,27px);fill:#fff;}
+/* ─── WPP FLOAT ─── */
+.wf{position:fixed;bottom:clamp(18px,3vw,26px);right:clamp(14px,3vw,26px);z-index:500;display:flex;align-items:center;gap:10px;text-decoration:none;}
+.wf-lbl{background:rgba(6,12,2,.96);backdrop-filter:blur(12px);border:1px solid rgba(37,211,102,.3);color:#fff;font-size:.7rem;font-weight:500;padding:7px 13px;border-radius:100px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .3s;pointer-events:none;}
+.wf:hover .wf-lbl{opacity:1;transform:none;}
+.wf-btn{width:clamp(48px,7vw,54px);height:clamp(48px,7vw,54px);border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(37,211,102,.38);animation:pulseG 2.5s 3s infinite;transition:transform .2s;}
+.wf-btn:hover{transform:scale(1.08);animation:none;}
+.wf-btn:active{transform:scale(.93);}
+.wf-btn svg{width:clamp(22px,4vw,26px);height:clamp(22px,4vw,26px);fill:#fff;}
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE PATCHES
-══════════════════════════════════════════════ */
-@media(max-width:480px){
-  header{top:32px;padding:11px 4vw;}
-  .h-vagas{display:none;}
-  .btn-hd{font-size:.75rem;padding:9px 14px;}
-  .logo{font-size:1.1rem;}
-}
-@media(min-width:640px){
-  .btn-main{width:auto;}
-  .cta-final-btns{flex-direction:row;flex-wrap:wrap;justify-content:center;}
-  .btn-final{width:auto;}
-  .btn-wpp{width:auto;}
-  .perm-form{flex-direction:row;}
-  .perm-input{flex:1;}
-  .btn-perm{width:auto;white-space:nowrap;}
-}
+/* ─── RESPONSIVE ─── */
+@media(max-width:460px){header{top:30px;padding:10px 4vw;}.h-vagas{display:none;}.logo{font-size:1.05rem;}.btn-hdr{font-size:.72rem;padding:8px 13px;}}
+@media(min-width:600px){.btn-main{width:auto;}.cta-f-btns{flex-direction:row;flex-wrap:wrap;justify-content:center;}.btn-f,.btn-wpp{width:auto;}.perm-form{flex-direction:row;}.perm-inp{flex:1;}.btn-perm{width:auto;white-space:nowrap;}}
 </style>
 </head>
 <body>
 
-<!-- ══ URGENCY BAR ══ -->
+<!-- ── URGENCY BAR ── -->
 <div class="ubar" id="ubar">
-  ⚠️ Vagas se fecham em <span class="ubar-t" id="ubarTimer">47:58:22</span> — depois reabrimos em 30 dias. <strong>Não perca sua vez.</strong>
+  ⚠️ Vagas se fecham em <span class="ubar-t" id="ubarT">47:58:22</span> — depois reabrimos em <strong>30 dias.</strong> Não perca sua vez.
 </div>
 
-<!-- ══ HEADER ══ -->
+<!-- ── HEADER ── -->
 <header id="hdr">
   <a class="logo" href="#">Conexão<em>Green</em></a>
-  <div class="h-right">
+  <div class="h-r">
     <div class="h-vagas" id="hVagas">23 vagas hoje</div>
-    <a class="btn-hd" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">Recuperar meu dinheiro →</a>
+    <a class="btn-hdr" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">Parar de ser roubada →</a>
   </div>
 </header>
 
-<!-- ══════════════════════════════════
-     HERO
-══════════════════════════════════ -->
+<!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="hero-bg1"></div>
-  <div class="hero-dots"></div>
-  <div class="hero-inner">
+  <div class="hbg"></div><div class="hdots"></div>
+  <div class="h-inner">
 
-    <div class="pill-loss">
-      <div class="pill-dot"></div>
-      <div class="pill-text">Você perdeu <strong>hoje:</strong></div>
-      <span class="pill-count" id="liveLoss">R$0,000</span>
+    <div class="pill-r">
+      <div class="pr-dot"></div>
+      <div class="pr-txt">Você perdeu <strong>hoje:</strong></div>
+      <span class="pr-cnt" id="liveLoss">R$0,000</span>
     </div>
 
-    <div class="hero-hl">
+    <div class="h-hl">
       <h1>
-        <span class="hl-muted">Sua distribuidora está te roubando.</span>
-        <span class="hl-white">A lei diz</span>
-        <span class="hl-white">que você pode <span class="hl-cross">aceitar</span></span>
-        <span class="hl-green">reagir agora.</span>
+        <span class="hl-m">Sua distribuidora está te usurpando.</span>
+        <span class="hl-w">A lei diz que</span>
+        <span class="hl-w">você pode <span class="hl-x">aceitar</span></span>
+        <span class="hl-g">reagir agora.</span>
       </h1>
     </div>
 
-    <p class="hero-sub">
+    <p class="h-sub">
       Quem paga mais de R$150 de energia tem direito a <span class="hl">10% de desconto garantido por lei</span> — e a distribuidora <strong>nunca vai te ligar para avisar</strong>, porque ela ganha mais quando você paga a tarifa cheia.
     </p>
 
-    <div class="hero-vision">
-      <span class="hero-vision-icon">💭</span>
-      <span>Imagina abrir a fatura e ver <strong>R$22 a menos todo mês</strong> — sem ter instalado nada, sem ter pago nada. Esse dinheiro vai para a natação da sua filha, para o inglês do seu filho, para uma respirada no orçamento.</span>
+    <div class="h-vis">
+      <span class="h-vis-i">💭</span>
+      <span>Imagina abrir a fatura e ver <strong>R$22 a menos todo mês</strong>. Não é pouco — é a natação da Sophia, o inglês do Lucas, uma respirada no orçamento sem culpa.</span>
     </div>
 
-    <div class="hero-cta-block">
+    <div class="h-cta-b">
       <a class="btn-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        Quero recuperar meu dinheiro agora
+        Parar com esse roubo agora!!! — é grátis
       </a>
     </div>
-
-    <div class="hero-micro">
-      <span>100% gratuito</span>
-      <span>sem instalação</span>
-      <span>5 minutos</span>
-      <span>sem contrato</span>
-      <span>cancela quando quiser</span>
+    <div class="h-micro">
+      <span>100% gratuito</span><span>sem instalação</span>
+      <span>5 minutos</span><span>sem contrato</span><span>cancela quando quiser</span>
     </div>
 
-    <div class="hero-vagas">
-      <div class="vagas-bar-wrap">
-        <div class="vagas-bar-lbl">Vagas preenchidas hoje</div>
-        <div class="vagas-bar"><div class="vagas-fill"></div></div>
+    <div class="h-vagas-b">
+      <div class="vbw">
+        <div class="vbl">Vagas preenchidas hoje</div>
+        <div class="vbb"><div class="vbf"></div></div>
       </div>
-      <div class="vagas-text">Só <strong id="vagasHero">23</strong> vagas restam hoje na sua distribuidora</div>
+      <div class="vtxt">Só <strong id="vagasH">23</strong> vagas restam hoje na sua distribuidora</div>
     </div>
 
-    <div class="hero-stats">
+    <div class="h-stats">
       <div class="stat"><span class="sn">10%</span><span class="sl">desconto garantido</span></div>
       <div class="stat"><span class="sn">R$0</span><span class="sl">custo para você</span></div>
       <div class="stat"><span class="sn">5 min</span><span class="sl">para ativar</span></div>
       <div class="stat"><span class="sn">Lei 14.300</span><span class="sl">garantia legal</span></div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     VINGANÇA — por que a distribuidora não avisa
-══════════════════════════════════ -->
-<section class="vinganca reveal">
-  <div class="stag">O vilão que você não conhecia</div>
-  <h2 class="sttl">"Se fosse real, minha<br>distribuidora teria me avisado."</h2>
-  <p class="ssub">Pensou assim? Era exatamente isso que elas queriam. Vou te explicar o que está acontecendo.</p>
+<!-- ══ VILÃO ══ -->
+<section class="vilao reveal">
+  <div class="stag">O vilão invisível</div>
+  <h2 class="sttl">"Se fosse real, minha distribuidora<br>teria me avisado."</h2>
+  <p class="ssub">Pensou isso? Era exatamente o que elas queriam. Vou te mostrar o que está acontecendo.</p>
   <div class="vg-grid">
-    <div class="vg-card">
-      <div class="vg-bad">
-        <div class="vg-bad-lbl">O que a distribuidora faz</div>
-        <p>Elas sabem da Lei 14.300. Sabem que você tem direito ao desconto. E ficam <em>em silêncio</em> porque a cada mês que você paga a tarifa cheia, <em>elas embolsam o que poderia ter voltado para o seu bolso</em>. Não é golpe. É interesse comercial com a sua ignorância.</p>
-      </div>
-    </div>
-    <div class="vg-card">
-      <div class="vg-good">
-        <div class="vg-good-lbl">O que você pode fazer</div>
-        <p>A lei obriga as distribuidoras a <strong>aceitarem os créditos das usinas solares</strong>. Você só precisa se cadastrar. Em 5 minutos, o que antes era lucro delas passa a ser <strong>desconto na sua fatura</strong>. Gratuito. Legal. Irrecusável.</p>
-      </div>
-    </div>
-    <div class="vg-card">
-      <div class="vg-bad">
-        <div class="vg-bad-lbl">O que acontece se você não agir</div>
-        <p>Todo mês, em silêncio, a distribuidora embolsa os centavos que seriam seus. Sem te avisar. Sem te perguntar. E você continua pagando — não porque é obrigado, mas porque ainda não descobriu que pode parar.</p>
-      </div>
-    </div>
-    <div class="vg-card">
-      <div class="vg-good">
-        <div class="vg-good-lbl">Agora é sua vez de reagir</div>
-        <p>A Conexão Green faz a ponte entre você e a usina solar. <strong>De graça, em 5 minutos, pelo celular</strong>. O dinheiro que ia para a distribuidora começa a voltar para o seu bolso já na próxima fatura. Simples assim.</p>
-      </div>
-    </div>
+    <div class="vgc"><div class="vg-bad"><div class="vg-bad-l">O que a distribuidora faz</div><p>Elas sabem da Lei 14.300. Sabem que você tem direito ao desconto. E ficam em <em>silêncio calculado</em> porque a cada mês que você paga a tarifa cheia, elas embolsam o que poderia ter voltado para o seu bolso. Não é acidente. É estratégia.</p></div></div>
+    <div class="vgc"><div class="vg-good"><div class="vg-good-l">O que você pode fazer agora</div><p>A lei obriga as distribuidoras a <strong>aceitar os créditos das usinas solares</strong>. Você só precisa se cadastrar. Em 5 minutos, o que era lucro delas vira <strong>desconto de 10% na sua fatura</strong>. Grátis. Legal. Irrecusável.</p></div></div>
+    <div class="vgc"><div class="vg-bad"><div class="vg-bad-l">O que acontece se você não agir</div><p>Todo mês, sem te perguntar, sem te avisar, a distribuidora embolsa os centavos que seriam seus. Você continua pagando — não porque é obrigada, mas porque ainda não descobriu que pode parar.</p></div></div>
+    <div class="vgc"><div class="vg-good"><div class="vg-good-l">Agora é sua hora de vencer</div><p>A Conexão Green faz a ponte entre você e a usina solar, <strong>de graça, em 5 minutos, pelo celular</strong>. O dinheiro que ia para a distribuidora começa a voltar para o seu bolso já na próxima fatura.</p></div></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     CALCULADORA V4
-══════════════════════════════════ -->
+<!-- ══ CALCULADORA ══ -->
 <section class="calc-sec reveal">
-  <div class="stag">Calculadora de perdas</div>
-  <h2 class="sttl">Quanto você está<br>jogando fora todo mês?</h2>
+  <div class="stag">Calculadora ao vivo</div>
+  <h2 class="sttl">Quanto você está jogando<br>fora todo mês?</h2>
   <p class="ssub">Arraste e veja em tempo real. O timer mostra quanto você perdeu desde que abriu esta página.</p>
-
   <div class="calc-box">
     <h3>Qual o valor da sua conta de luz?</h3>
-    <p class="cs">Ajuste para o valor mais próximo da sua fatura e veja o impacto real do desconto de 10%.</p>
-
-    <div class="calc-live">
-      <div class="cl-txt">
-        <strong>⏱ Você perdeu desde que abriu esta página:</strong>
-        Cada segundo sem o desconto ativado é dinheiro que some.
-      </div>
-      <div class="cl-val" id="pageLoss">R$0,000</div>
+    <p class="calc-cs">Ajuste para o valor mais próximo e veja o impacto real do desconto de 10%.</p>
+    <div class="c-live">
+      <div class="cl-t"><strong>⏱ Você perdeu desde que abriu esta página:</strong>Cada segundo sem o desconto ativado é dinheiro que some para sempre.</div>
+      <div class="cl-v" id="pageLoss">R$0,000</div>
     </div>
-
-    <div class="sl-wrap">
-      <div class="sl-lbl">
-        <span>Valor da sua conta:</span>
-        <span class="sv" id="sliderDisplay">R$ 200</span>
-      </div>
-      <input type="range" id="mySlider" min="150" max="800" value="200" step="10">
+    <div class="sl-w">
+      <div class="sl-l"><span>Valor da sua conta:</span><span class="sv" id="slVal">R$ 200</span></div>
+      <input type="range" id="sl" min="150" max="800" value="200" step="10">
     </div>
-
-    <div class="calc-res">
-      <div class="cr-card cr-loss">
-        <div class="cr-lbl">💸 Você perde por ano</div>
-        <div class="cr-val" id="perdaAno">R$ 240</div>
-        <div class="cr-sub">sem o desconto ativado</div>
-      </div>
-      <div class="cr-card cr-gain">
-        <div class="cr-lbl">✅ Você economiza por ano</div>
-        <div class="cr-val" id="ganhoAno">R$ 240</div>
-        <div class="cr-sub">com 10% de desconto ativado</div>
-      </div>
+    <div class="c-res">
+      <div class="cr cr-l"><div class="cr-lbl">💸 Você perde por ano</div><div class="cr-val" id="perdaA">R$ 240</div><div class="cr-sub">sem o desconto ativado</div></div>
+      <div class="cr cr-g"><div class="cr-lbl">✅ Você economiza por ano</div><div class="cr-val" id="ganhoA">R$ 240</div><div class="cr-sub">com 10% de desconto</div></div>
     </div>
-
     <a class="btn-calc" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank" id="btnCalc">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      Quero recuperar R$240 agora — é grátis
+      Quero meus R$240 agora — é grátis
     </a>
-    <p class="calc-note">🔒 Sem custo · Sem contrato · Dados protegidos pela LGPD</p>
+    <p class="c-note">🔒 Sem custo · Sem contrato · Dados protegidos pela LGPD</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     CAPTURA DE PERMISSÃO — WhatsApp
-══════════════════════════════════ -->
-<section class="permissao reveal">
-  <div class="perm-inner">
-    <span class="perm-icon">💬</span>
+<!-- ══ O QUE MUDA NA SUA VIDA — cenários sensoriais ══ -->
+<section class="muda reveal">
+  <div class="stag">Sua vida com o desconto</div>
+  <h2 class="sttl">O que <em style="font-style:italic;color:var(--g)">você faz</em> com o dinheiro<br>que volta pro seu bolso</h2>
+  <p class="ssub">R$240 por ano não é número abstrato. Veja o que ele representa na vida real.</p>
+  <div class="muda-grid">
+    <div class="muda-card">
+      <span class="muda-emoji">🏊‍♀️</span>
+      <div class="muda-economia">R$20/mês economizados</div>
+      <h4>A natação da Sophia</h4>
+      <p>Você abre a fatura, vê <strong>R$22 a menos</strong>, e pensa: <em>"agora dá para pagar a natação da Sophia sem tirar de outro lugar."</em> Sem culpa. Sem malabarismo no orçamento. Só o sorriso dela na piscina.</p>
+    </div>
+    <div class="muda-card">
+      <span class="muda-emoji">📚</span>
+      <div class="muda-economia">R$240/ano economizados</div>
+      <h4>O inglês do Lucas</h4>
+      <p>Em 12 meses, a economia do desconto <strong>paga um semestre de inglês básico</strong> para o Lucas. Você não trabalhou mais horas. Não cortou nada. Apenas ativou um direito que já era seu e estava sendo ignorado.</p>
+    </div>
+    <div class="muda-card">
+      <span class="muda-emoji">😮‍💨</span>
+      <div class="muda-economia">Fim da ansiedade financeira</div>
+      <h4>A respirada no orçamento</h4>
+      <p>Não é só o dinheiro. É <em>abrir o app do banco sem o coração apertar</em>. É saber que você descobriu uma brecha legal que a distribuidora escondia. É <strong>você vencendo o sistema</strong> — e se sentindo inteligente por isso.</p>
+    </div>
+  </div>
+  <div class="muda-cta-wrap">
+    <a class="btn-muda" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Quero esse dinheiro de volta agora
+    </a>
+  </div>
+</section>
+
+<!-- ══ PERMISSÃO CAPTIVA ══ -->
+<section class="perm reveal">
+  <div class="perm-in">
+    <span class="perm-ico">💬</span>
     <h3>Receba sua simulação<br>personalizada no WhatsApp</h3>
-    <p>Digite seu número e calculamos <strong>exatamente quanto você economiza</strong> com base na sua região e distribuidora. Grátis, sem compromisso.</p>
+    <p>Digite seu número e calculamos <strong>exatamente quanto você economiza</strong> com base na sua região e distribuidora. Grátis. Sem compromisso.</p>
     <div class="perm-form">
-      <input class="perm-input" type="tel" id="wppInput" placeholder="(00) 00000-0000" maxlength="15" inputmode="numeric">
-      <a class="btn-perm" href="#" id="btnPerm">
+      <input class="perm-inp" type="tel" id="wppInp" placeholder="(00) 00000-0000" maxlength="15" inputmode="numeric">
+      <button class="btn-perm" id="btnPerm">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         Receber no WhatsApp
-      </a>
+      </button>
     </div>
     <p class="perm-note">🔒 Não enviamos spam. Só sua simulação, uma vez.</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     VALIDAÇÃO — objeção invertida emocional
-══════════════════════════════════ -->
-<section class="validacao reveal">
-  <div class="val-inner">
+<!-- ══ VALIDAÇÃO — objeção emocional invertida ══ -->
+<section class="valid reveal">
+  <div class="val-in">
     <h2>"Parece bom demais<br>para ser <em>verdade…"</em></h2>
-    <p>Eu sei que você está desconfiada. E sabe o que? <strong>Você tem razão em desconfiar.</strong> O mundo está cheio de promessas falsas. Então deixa eu ser diferente: não vou te pedir para confiar em mim. Vou te pedir para confiar na sua raiva.</p>
-
+    <p>Você tem razão em desconfiar. <strong>O mundo está cheio de promessas falsas.</strong> Então não vou te pedir para confiar em mim. Vou te pedir para confiar na sua raiva.</p>
     <div class="obj-inv">
       <h4>Se fosse golpe, o Congresso Nacional estaria sendo processado por fraude em massa.</h4>
-      <p>A Lei 14.300/2022 foi aprovada por maioria no Congresso, regulamentada pela ANEEL e está em vigor há mais de dois anos. Mais de 1.200 famílias já ativaram o desconto pela Conexão Green. Nenhuma foi prejudicada. Nenhuma pagou mais. Nenhuma instalou painel solar.</p>
-      <p class="punch">"Eu também desconfiei. Mas quando vi R$28 a menos na minha fatura, entendi: o golpe real era eu ficar pagando a tarifa cheia enquanto tinha direito ao desconto." — Camila R., São Paulo</p>
-      <p>Não estamos pedindo que você confie cegamente. Estamos pedindo que você faça a simulação. Em 2 minutos, sem dar nenhum dado pessoal, você vê o número real de quanto vai economizar. Aí você decide.</p>
+      <p>A Lei 14.300/2022 foi aprovada por maioria no Congresso, regulamentada pela ANEEL, está em vigor há mais de dois anos. Mais de 1.247 famílias já ativaram o desconto pela Conexão Green. Nenhuma foi prejudicada. Nenhuma pagou mais. Nenhuma precisou instalar painel solar.</p>
+      <p class="obj-punch">"Eu também desconfiei. Mas quando vi R$28 a menos na minha fatura, entendi: o golpe real era eu continuar pagando a tarifa cheia enquanto tinha direito ao desconto." — Camila R., São Paulo</p>
+      <p>Não estamos pedindo confiança cega. Estamos pedindo que você faça a simulação. Em 2 minutos, sem dar nenhum dado pessoal, você vê o número exato de quanto vai economizar. Aí você decide.</p>
     </div>
-
     <div class="val-cards">
-      <div class="vc"><span class="vc-icon">🏛️</span><h4>Lei Federal</h4><p>14.300/2022, aprovada pelo Congresso, regulamentada pela ANEEL. Direito, não promessa.</p></div>
-      <div class="vc"><span class="vc-icon">🔒</span><h4>Zero Risco</h4><p>Sem contrato de fidelidade. Sem taxa. Cancela quando quiser sem custo algum.</p></div>
-      <div class="vc"><span class="vc-icon">✅</span><h4>100% Gratuito</h4><p>Nenhum custo para você. A Conexão Green recebe comissão da usina — você paga zero.</p></div>
+      <div class="vc"><span class="vc-ico">🏛️</span><h4>Lei Federal</h4><p>14.300/2022, aprovada pelo Congresso, regulamentada pela ANEEL. Direito, não promessa.</p></div>
+      <div class="vc"><span class="vc-ico">🔒</span><h4>Zero Risco</h4><p>Sem contrato de fidelidade. Sem taxa. Cancela quando quiser sem custo algum.</p></div>
+      <div class="vc"><span class="vc-ico">✅</span><h4>100% Gratuito</h4><p>Nenhum custo para você. A Conexão Green recebe comissão da usina — você paga zero.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     PROVA SOCIAL — depoimentos sensoriais
-══════════════════════════════════ -->
+<!-- ══ PROVA SOCIAL — sensoriais ══ -->
 <section class="prova reveal">
-  <div class="stag">Pessoas reais. Resultados reais.</div>
-  <h2 class="sttl">O que aconteceu depois<br>que elas clicaram</h2>
-  <p class="ssub">Nomes reais, cidades reais, economias reais. Veja quem já venceu a distribuidora.</p>
-
+  <div class="stag">1.247 famílias economizando</div>
+  <h2 class="sttl">Mães, pais e famílias<br>que já venceram a distribuidora</h2>
+  <p class="ssub">Nomes reais. Cidades reais. Economias reais. Veja o que aconteceu depois que eles clicaram.</p>
   <div class="deps">
     <div class="dep">
       <div class="dep-eco">R$336/ano</div>
       <div class="dep-stars">★★★★★</div>
-      <p class="dep-q">"Quando abri a fatura pela primeira vez depois de ativar, meu coração disparou. <strong>R$28 a menos.</strong> Parecia pouco, mas percebi que em um ano são R$336. Fui direto contar pra minha mãe, pro meu marido, pro grupo de mães da escola. Todo mundo fez o cadastro."</p>
-      <div class="dep-auth"><div class="dep-av av1">C</div><div><div class="dep-nm">Camila R.</div><div class="dep-inf">Mãe de 2 filhos · São Paulo, SP</div></div></div>
+      <p class="dep-q">"Quando abri a fatura do mês seguinte, meu coração disparou. <strong>R$28 a menos.</strong> Fui direto contar pra minha mãe, pro meu marido, pro grupo de mães da escola. Era real. Era meu direito. E eu estava deixando passar todo mês."</p>
+      <div class="dep-auth"><div class="dep-av av1">C</div><div><div class="dep-nm">Camila R., 38 anos</div><div class="dep-inf">Mãe de 2 filhos · São Paulo, SP</div></div></div>
     </div>
     <div class="dep">
       <div class="dep-eco">R$372/ano</div>
       <div class="dep-stars">★★★★★</div>
-      <p class="dep-q">"Eu pago R$310 de luz todo mês e sempre achei alto demais. Fiz o cadastro com desconfiança. <strong>Na fatura seguinte veio R$279.</strong> Não instalei nada. Não paguei nada. Só tirei três fotos pelo celular. Queria ter feito antes."</p>
-      <div class="dep-auth"><div class="dep-av av2">R</div><div><div class="dep-nm">Roberto M.</div><div class="dep-inf">Comerciante · Fortaleza, CE</div></div></div>
+      <p class="dep-q">"Pago R$310 de luz todo mês e sempre achei alto demais. Fiz o cadastro com desconfiança total. <strong>Na fatura seguinte: R$279.</strong> Não instalei nada, não paguei nada, só tirei três fotos pelo celular. Queria ter feito antes."</p>
+      <div class="dep-auth"><div class="dep-av av2">R</div><div><div class="dep-nm">Roberto M., 45 anos</div><div class="dep-inf">Comerciante · Fortaleza, CE</div></div></div>
     </div>
     <div class="dep">
       <div class="dep-eco">R$384/ano</div>
       <div class="dep-stars">★★★★★</div>
-      <p class="dep-q">"Minha conta era R$320. Calculei: 10% são R$32 por mês. Pensei 'não vai funcionar'. Mas funcionou. <strong>Dois meses depois usei o dinheiro economizado pra pagar a excursão da minha filha.</strong> Isso não tem preço."</p>
-      <div class="dep-auth"><div class="dep-av av3">P</div><div><div class="dep-nm">Patricia S.</div><div class="dep-inf">Professora · Belo Horizonte, MG</div></div></div>
+      <p class="dep-q">"Dois meses depois de ativar, usei o dinheiro economizado pra pagar a excursão da minha filha. <strong>R$32 por mês que antes iam pra distribuidora</strong>, agora vão pra ela. Isso não tem preço."</p>
+      <div class="dep-auth"><div class="dep-av av3">P</div><div><div class="dep-nm">Patricia S., 41 anos</div><div class="dep-inf">Professora · Belo Horizonte, MG</div></div></div>
+    </div>
+    <div class="dep">
+      <div class="dep-eco">R$300/ano</div>
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-q">"Achei que ia ser complicado. Mas levou literalmente 6 minutos. <strong>Fatura de R$250 virou R$225.</strong> Passei o link pra toda a minha família. Minha irmã, minha mãe, minha cunhada — todo mundo fez. Por que esperar?"</p>
+      <div class="dep-auth"><div class="dep-av av4">A</div><div><div class="dep-nm">Ana L., 34 anos</div><div class="dep-inf">Enfermeira · Recife, PE</div></div></div>
     </div>
   </div>
-
-  <div class="nums-grid">
-    <div class="num-c"><div class="num-v">+1.200</div><div class="num-l">famílias com desconto ativo</div></div>
-    <div class="num-c"><div class="num-v">10%</div><div class="num-l">de desconto garantido</div></div>
-    <div class="num-c"><div class="num-v">5 min</div><div class="num-l">tempo médio de cadastro</div></div>
-    <div class="num-c"><div class="num-v">R$0</div><div class="num-l">custo para o consumidor</div></div>
+  <div class="nums">
+    <div class="nc"><div class="nv">19.247</div><div class="nl">famílias economizando</div></div>
+    <div class="nc"><div class="nv">R$28–85</div><div class="nl">economizados por mês</div></div>
+    <div class="nc"><div class="nv">6 min</div><div class="nl">tempo médio de cadastro</div></div>
+    <div class="nc"><div class="nv">R$0</div><div class="nl">custo para o consumidor</div></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     COMO FUNCIONA
-══════════════════════════════════ -->
+<!-- ══ COMO FUNCIONA ══ -->
 <section class="como reveal">
   <div class="stag">Processo simples</div>
-  <h2 class="sttl">4 passos. 5 minutos.<br>Desconto ativado.</h2>
+  <h2 class="sttl">4 passos. 6 minutos.<br>Desconto ativado.</h2>
   <p class="ssub">Tudo pelo celular. Sem sair de casa. Sem instalar nada.</p>
   <div class="steps">
-    <div class="step"><span class="st-time">2 min</span><div class="st-n">01</div><span class="st-ico">⚡</span><h3>Simule sua economia</h3><p>Veja exatamente quanto você economiza com 10% de desconto na sua fatura.</p></div>
-    <div class="step"><span class="st-time">1 min</span><div class="st-n">02</div><span class="st-ico">📋</span><h3>Seus dados</h3><p>Nome, CPF e informações do titular da conta de energia.</p></div>
-    <div class="step"><span class="st-time">2 min</span><div class="st-n">03</div><span class="st-ico">📸</span><h3>3 fotos pelo celular</h3><p>Documento, conta de energia e uma selfie de confirmação.</p></div>
-    <div class="step"><span class="st-time">próxima fatura</span><div class="st-n">04</div><span class="st-ico">✅</span><h3>Desconto ativado!</h3><p>O desconto de 10% aparece automaticamente na próxima fatura.</p></div>
+    <div class="step"><span class="st-t">2 min</span><div class="st-n">01</div><span class="st-i">⚡</span><h3>Simule sua economia</h3><p>Veja exatamente quanto você economiza com 10% de desconto na sua fatura.</p></div>
+    <div class="step"><span class="st-t">1 min</span><div class="st-n">02</div><span class="st-i">📋</span><h3>Seus dados</h3><p>Nome, CPF e dados básicos do titular da conta de energia.</p></div>
+    <div class="step"><span class="st-t">2 min</span><div class="st-n">03</div><span class="st-i">📸</span><h3>3 fotos pelo celular</h3><p>Documento, conta de energia e uma selfie rápida de confirmação.</p></div>
+    <div class="step"><span class="st-t">próxima fatura</span><div class="st-n">04</div><span class="st-i">✅</span><h3>Desconto ativado!</h3><p>O desconto de 10% aparece automaticamente na sua próxima fatura.</p></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     OBJEÇÕES
-══════════════════════════════════ -->
-<section class="objecoes reveal">
+<!-- ══ OBJEÇÕES ══ -->
+<section class="objs reveal">
   <div class="stag">Suas dúvidas</div>
   <h2 class="sttl">O que ainda trava<br>sua decisão</h2>
   <p class="ssub">Vou nomear cada medo antes de você precisar perguntar.</p>
   <div class="obj-grid">
-    <div class="obj-c">
-      <div class="obj-fear"><p>"Deve ser golpe. Se fosse real, a distribuidora teria me avisado."</p></div>
-      <div class="obj-ans"><div class="oa-ico">✓</div><p>A distribuidora não avisa porque <strong>ganha mais quando você paga a tarifa cheia.</strong> Isso não é golpe — é interesse comercial. A Lei 14.300 existe. O direito é seu. A Conexão Green te dá acesso de graça.</p></div>
-    </div>
-    <div class="obj-c">
-      <div class="obj-fear"><p>"Vai precisar instalar painel solar na minha casa ou fazer obra."</p></div>
-      <div class="obj-ans"><div class="oa-ico">✓</div><p><strong>Absolutamente nada é instalado.</strong> Você se conecta remotamente a uma usina já existente. Tudo muda no sistema da distribuidora — nada muda na sua casa. Sem técnico, sem obra, sem visita.</p></div>
-    </div>
-    <div class="obj-c">
-      <div class="obj-fear"><p>"E se minha conta aumentar ou eu me prender em um contrato?"</p></div>
-      <div class="obj-ans"><div class="oa-ico">✓</div><p>Impossível aumentar — o desconto é sempre <strong>abaixo do que você já paga.</strong> E sem fidelidade: cancela quando quiser, sem multa, sem custo, sem burocracia.</p></div>
-    </div>
-    <div class="obj-c">
-      <div class="obj-fear"><p>"Parece complicado. Não tenho tempo nem paciência para tecnologia."</p></div>
-      <div class="obj-ans"><div class="oa-ico">✓</div><p>Se você usa WhatsApp, você consegue. <strong>5 minutos, 3 fotos.</strong> Nossa equipe está no WhatsApp para te ajudar em cada passo se precisar.</p></div>
+    <div class="oc"><div class="of"><p>"Deve ser golpe. Se fosse real, a distribuidora teria me avisado."</p></div><div class="oa"><div class="oa-i">✓</div><p>A distribuidora não avisa porque <strong>ganha mais quando você paga a tarifa cheia.</strong> Isso não é golpe — é interesse comercial. A Lei 14.300 existe. O direito é seu.</p></div></div>
+    <div class="oc"><div class="of"><p>"Vai precisar instalar painel solar ou fazer obra na minha casa."</p></div><div class="oa"><div class="oa-i">✓</div><p><strong>Absolutamente nada é instalado.</strong> Você se conecta remotamente a uma usina já existente. Tudo muda no sistema da distribuidora — nada muda na sua casa.</p></div></div>
+    <div class="oc"><div class="of"><p>"E se minha conta aumentar ou eu me prender em contrato?"</p></div><div class="oa"><div class="oa-i">✓</div><p>Impossível aumentar — o desconto é sempre <strong>abaixo do que você já paga.</strong> Cancela quando quiser, sem multa, sem custo, sem burocracia.</p></div></div>
+    <div class="oc"><div class="of"><p>"Não tenho tempo. E normalmente leva mais do que prometem."</p></div><div class="oa"><div class="oa-i">✓</div><p>O tempo médio real dos nossos cadastros é <strong>6 minutos</strong>. Se você usa WhatsApp, você consegue. Nossa equipe está lá se precisar de ajuda.</p></div></div>
+  </div>
+</section>
+
+<!-- ══ GARANTIA EXPLÍCITA ══ -->
+<section class="garantia reveal">
+  <div class="gar-in">
+    <span class="gar-ico">🛡️</span>
+    <h3>Sem risco. <em>Sem armadilha.</em><br>Sem surpresa.</h3>
+    <div class="gar-grid">
+      <div class="gar-item"><span class="gi-ico">💰</span><p><strong>Conta não aumenta.</strong> O desconto é sempre abaixo do que você já paga.</p></div>
+      <div class="gar-item"><span class="gi-ico">📋</span><p><strong>Sem amarrações.</strong> Sem fidelidade. Cancela quando quiser, sem multa.</p></div>
+      <div class="gar-item"><span class="gi-ico">🔒</span><p><strong>Dados seguros.</strong> Tratados conforme a LGPD. Nunca vendidos a terceiros.</p></div>
+      <div class="gar-item"><span class="gi-ico">⚡</span><p><strong>100% gratuito.</strong> Nenhuma taxa. Nenhum custo escondido. Zero.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     ESCASSEZ — deadline real 48h
-══════════════════════════════════ -->
+<!-- ══ ESCASSEZ 48h ══ -->
 <div class="escassez reveal">
-  <div class="esc-inner">
+  <div class="esc-in">
     <h3>⏰ Essas vagas se fecham em 48 horas</h3>
-    <p>Cada distribuidora tem limite de cadastros por período. Quando as vagas esgotam, novos cadastros entram em fila de espera e você continua pagando a tarifa cheia por mais 30 dias enquanto aguarda reabertura.</p>
-    <div class="esc-deadline">
-      <div>
-        <div class="esc-d-label">Vagas se fecham em</div>
-        <div class="esc-d-timer" id="escTimer">47:58:22</div>
-        <div class="esc-d-sub">horas · minutos · segundos</div>
-      </div>
+    <p>Cada distribuidora tem limite de cadastros por período. Quando as vagas esgotam, novos cadastros entram em fila de espera e você continua pagando a tarifa cheia por mais 30 dias.</p>
+    <div class="esc-dl">
+      <div><div class="esc-dl-lbl">Vagas se fecham em</div><div class="esc-dl-t" id="escT">47:58:22</div><div class="esc-dl-s">horas · minutos · segundos</div></div>
       <div class="esc-sep"></div>
-      <div>
-        <div class="esc-d-label">vagas restantes</div>
-        <div class="esc-vagas-n" id="escVagas">23</div>
-        <div class="esc-d-sub">na sua distribuidora</div>
-      </div>
+      <div><div class="esc-dl-lbl">vagas restantes</div><div class="esc-vn" id="escV">23</div><div class="esc-dl-s">na sua distribuidora</div></div>
     </div>
-    <div class="esc-badges">
+    <div class="esc-bs">
       <span class="esc-b">🔒 Dados seguros</span>
       <span class="esc-b">⚡ Ativação rápida</span>
       <span class="esc-b">📋 Sem burocracia</span>
@@ -954,19 +695,17 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.2);}
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     LEI 14.300
-══════════════════════════════════ -->
+<!-- ══ LEI ══ -->
 <section class="lei reveal">
   <div>
     <div class="stag">Amparo legal</div>
     <h2 class="sttl">Seu direito garantido<br>por lei federal</h2>
-    <p class="ssub">A Lei 14.300/2022 democratizou o acesso à energia solar. Não é benefício de empresa — é obrigação legal, independente da vontade da distribuidora.</p>
+    <p class="ssub">A Lei 14.300/2022 democratizou o acesso à energia solar. Não é benefício de empresa — é obrigação legal independente da vontade da distribuidora.</p>
   </div>
   <div class="lei-card">
     <h3>Lei Federal 14.300/2022</h3>
-    <p>O Marco Legal da Energia Solar permite que qualquer pessoa se conecte a uma usina solar e receba desconto de 10% direto na fatura — sem instalar nada.</p>
-    <ul class="lei-list">
+    <p>O Marco Legal da Energia Solar permite que qualquer pessoa se conecte a uma usina solar e receba 10% de desconto direto na fatura — sem instalar nada.</p>
+    <ul class="lei-li">
       <li>10% de desconto direto na fatura</li>
       <li>Sem instalação de painéis solares</li>
       <li>Sem obras ou visitas técnicas</li>
@@ -977,178 +716,154 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.2);}
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     DOCUMENTOS
-══════════════════════════════════ -->
+<!-- ══ DOCS ══ -->
 <section class="docs reveal">
   <div class="stag">O que você precisa</div>
   <h2 class="sttl">Só 3 fotos pelo celular.<br>É isso.</h2>
   <p class="ssub">100% digital. Sem sair de casa. Sem imprimir nada.</p>
   <div class="docs-grid">
-    <div class="doc"><span class="doc-ico">👤</span><h4>Seus dados</h4><p>Nome, CPF e dados do titular.</p></div>
-    <div class="doc"><span class="doc-ico">🪪</span><h4>Documento</h4><p>Foto do RG ou CNH pelo celular.</p></div>
-    <div class="doc"><span class="doc-ico">📄</span><h4>Conta de energia</h4><p>A mais recente — digital ou impressa.</p></div>
-    <div class="doc"><span class="doc-ico">🤳</span><h4>Selfie rápida</h4><p>De confirmação. 10 segundos.</p></div>
+    <div class="doc"><span class="doc-i">👤</span><h4>Seus dados</h4><p>Nome, CPF e dados do titular.</p></div>
+    <div class="doc"><span class="doc-i">🪪</span><h4>Documento</h4><p>Foto do RG ou CNH.</p></div>
+    <div class="doc"><span class="doc-i">📄</span><h4>Conta de energia</h4><p>A mais recente — digital ou impressa.</p></div>
+    <div class="doc"><span class="doc-i">🤳</span><h4>Selfie rápida</h4><p>Confirmação em 10 segundos.</p></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     FAQ
-══════════════════════════════════ -->
+<!-- ══ FAQ ══ -->
 <section class="faq reveal">
-  <div class="stag" style="max-width:680px;margin:0 auto 12px">Dúvidas frequentes</div>
+  <div class="stag" style="max-width:660px;margin:0 auto 11px">Dúvidas frequentes</div>
   <h2 class="sttl" style="text-align:center">Ainda tem dúvida?</h2>
-  <div class="faq-list">
-    <details class="faq-item"><summary class="faq-q">O desconto é realmente de 10%? Não varia?</summary><p class="faq-a">O desconto contratado pela Conexão Green é de 10% sobre o valor da sua fatura. Transparente, fixo, sem surpresas.</p></details>
-    <details class="faq-item"><summary class="faq-q">É realmente gratuito? Existe algum custo?</summary><p class="faq-a">100% gratuito. Sem taxa de adesão, sem mensalidade, sem custo escondido. A Conexão Green recebe comissão da usina solar — você não paga nada.</p></details>
-    <details class="faq-item"><summary class="faq-q">Minha conta pode aumentar depois?</summary><p class="faq-a">Não. O desconto de 10% é sobre o valor que você já paga. Sua conta só diminui — nunca aumenta por causa desse benefício.</p></details>
-    <details class="faq-item"><summary class="faq-q">Preciso instalar alguma coisa?</summary><p class="faq-a">Não precisa instalar absolutamente nada. Você se conecta remotamente a uma usina já existente. Nada muda na sua casa.</p></details>
-    <details class="faq-item"><summary class="faq-q">Posso cancelar quando quiser?</summary><p class="faq-a">Sim. Sem contrato de fidelidade. Sem multa. Cancela quando quiser, sem custo algum.</p></details>
-    <details class="faq-item"><summary class="faq-q">Meus dados estão seguros?</summary><p class="faq-a">Sim, tratados conforme a LGPD. Suas informações são usadas exclusivamente para viabilizar seu desconto e nunca serão vendidas.</p></details>
+  <div class="faq-l">
+    <details class="faq-it"><summary class="faq-q">O desconto é realmente de 10%? Não varia?</summary><p class="faq-a">O desconto contratado pela Conexão Green é fixo em 10% sobre o valor da fatura. Transparente, sem surpresas.</p></details>
+    <details class="faq-it"><summary class="faq-q">É realmente gratuito? Existe algum custo?</summary><p class="faq-a">100% gratuito. Sem taxa de adesão, sem mensalidade, sem nenhum custo. A Conexão Green recebe comissão da usina solar — você não paga nada.</p></details>
+    <details class="faq-it"><summary class="faq-q">Minha conta pode aumentar depois?</summary><p class="faq-a">Não. O desconto de 10% é calculado sobre o valor que você já paga. Sua conta só pode diminuir.</p></details>
+    <details class="faq-it"><summary class="faq-q">Preciso instalar alguma coisa?</summary><p class="faq-a">Não precisa instalar absolutamente nada. Você se conecta remotamente a uma usina já existente. Nada muda na sua casa.</p></details>
+    <details class="faq-it"><summary class="faq-q">Posso cancelar quando quiser?</summary><p class="faq-a">Sim. Sem contrato de fidelidade, sem multa, sem burocracia. Cancela quando quiser.</p></details>
+    <details class="faq-it"><summary class="faq-q">Meus dados estão seguros?</summary><p class="faq-a">Sim, tratados conforme a LGPD. Suas informações são usadas exclusivamente para viabilizar seu desconto e nunca serão vendidas.</p></details>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     CTA FINAL — pecados capitais ativados
-══════════════════════════════════ -->
-<section class="cta-final reveal">
-  <span class="cta-tag">A escolha é sua</span>
-  <h2>Seus vizinhos já estão<br>economizando.<br>E <em>você?</em></h2>
-  <p>5 minutos. Gratuito. Sem risco. Sem instalação. 10% de desconto garantido por lei — enquanto você lê isso, o dinheiro continua indo para a distribuidora.</p>
-  <div class="cta-final-btns">
-    <a class="btn-final" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      Quero recuperar meu dinheiro agora
+<!-- ══ CTA FINAL — identidade + vingança silenciosa ══ -->
+<section class="cta-f reveal">
+  <span class="cta-f-tag">A escolha é sua</span>
+  <h2>Seus vizinhos já venceram<br>a distribuidora.<br>E <em>você?</em></h2>
+  <p>5 minutos. Gratuito. Sem risco. Sem instalação. 10% de desconto garantido por lei — o dinheiro continua indo para a distribuidora enquanto você lê isso.</p>
+  <div class="cta-f-btns">
+    <a class="btn-f" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Pare com esse roubo agora!!! — é grátis!
     </a>
     <a class="btn-wpp" href="https://wa.me/5571997024211" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       Tirar dúvidas no WhatsApp
     </a>
   </div>
-  <p class="cta-note">🔒 Dados protegidos · <span>Lei 14.300/2022</span> · LGPD · ANEEL · Sem contrato</p>
+  <p class="cta-note">🔒 Dados protegidos · <span>Lei 14.300/2022</span> · LGPD · ANEEL · Sem contrato · Cancela quando quiser</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="f-logo">Conexão<em>Green</em></div>
   <p>© 2025 Conexão Green. Todos os direitos reservados.</p>
   <p>🔒 Dados protegidos pela LGPD</p>
 </footer>
 
-<!-- WPP FLOAT -->
-<a class="wpp-float" href="https://wa.me/5571997024211" target="_blank">
-  <div class="wpp-lbl">💬 Fale conosco</div>
-  <div class="wpp-btn">
+<a class="wf" href="https://wa.me/5571997024211" target="_blank">
+  <div class="wf-lbl">💬 Fale conosco</div>
+  <div class="wf-btn">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </div>
 </a>
 
-<!-- ══════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════ -->
 <script>
 (function(){
 'use strict';
 
-/* ── Header scroll ── */
-const hdr = document.getElementById('hdr');
-window.addEventListener('scroll',()=>{ hdr.classList.toggle('up', window.scrollY > 80); }, {passive:true});
+/* Header scroll */
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('up',window.scrollY>80),{passive:true});
 
-/* ── Urgency bar countdown 48h ── */
-function getOrSetDeadline(){
-  let d = localStorage.getItem('cg_dl');
-  if(!d){ d = Date.now() + 48*3600*1000; localStorage.setItem('cg_dl',d); }
+/* Deadline 48h — persiste no localStorage */
+function getDeadline(){
+  let d=localStorage.getItem('cg_dl5');
+  if(!d){d=Date.now()+48*3600000;localStorage.setItem('cg_dl5',d);}
   return parseInt(d);
 }
-const deadline = getOrSetDeadline();
+const DL=getDeadline();
 function fmtHMS(ms){
-  const t = Math.max(0,ms);
-  const h = Math.floor(t/3600000).toString().padStart(2,'0');
-  const m = Math.floor((t%3600000)/60000).toString().padStart(2,'0');
-  const s = Math.floor((t%60000)/1000).toString().padStart(2,'0');
-  return h+':'+m+':'+s;
+  const t=Math.max(0,ms);
+  return [Math.floor(t/3600000),Math.floor((t%3600000)/60000),Math.floor((t%60000)/1000)]
+    .map(n=>n.toString().padStart(2,'0')).join(':');
 }
-function tickDeadline(){
-  const rem = deadline - Date.now();
-  const str = fmtHMS(rem);
-  document.getElementById('ubarTimer').textContent = str;
-  document.getElementById('escTimer').textContent = str;
+function tickDL(){
+  const s=fmtHMS(DL-Date.now());
+  document.getElementById('ubarT').textContent=s;
+  document.getElementById('escT').textContent=s;
 }
-tickDeadline();
-setInterval(tickDeadline, 1000);
+tickDL();setInterval(tickDL,1000);
 
-/* ── Live loss counter ── */
-const pageStart = Date.now();
-function updateLiveLoss(){
-  const conta = parseInt(document.getElementById('mySlider').value)||200;
-  const anual = conta * 0.10 * 12;
-  const perSec = anual / (365.25*24*3600);
-  const lost = ((Date.now()-pageStart)/1000) * perSec;
-  const str = 'R$'+lost.toFixed(3);
-  document.getElementById('liveLoss').textContent = str;
-  document.getElementById('pageLoss').textContent = str;
+/* Live loss counter */
+const PS=Date.now();
+function liveLoss(){
+  const v=parseInt(document.getElementById('sl').value)||200;
+  const perSec=(v*.10*12)/(365.25*24*3600);
+  const lost=((Date.now()-PS)/1000)*perSec;
+  const s='R$'+lost.toFixed(3);
+  document.getElementById('liveLoss').textContent=s;
+  document.getElementById('pageLoss').textContent=s;
 }
-setInterval(updateLiveLoss, 100);
+setInterval(liveLoss,100);
 
-/* ── Calculadora 10% ── */
-const sl = document.getElementById('mySlider');
-function calcUpdate(){
-  const v = parseInt(sl.value);
-  const m = Math.round(v*0.10);
-  const a = m*12;
-  const pct = ((v-150)/(800-150))*100;
-  sl.style.setProperty('--p', pct+'%');
-  document.getElementById('sliderDisplay').textContent = 'R$ '+v.toLocaleString('pt-BR');
-  document.getElementById('perdaAno').textContent = 'R$ '+a.toLocaleString('pt-BR');
-  document.getElementById('ganhoAno').textContent = 'R$ '+a.toLocaleString('pt-BR');
-  const btn = document.getElementById('btnCalc');
-  btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Quero recuperar R$${a.toLocaleString('pt-BR')} agora — é grátis`;
+/* Calculadora 10% */
+const slEl=document.getElementById('sl');
+function calc(){
+  const v=parseInt(slEl.value);
+  const m=Math.round(v*.10);
+  const a=m*12;
+  const pct=((v-150)/(800-150))*100;
+  slEl.style.setProperty('--p',pct+'%');
+  document.getElementById('slVal').textContent='R$ '+v.toLocaleString('pt-BR');
+  document.getElementById('perdaA').textContent='R$ '+a.toLocaleString('pt-BR');
+  document.getElementById('ganhoA').textContent='R$ '+a.toLocaleString('pt-BR');
+  const btn=document.getElementById('btnCalc');
+  btn.innerHTML=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Quero recuperar R$${a.toLocaleString('pt-BR')} agora — é grátis`;
 }
-sl.addEventListener('input', calcUpdate);
-calcUpdate();
+slEl.addEventListener('input',calc);calc();
 
-/* ── Vagas dinâmico ── */
-let vagas = 23;
-const vEls = [
-  document.getElementById('vagasHero'),
-  document.getElementById('escVagas'),
-  document.getElementById('hVagas')
-];
+/* Vagas dinâmico */
+let vg=23;
+const vEls=[document.getElementById('vagasH'),document.getElementById('escV'),document.getElementById('hVagas')];
 setInterval(()=>{
-  if(Math.random()<.12 && vagas>7){
-    vagas--;
-    vEls[0].textContent = vagas;
-    vEls[1].textContent = vagas;
-    vEls[2].textContent = vagas+' vagas hoje';
+  if(Math.random()<.12&&vg>7){
+    vg--;
+    vEls[0].textContent=vg;
+    vEls[1].textContent=vg;
+    vEls[2].textContent=vg+' vagas hoje';
   }
-}, 20000);
+},22000);
 
-/* ── Permissão WhatsApp ── */
-const wppInput = document.getElementById('wppInput');
-const btnPerm = document.getElementById('btnPerm');
-// Máscara telefone
-wppInput.addEventListener('input', function(){
-  let v = this.value.replace(/\D/g,'').slice(0,11);
-  if(v.length>10) v = '('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
-  else if(v.length>6) v = '('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
-  else if(v.length>2) v = '('+v.slice(0,2)+') '+v.slice(2);
-  else if(v.length>0) v = '('+v;
-  this.value = v;
+/* Permissão — máscara telefone + redirect WhatsApp */
+const inp=document.getElementById('wppInp');
+inp.addEventListener('input',function(){
+  let v=this.value.replace(/\D/g,'').slice(0,11);
+  if(v.length>10) v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+  else if(v.length>6) v='('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
+  else if(v.length>2) v='('+v.slice(0,2)+') '+v.slice(2);
+  else if(v.length) v='('+v;
+  this.value=v;
 });
-btnPerm.addEventListener('click', function(e){
+document.getElementById('btnPerm').addEventListener('click',function(e){
   e.preventDefault();
-  const num = wppInput.value.replace(/\D/g,'');
-  if(num.length < 10){ wppInput.style.borderColor='rgba(255,100,100,.6)'; wppInput.focus(); return; }
-  const msg = encodeURIComponent('Olá! Quero receber minha simulação personalizada de desconto na conta de energia pela Conexão Green.');
+  const n=inp.value.replace(/\D/g,'');
+  if(n.length<10){inp.style.borderColor='rgba(255,100,100,.6)';inp.focus();return;}
+  const msg=encodeURIComponent('Olá! Quero receber minha simulação personalizada de desconto na conta de energia — Conexão Green.');
   window.open('https://wa.me/5571997024211?text='+msg,'_blank');
 });
 
-/* ── Scroll Reveal ── */
-const rv = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-},{threshold:.07,rootMargin:'0px 0px -44px 0px'});
-rv.forEach(r=>obs.observe(r));
+/* Scroll Reveal */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
 })();
 </script>
