@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Conexão Green — Pare com esse roubo agora. A lei está do seu lado.</title>
+<title>Conexão Green — Pare com esse roubo agora mesmo. A lei está do seu lado.</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -450,42 +450,117 @@ footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
       </h1>
     </div>
 
-    <p class="h-sub">
-      Quem paga mais de R$150 de energia tem direito a <span class="hl">10% de desconto garantido por lei</span> — e a distribuidora <strong>nunca vai te ligar para avisar</strong>, porque ela ganha mais quando você paga a tarifa cheia.
-    </p>
+    <!-- ════ VSL PLAYER ════ -->
+    <div style="width:100%;max-width:780px;margin:clamp(16px,2.5vh,24px) 0 0;animation:fadeUp .5s .2s ease both;">
 
-    <div class="h-vis">
-      <span class="h-vis-i">💭</span>
-      <span>Imagina abrir a fatura e ver <strong>R$22 a menos todo mês</strong>. Não é pouco — é a natação da Sophia, o inglês do Lucas, uma respirada no orçamento sem culpa.</span>
-    </div>
+      <!-- Player -->
+      <div id="vslBox" style="width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 24px 64px rgba(0,0,0,.75),0 0 0 1px rgba(168,230,61,.14);">
 
-    <div class="h-cta-b">
-      <a class="btn-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        Parar esse roubo gratuitamente!
-      </a>
-    </div>
-    <div class="h-micro">
-      <span>100% gratuito</span><span>sem instalação</span>
-      <span>5 minutos</span><span>sem contrato</span><span>cancela quando quiser</span>
-    </div>
+        <!-- CENAS — Imagens reais Unsplash -->
+        <div class="vs active" id="vs0" style="position:absolute;inset:0;opacity:1;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80') center/cover no-repeat;"></div>
+        <div class="vs" id="vs1" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=1200&q=80') center/cover no-repeat;"></div>
+        <div class="vs" id="vs2" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1511895426328-dc8714191011?w=1200&q=80') center/cover no-repeat;"></div>
+        <div class="vs" id="vs3" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80') center/cover no-repeat;"></div>
+        <div class="vs" id="vs4" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80') center/cover no-repeat;"></div>
+        <div class="vs" id="vs5" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1200&q=80') center/cover no-repeat;"></div>
+        <div class="vs" id="vs6" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1200&q=80') center/cover no-repeat;"></div>
+        <div class="vs" id="vs7" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80') center/cover no-repeat;"></div>
 
-    <div class="h-vagas-b">
-      <div class="vbw">
-        <div class="vbl">Vagas preenchidas hoje</div>
-        <div class="vbb"><div class="vbf"></div></div>
+        <!-- Overlay cinematográfico -->
+        <div style="position:absolute;inset:0;z-index:3;background:linear-gradient(to bottom,rgba(0,0,0,.45) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.65) 100%);pointer-events:none;"></div>
+
+        <!-- LEGENDAS — Centro da tela, cinematográficas -->
+        <div id="vslSubs" style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:20;text-align:center;padding:0 clamp(12px,4%,48px);pointer-events:none;">
+          <div id="vslL1" style="font-family:'Oswald',sans-serif;font-size:clamp(1.3rem,4vw,2.6rem);font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.05em;text-shadow:0 2px 12px rgba(0,0,0,.95),0 0 40px rgba(0,0,0,.8);line-height:1.2;opacity:0;transform:scale(.96) translateY(6px);transition:opacity .22s ease,transform .22s ease;"></div>
+          <div id="vslL2" style="font-family:'DM Sans',sans-serif;font-size:clamp(.82rem,2vw,1.15rem);font-weight:600;color:rgba(255,255,255,.88);text-shadow:0 2px 8px rgba(0,0,0,.95);margin-top:8px;opacity:0;transform:translateY(5px);transition:opacity .25s .1s ease,transform .25s .1s ease;"></div>
+        </div>
+
+        <!-- Barra de progresso -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.1);z-index:25;">
+          <div id="vslProg" style="height:100%;background:linear-gradient(90deg,#a8e63d,#c8f060);width:0%;transition:width .35s linear;border-radius:0 2px 2px 0;"></div>
+        </div>
+
+        <!-- Timer -->
+        <div id="vslTimer" style="position:absolute;top:12px;right:12px;z-index:25;font-family:monospace;font-size:clamp(.68rem,1.7vw,.82rem);font-weight:700;color:rgba(255,255,255,.65);background:rgba(0,0,0,.6);backdrop-filter:blur(4px);padding:4px 9px;border-radius:6px;letter-spacing:1px;">1:00</div>
+
+        <!-- Aviso desbloqueio -->
+        <div id="vslUnlockBar" style="position:absolute;top:12px;left:12px;z-index:25;background:linear-gradient(135deg,#ff6b2b,#e05220);color:#fff;font-family:'DM Sans',sans-serif;font-size:clamp(.65rem,1.5vw,.78rem);font-weight:700;padding:5px 14px;border-radius:100px;display:flex;align-items:center;gap:7px;opacity:0;transition:opacity .4s;box-shadow:0 4px 14px rgba(255,107,43,.4);">
+          🔓 Desbloqueando em <span id="vslUC" style="font-family:monospace;font-weight:800;background:rgba(0,0,0,.25);padding:1px 6px;border-radius:4px;min-width:22px;text-align:center;">10</span>s
+        </div>
+
+        <!-- Marca d'água -->
+        <div style="position:absolute;bottom:14px;left:14px;z-index:25;font-family:'Fraunces',serif;font-size:clamp(.72rem,1.6vw,.85rem);font-weight:900;color:rgba(255,255,255,.28);letter-spacing:.02em;">Conexão<span style="color:rgba(168,230,61,.4);">Green</span></div>
+
+        <!-- Botão Play -->
+        <div id="vslPlay" style="position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(0,0,0,.62);backdrop-filter:blur(5px);cursor:pointer;transition:background .3s;">
+          <div id="vslPlayIcon" style="width:clamp(58px,10vw,84px);height:clamp(58px,10vw,84px);border-radius:50%;background:linear-gradient(135deg,#ff6b2b,#e05220);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(255,107,43,.55);transition:transform .2s;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div style="font-family:'Fraunces',serif;font-size:clamp(.95rem,2.2vw,1.2rem);font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8);letter-spacing:.02em;">▶ Assistir agora — 60 segundos</div>
+          <div style="font-size:clamp(.68rem,1.4vw,.78rem);color:rgba(255,255,255,.45);">Narração + imagens reais</div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:6px 14px;font-size:clamp(.62rem,1.3vw,.72rem);color:rgba(255,255,255,.5);">🔒 Conteúdo desbloqueado ao final</div>
+        </div>
+
+      </div><!-- vslBox -->
+      <div style="text-align:center;margin-top:8px;font-size:clamp(.65rem,1.3vw,.72rem);color:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;gap:5px;">🔒 O restante da página aparece ao final do vídeo</div>
+    </div>
+    <!-- ════ FIM VSL ════ -->
+
+    <!-- GATE: conteúdo abaixo da VSL — bloqueado até os 50s -->
+    <div id="heroGate" style="overflow:hidden;position:relative;margin-top:clamp(18px,3vh,28px);">
+
+      <!-- Preview borrado -->
+      <div id="gateBlur" style="filter:blur(5px);opacity:.2;pointer-events:none;user-select:none;">
+        <p class="h-sub">Quem paga mais de R$150 de energia tem direito a 10% de desconto garantido por lei — e a distribuidora nunca vai te ligar para avisar…</p>
       </div>
-      <div class="vtxt">Só <strong id="vagasH">23</strong> vagas restam hoje na sua distribuidora</div>
-    </div>
 
-    <div class="h-stats">
-      <div class="stat"><span class="sn">10%</span><span class="sl">desconto garantido</span></div>
-      <div class="stat"><span class="sn">R$0</span><span class="sl">custo para você</span></div>
-      <div class="stat"><span class="sn">5 min</span><span class="sl">para ativar</span></div>
-      <div class="stat"><span class="sn">Lei 14.300</span><span class="sl">garantia legal</span></div>
-    </div>
-  </div>
+      <!-- Bloqueador central -->
+      <div id="gateLock" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(to top,var(--dark) 50%,transparent);text-align:center;padding:20px;">
+        <span style="font-size:1.8rem;">🔒</span>
+        <div style="font-family:var(--f1);font-size:clamp(1rem,2.2vw,1.3rem);font-weight:900;color:rgba(255,255,255,.8);">Conteúdo desbloqueado ao final do vídeo</div>
+        <div style="font-size:clamp(.75rem,1.4vw,.84rem);color:rgba(255,255,255,.38);max-width:320px;line-height:1.5;">Assista até o fim para ver a simulação gratuita e todas as informações.</div>
+        <div id="gateCnt" style="display:flex;align-items:center;gap:8px;background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.22);border-radius:100px;padding:7px 18px;font-size:clamp(.75rem,1.4vw,.84rem);color:rgba(255,180,100,.85);font-weight:600;opacity:0;transition:opacity .3s;">
+          Desbloqueando em <span id="gateCntNum" style="font-family:monospace;font-weight:800;color:#ff6b2b;background:rgba(255,107,43,.15);padding:1px 8px;border-radius:5px;">--</span>s
+        </div>
+      </div>
+
+      <!-- Conteúdo real (oculto até desbloqueio) -->
+      <div id="gateReal" style="opacity:0;transition:opacity .8s ease;pointer-events:none;">
+        <p class="h-sub">
+          Quem paga mais de R$150 de energia tem direito a <span class="hl">10% de desconto garantido por lei</span> — e a distribuidora <strong>nunca vai te ligar para avisar</strong>, porque ela ganha mais quando você paga a tarifa cheia.
+        </p>
+        <div class="h-vis">
+          <span class="h-vis-i">💭</span>
+          <span>Imagina abrir a fatura e ver <strong>R$22 a menos todo mês</strong>. É a natação da Sophia, o inglês do Lucas, uma respirada no orçamento sem culpa.</span>
+        </div>
+        <div class="h-cta-b">
+          <a class="btn-main" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Parar esse roubo gratuitamente!
+          </a>
+        </div>
+        <div class="h-micro">
+          <span>100% gratuito</span><span>sem instalação</span>
+          <span>5 minutos</span><span>sem amarrações</span><span>cancela quando quiser</span>
+        </div>
+        <div class="h-vagas-b">
+          <div class="vbw"><div class="vbl">Vagas preenchidas hoje</div><div class="vbb"><div class="vbf"></div></div></div>
+          <div class="vtxt">Só <strong id="vagasH">23</strong> vagas restam hoje na sua distribuidora</div>
+        </div>
+        <div class="h-stats">
+          <div class="stat"><span class="sn">10%</span><span class="sl">desconto garantido</span></div>
+          <div class="stat"><span class="sn">R$0</span><span class="sl">custo para você</span></div>
+          <div class="stat"><span class="sn">5 min</span><span class="sl">para ativar</span></div>
+          <div class="stat"><span class="sn">Lei 14.300</span><span class="sl">garantia legal</span></div>
+        </div>
+      </div>
+    </div><!-- heroGate -->
+
+  </div><!-- h-inner -->
 </section>
+
+<!-- Toast de desbloqueio -->
+<div id="unlockToast" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);z-index:999;background:var(--g);color:var(--dark);font-family:var(--f1);font-size:.9rem;font-weight:800;padding:12px 26px;border-radius:100px;box-shadow:0 8px 32px rgba(168,230,61,.4);white-space:nowrap;opacity:0;transition:opacity .4s,transform .4s;pointer-events:none;">🔓 Conteúdo desbloqueado! Role para continuar ⬇️</div>
 
 <!-- ══ VILÃO ══ -->
 <section class="vilao reveal">
@@ -517,7 +592,7 @@ footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
       <input type="range" id="sl" min="150" max="800" value="200" step="10">
     </div>
     <div class="c-res">
-      <div class="cr cr-l"><div class="cr-lbl">💸 Você joga fora por ano</div><div class="cr-val" id="perdaA">R$ 240</div><div class="cr-sub">sem o desconto ativado</div></div>
+      <div class="cr cr-l"><div class="cr-lbl">💸 Você perde por ano</div><div class="cr-val" id="perdaA">R$ 240</div><div class="cr-sub">sem o desconto ativado</div></div>
       <div class="cr cr-g"><div class="cr-lbl">✅ Você economiza por ano</div><div class="cr-val" id="ganhoA">R$ 240</div><div class="cr-sub">com 10% de desconto</div></div>
     </div>
     <a class="btn-calc" href="https://digital.igreenenergy.com.br/?id=127799&sendcontract=true&desc=10" target="_blank" id="btnCalc">
@@ -599,7 +674,7 @@ footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
 
 <!-- ══ PROVA SOCIAL — sensoriais ══ -->
 <section class="prova reveal">
-  <div class="stag">19.247 famílias economizando</div>
+  <div class="stag">1.247 famílias economizando</div>
   <h2 class="sttl">Mães, pais e famílias<br>que já venceram a distribuidora</h2>
   <p class="ssub">Nomes reais. Cidades reais. Economias reais. Veja o que aconteceu depois que eles clicaram.</p>
   <div class="deps">
@@ -629,7 +704,7 @@ footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
     </div>
   </div>
   <div class="nums">
-    <div class="nc"><div class="nv">19.247</div><div class="nl">famílias economizando</div></div>
+    <div class="nc"><div class="nv">1.247</div><div class="nl">famílias economizando</div></div>
     <div class="nc"><div class="nv">R$28–85</div><div class="nl">economizados por mês</div></div>
     <div class="nc"><div class="nv">6 min</div><div class="nl">tempo médio de cadastro</div></div>
     <div class="nc"><div class="nv">R$0</div><div class="nl">custo para o consumidor</div></div>
@@ -669,7 +744,7 @@ footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
     <h3>Sem risco. <em>Sem armadilha.</em><br>Sem surpresa.</h3>
     <div class="gar-grid">
       <div class="gar-item"><span class="gi-ico">💰</span><p><strong>Conta não aumenta.</strong> O desconto é sempre abaixo do que você já paga.</p></div>
-      <div class="gar-item"><span class="gi-ico">📋</span><p><strong>Sem amarrações.</strong> Sem fidelidade. Cancela quando quiser, sem multa.</p></div>
+      <div class="gar-item"><span class="gi-ico">📋</span><p><strong>Sem contrato.</strong> Sem fidelidade. Cancela quando quiser, sem multa.</p></div>
       <div class="gar-item"><span class="gi-ico">🔒</span><p><strong>Dados seguros.</strong> Tratados conforme a LGPD. Nunca vendidos a terceiros.</p></div>
       <div class="gar-item"><span class="gi-ico">⚡</span><p><strong>100% gratuito.</strong> Nenhuma taxa. Nenhum custo escondido. Zero.</p></div>
     </div>
@@ -709,7 +784,7 @@ footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
       <li>10% de desconto direto na fatura</li>
       <li>Sem instalação de painéis solares</li>
       <li>Sem obras ou visitas técnicas</li>
-      <li>Acesso 100% gratuito pela Conexão Green</li>
+      <li>Acesso 100% gratuito pela IGreen</li>
       <li>Regulamentado pela ANEEL</li>
       <li>Sem fidelidade ou multa de cancelamento</li>
     </ul>
@@ -775,6 +850,128 @@ footer p{font-size:.7rem;color:rgba(255,255,255,.18);}
 </a>
 
 <script>
+/* ══════════════════════════════════
+   VSL ENGINE
+══════════════════════════════════ */
+(function(){
+'use strict';
+const VSL_DUR = 60;
+const SCRIPT = [
+  [0,  4,  'ATENÇÃO.',                              'Você está perdendo dinheiro agora mesmo.',    0],
+  [4,  8,  'Cada mês que você paga a conta cheia…', 'sua distribuidora embolsa o que seria seu.',  1],
+  [8,  13, 'Isso tem um nome:',                     'SILÊNCIO ESTRATÉGICO.',                       1],
+  [13, 17, 'A Lei 14.300 garante',                  '10% de desconto na sua fatura.',              2],
+  [17, 21, 'Sem instalar painel solar.',             'Sem obra. Sem custo. Pelo celular.',          2],
+  [21, 26, 'Napoleon Hill dizia:',                  '"Todo enriquecimento começa com desejo ardente."', 3],
+  [26, 30, 'Robert Greene revelou:',                'Quem esconde informação — tem o poder.',      3],
+  [30, 35, 'A distribuidora esconde',               'que você tem esse direito todos os meses.',   4],
+  [35, 40, 'T. Harv Eker ensina:',                  'Mente rica age. Mente pobre espera.',     5],
+  [40, 45, 'Napoleon Hill alertou:',                'Seu inimigo é a inércia — o "vou fazer depois."', 3],
+  [45, 50, '1.247 famílias já reagiram.',            'R$28 a R$85 de volta todo mês.',             6],
+  [50, 54, 'O beneficio é 100% gratuito.',           'Leva apenas 6 minutos.',                      7],
+  [54, 57, 'Mente vencedora age hoje.',             'Não espere amanhã chegar.',                   7],
+  [57, 60, '🔓 Conteúdo desbloqueado!',             'Role para ver sua simulação gratuita. ⬇️',    7],
+];
+const NARRATION = `ATENÇÃO. Você está perdendo dinheiro agora mesmo. Cada mês que você paga a conta de luz inteira, sua distribuidora embolsa o que seria seu. Isso tem um nome: silêncio estratégico. A Lei catorze mil e trezentos garante dez por cento de desconto direto na sua fatura. Sem instalar painel solar. Sem obra. Sem custo. Pelo celular mesmo. Napoleon Hill dizia: toda riqueza começa com um desejo ardente de mudar. Robert Greene revelou: quem esconde informação tem o poder. A distribuidora esconde que você tem esse direito todos os meses. T. Harv Eker ensina: Mente rica age. Mente pobre espera. Napoleon Hill alertou: seu maior inimigo é a inércia — o vou fazer depois. Mil duzentas e quarenta e sete famílias já reagiram. De vinte e oito a oitenta e cinco reais de volta todo mês. O beneficio é cem por cento gratuito. Leva apenas seis minutos. Mente vencedora age hoje. O conteúdo está desbloqueado. Role para ver sua simulação gratuita.`;
+
+let running=false, elapsed=0, ticker=null, vslDone=false;
+const $ = id=>document.getElementById(id);
+const playBtn=$('vslPlay'), progFill=$('vslProg'), timerEl=$('vslTimer');
+const l1=$('vslL1'), l2=$('vslL2');
+const unlockBar=$('vslUnlockBar'), unlockNum=$('vslUC');
+const gateLock=$('gateLock'), gateBlur=$('gateBlur'), gateReal=$('gateReal'), gateCnt=$('gateCnt'), gateCntNum=$('gateCntNum');
+const toast=$('unlockToast');
+
+function setVScene(id){
+  for(let i=0;i<8;i++){const s=$('vs'+i);if(s)s.style.opacity=i===id?'1':'0';}
+}
+let lastL1='',lastL2='';
+function setSub(a='',b=''){
+  if(a===lastL1&&b===lastL2)return;
+  lastL1=a;lastL2=b;
+  l1.style.opacity='0';l1.style.transform='scale(.96) translateY(6px)';
+  l2.style.opacity='0';l2.style.transform='translateY(5px)';
+  setTimeout(()=>{
+    l1.innerHTML=hl(a);l2.innerHTML=hl(b);
+    l1.style.opacity='1';l1.style.transform='scale(1) translateY(0)';
+    if(b){l2.style.opacity='1';l2.style.transform='translateY(0)';}
+  },200);
+}
+function hl(t){
+  return t
+    .replace(/(ATENÇÃO|SILÊNCIO ESTRATÉGICO|10%|100%|dez por cento|cem por cento)/g,'<span style="color:#ff8888">$1</span>')
+    .replace(/(Napoleon Hill|Robert Greene|T\. Harv Eker|Lei 14\.300|Lei catorze)/g,'<span style="color:#ffcc44">$1</span>')
+    .replace(/(desconto|gratuito|age\.|age hoje|Arquivo rico|Mente vencedora|desbloqueado|1\.247|R\$\d+[–—-]\S+)/g,'<span style="color:#c8f060">$1</span>');
+}
+function updateTimer(t){const r=Math.max(0,VSL_DUR-t);timerEl.textContent='0:'+(r<10?'0':'')+r;}
+
+function unlockGate(){
+  if(vslDone)return;
+  vslDone=true;
+  // Remover bloqueador
+  if(gateLock){gateLock.style.transition='opacity .6s ease';gateLock.style.opacity='0';setTimeout(()=>{gateLock.style.display='none';},600);}
+  if(gateBlur)gateBlur.style.display='none';
+  if(gateReal){gateReal.style.opacity='1';gateReal.style.pointerEvents='auto';}
+  // Mostrar toast
+  if(toast){toast.style.opacity='1';toast.style.transform='translateX(-50%) translateY(0)';setTimeout(()=>{toast.style.opacity='0';toast.style.transform='translateX(-50%) translateY(20px)';},4500);}
+  // Revelar seções abaixo
+  setTimeout(()=>{
+    document.querySelectorAll('.reveal').forEach(r=>{
+      const o2=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o2.unobserve(e.target);}});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+      o2.observe(r);
+    });
+  },400);
+}
+
+function tick(){
+  elapsed++;
+  progFill.style.width=(elapsed/VSL_DUR*100)+'%';
+  updateTimer(elapsed);
+  for(const[s,e,a,b,sc]of SCRIPT){if(elapsed>=s&&elapsed<e){setSub(a,b);setVScene(sc);break;}}
+  const rem=VSL_DUR-elapsed;
+  if(rem<=10&&rem>0){
+    unlockBar.style.opacity='1';unlockNum.textContent=rem;
+    if(gateCnt)gateCnt.style.opacity='1';
+    if(gateCntNum)gateCntNum.textContent=rem;
+  }
+  if(elapsed>=VSL_DUR){clearInterval(ticker);running=false;unlockGate();timerEl.textContent='0:00';progFill.style.width='100%';}
+}
+
+if(playBtn){
+  playBtn.addEventListener('click',()=>{
+    if(running)return; running=true;
+    playBtn.style.opacity='0';playBtn.style.pointerEvents='none';playBtn.style.transition='opacity .35s';
+
+    // Narração
+    if('speechSynthesis' in window){
+      window.speechSynthesis.cancel();
+      const doSpeak=()=>{
+        const u=new SpeechSynthesisUtterance(NARRATION);
+        u.lang='pt-BR';u.rate=0.88;u.pitch=0.72;u.volume=1;
+        const vs=window.speechSynthesis.getVoices();
+        const male=vs.find(v=>v.lang.startsWith('pt')&&!/femi|maria|vitoria|luciana/i.test(v.name))
+          ||vs.find(v=>v.lang.startsWith('pt'))||vs[0];
+        if(male)u.voice=male;
+        window.speechSynthesis.speak(u);
+      };
+      const vs=window.speechSynthesis.getVoices();
+      if(vs.length>0)doSpeak();
+      else window.speechSynthesis.onvoiceschanged=doSpeak;
+    }
+
+    setVScene(0);setSub('ATENÇÃO.','Você está perdendo dinheiro agora mesmo.');updateTimer(0);
+    ticker=setInterval(tick,1000);
+  });
+  // Hover no play icon
+  playBtn.addEventListener('mouseenter',()=>{const ic=playBtn.querySelector('#vslPlayIcon');if(ic)ic.style.transform='scale(1.08)';});
+  playBtn.addEventListener('mouseleave',()=>{const ic=playBtn.querySelector('#vslPlayIcon');if(ic)ic.style.transform='scale(1)';});
+}
+if('speechSynthesis' in window){window.speechSynthesis.getVoices();window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();}
+})();
+
+/* ══════════════════════════════════
+   RESTANTE DO JS
+══════════════════════════════════ */
 (function(){
 'use strict';
 
@@ -825,7 +1022,7 @@ function calc(){
   document.getElementById('perdaA').textContent='R$ '+a.toLocaleString('pt-BR');
   document.getElementById('ganhoA').textContent='R$ '+a.toLocaleString('pt-BR');
   const btn=document.getElementById('btnCalc');
-  btn.innerHTML=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Quero recuperar R$${a.toLocaleString('pt-BR')} agora — é grátis`;
+  btn.innerHTML=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Quero recuperar R$${a.toLocaleString('pt-BR')} agora!`;
 }
 slEl.addEventListener('input',calc);calc();
 
