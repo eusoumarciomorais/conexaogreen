@@ -949,7 +949,7 @@ if(playBtn){
       window.speechSynthesis.cancel();
       const doSpeak=()=>{
         const u=new SpeechSynthesisUtterance(NARRATION);
-        u.lang='pt-BR';u.rate=0.98;u.pitch=0.72;u.volume=1;
+        u.lang='pt-BR';u.rate=0.99;u.pitch=0.72;u.volume=1;
         const vs=window.speechSynthesis.getVoices();
         const male=vs.find(v=>v.lang.startsWith('pt')&&!/femi|maria|vitoria|luciana/i.test(v.name))
           ||vs.find(v=>v.lang.startsWith('pt'))||vs[0];
